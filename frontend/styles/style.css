@@ -1,0 +1,274 @@
+body{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgb(67,102,90);
+    background: linear-gradient(145deg, rgba(67,102,90,1) 0%, rgba(72,157,127,1) 100%); 
+    justify-content: right;
+    overflow: hidden;
+    max-width:2560px;
+    max-height:1080px;
+    width: auto;
+    height: auto;
+    min-width: 640px;
+    min-height: 480px;
+}
+
+img{
+    margin-top: 5%;
+    width:  10vw;
+    height: 10vw;
+}
+
+h1{
+    color: #43665A;
+    font-family: "Modak", system-ui;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vw;
+
+}
+
+#form-container{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    height: 100vh;
+    background-color: #eff5f4;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 20px 10px #3E8A9A;
+    z-index: 900;
+}
+
+#form-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.login-form{
+    margin-bottom: 5%;
+    width: 50%;
+    height: 3vh;
+    border: none;
+    border-bottom: 1px solid #43665A;
+    background-color: transparent;
+    font-size: auto;
+    font-weight: bold;
+    color: #43665A;
+    text-align: center;
+}
+
+input:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+#form-container form #btnSub{
+    align-self: left;
+    width: 30%;
+    height: 2rem;
+    border: none;
+    background-color: #43665A;
+    color: #fff;
+    border-radius: 10px;
+    font-size: auto;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#btnSub:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgb(0 0 0 / 0.2);
+}
+
+#forgetPass{
+    width: 30%;
+    height: 10%;
+    font-size: auto;
+    background-color:transparent;
+    border: none;
+    color: #43665A;
+}
+
+button:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#left-container{
+    display: flex;
+    flex-direction: unset;
+    height: 100vh;
+    width: 50vw;
+}
+
+.circle{ 
+    margin: 0;
+    padding: 0;
+    width: 40vh;
+    height: 40vh;
+    border: none;
+    border-radius: 50%;
+    box-shadow: -10px 5px 5px rgb(0 0 0 / 0.2);
+    
+}
+#orange-circle{
+    position: absolute;
+    left: 50%;
+    background-color: #D97632;
+    box-sizing: inherit;
+    z-index: 0;
+}
+
+#green-circle{
+    position: absolute;
+    left: 40%;
+    top: -10%;
+    background-color: #44A685;
+    box-sizing: inherit;
+}
+#pasta-circle{
+    width: 30vh;
+    height: 30vh;
+    margin-top: 65vh;
+    right: 1vw;
+    position: absolute;
+    background-color: #EBC385;
+    z-index: 4;
+    right: 45vw;
+    box-sizing: inherit;
+
+}
+#blue-circle{
+    width: 40vh;
+    height: 40vh;
+    margin-top: 70vh;
+    position: absolute;
+    background-color: #3E8A9A;
+    z-index: 0;
+    right: 37vw;
+}
+
+#img-circle{
+    width: 55vh;
+    height: 55vh;
+    margin-top: 15%;
+    position: absolute;
+    left: -3vw;
+    bottom: -3vh;
+    z-index: 1;
+    box-sizing: inherit;
+    background-image: url("../images/imgLog.png");
+    background-size: contain;
+    box-shadow: 10px 5px 5px rgb(0 0 0 / 0.2);
+}
+
+@media screen and (max-width: 685px){
+    body{
+        display: block;
+        align-items: center;
+        overflow: hidden;
+    }
+    img{
+        width: 30%;
+        height: auto;
+    }
+
+    h1{
+        font-size: 40px;
+    }
+    .circle {
+        width: 0px;
+        height: 0px;
+    }
+
+    #form-container{
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #left-container{
+        max-width: 0;
+        max-height: 0;
+    }
+  }
+
+
+  @media screen and (max-width: 400px){
+    body{
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+    img{
+        margin-top: 20%;
+        width: 30vw;
+        height: auto;
+    }
+    .circle {
+        width: 0px;
+        height: 0px;
+        overflow: hidden;
+    }
+    h1{
+        font-size: 40px;
+        margin: 0;
+    }
+    #form-container{
+        box-shadow: 0px 0px transparent;
+        align-items: center;
+        max-width: 100vw;
+        max-height: 100vh;
+        overflow: hidden;
+        
+
+    }
+
+    form{
+        margin: 0
+    }
+
+    #left-container{
+        width: 0vw;
+        height: 0vh;
+        overflow: hidden;
+    }
+
+    #orange-circle{
+        width: 0;
+        height: 0;
+    }
+    
+    #green-circle{
+        width: 0;
+        height: 0;
+    }
+    #pasta-circle{
+        width: 0;
+        height: 0;
+    }
+    #blue-circle{
+        width: 0;
+        height: 0;
+    }
+    
+    #img-circle{
+        width: 0;
+        height: 0;
+    
+    }
+
+
+  }  
