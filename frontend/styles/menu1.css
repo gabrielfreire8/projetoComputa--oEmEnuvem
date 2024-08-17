@@ -1,0 +1,168 @@
+body{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgb(67,102,90);
+    background: linear-gradient(145deg, rgba(67,102,90,1) 0%, rgba(72,157,127,1) 100%); 
+    justify-content: right;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+#breake1{
+    width: 70%;
+    border: 1.5px solid #fff;
+
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    width: 42vw;
+    height: 100vh;
+    align-items: center;
+}
+
+#presentUser h1{
+    color: #fff;
+}
+#presentUser span{
+    color: #fff;
+}
+#presentUser{
+    text-align: center;
+    margin-top: 50px;
+}
+.button{
+    color: #fff;
+    background-color: #44A685;
+    border-radius: 15px;
+    border-color: #ffffff;
+    box-shadow: none;
+}
+aside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200vw;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 10;
+    box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
+}
+
+#img_princi{
+    width: 250px;
+}
+#string_pjb{
+   width: 300px;
+}
+
+
+
+aside form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+input{
+    margin-bottom: 30px;
+    font-size: larger;
+    font-size: 25px;
+}
+
+input:focus{
+    border: none;
+    box-shadow: none;
+}
+
+input:hover{
+    text-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
+}
+
+#btnSub{
+    color: #fff;
+    background-color: #44A685;
+    height: 40px;
+    border: 5px 5px 5px rgb(0, 0, 0, 0.3);
+    box-shadow: none;
+    border-radius: 20px;
+}
+
+#btnSub:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
+}
+
+#forgetPass{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: #44A685;
+}
+
+#forgetPass:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    text-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
+}
+
+
+
+.circle{
+    position: absolute;
+    width: 22vw;
+    height: 22vw;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
+}
+
+#img-circle{
+    background-image: url("../images/astronauta_laranja_Pag2.png");
+    background-size: contain;
+    bottom: -9%;
+    left: -2%;
+    box-shadow: 10px 10px 5px rgb(0, 0, 0, 0.3);
+    position:absolute;
+    z-index: 1000;
+    
+}
+
+.button{
+    margin-bottom: 10px;
+}
+
+#buttons{
+    margin-top: 20%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#bt_ini{
+    width: 200px; 
+    height: 40px;
+
+
+}
+#bt_calen{
+    width: 200px; 
+    height: 40px;
+
+}
+#bt_ativ{
+    width: 200px; 
+    height: 40px;
+
+}
+#bt_sair{
+    width: 200px; 
+    height: 40px;
+
+}
