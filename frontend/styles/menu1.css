@@ -45,20 +45,24 @@ section{
 }
 aside{
     display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 200vw;
     height: 100vh;
-    background-color: #fff;
+    background-color: #ffffffec;
     z-index: 10;
-    box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
+
 }
 
 #img_princi{
-    width: 250px;
+    position: absolute;
+    width: 180px;
+    right: 480px;
 }
 #string_pjb{
-   width: 300px;
+    position: absolute;
+    width: 170px;
+    bottom: 500px;
+    right: 460px;
+    
 }
 
 
@@ -137,6 +141,7 @@ input:hover{
     margin-bottom: 10px;
 }
 
+
 #buttons{
     margin-top: 20%;
     align-items: center;
@@ -165,4 +170,39 @@ input:hover{
     width: 200px; 
     height: 40px;
 
+}
+
+.BotPrincipal{
+    position: relative;
+    width: 250px;
+    height: 150px;
+    border-radius: 30px; 
+    background-color: #44A685;
+    color: #fff;
+    border-color: black;
+    border-width: 2px solid;
+    box-shadow:  0 0 5px black;
+    font-weight: bolder;
+    font-size: larger;
+        
+}
+
+#bot1{
+    left: 250px;
+    top: 250px;
+}
+
+
+#bot2{
+    top: 450px;
+}
+
+#bot3{
+    top: 260px;
+    left: 150px;
+}
+
+#bot4{
+    top: 460px;
+    right: 100px;
 }
