@@ -3,61 +3,36 @@
 //<button class="button" id="bt_ativ">Aprovar Atividades</button>
 //<button class="button" id="bt_sair">Sair</button>
 
-
-const bt1 = document.getElementById("bt_ini")
-bt1.addEventListener("click",redirecionar);
-
-function redirecionar(){
-    window.location.href = "http://127.0.0.1:5500/frontend/index.html";
-
-
-}
-
-
-const bt2 = document.getElementById("bt_calen")
-bt2.addEventListener("click",redirecionar);
-
-function redirecionar(){
-        window.location.href = "http://127.0.0.1:5500/frontend/index.html";
-}
-
-const bt3 = document.getElementById("bt_ativ")
-bt3.addEventListener("click",redirecionar);
-function redirecionar(){
-    window.location.href = "http://127.0.0.1:5500/frontend/index.html";
-
-}
-const bt4 = document.getElementById("bt_sair")
-bt4.addEventListener("click",redirecionar);
-function redirecionar(){
+function redirecionar(){ // Função que faz as interaões entre as páginas
     window.location.href = "http://127.0.0.1:5500/frontend/index.html";
 }
 
+// Botoes menu lateral
+const botaoInicial = document.getElementById("bt_ini")
+botaoInicial.addEventListener("click", redirecionar);
+
+const btCalendario = document.getElementById("bt_calen")
+btCalendario.addEventListener("click", redirecionar);
+
+const btAtiv = document.getElementById("bt_ativ")
+btAtiv.addEventListener("click", redirecionar);
+
+const logout = document.getElementById("bt_sair")
+logout.addEventListener("click", redirecionar);
 
 
-const bot1 = document.getElementById("bot1")
-bot1.addEventListener("click",redirecionar);
-    function redirecionar(){
-        window.location.href = "http://127.0.0.1:5500/frontend/index.html";
-}
+
+//Botoes principais
+const bt_cadParticipante = document.getElementById("cadPart")
+bt_cadParticipante.addEventListener("click",redirecionar);
+
+const bt_criarAtividade = document.getElementById("createAtiv")
+bt_criarAtividade.addEventListener("click",redirecionar);
 
 
-const bot2 = document.getElementById("bot2")
-bot2.addEventListener("click",redirecionar);
-    function redirecionar(){
-        window.location.href = "http://127.0.0.1:5500/frontend/index.html";
-}
+const bt_alterarDados = document.getElementById("alterData")
+bt_alterarDados.addEventListener("click",redirecionar);
 
+const bt_frequencia = document.getElementById("frequencia")
+bt_frequencia.addEventListener("click",redirecionar);
 
-const bot3 = document.getElementById("bot3")
-bot3.addEventListener("click",redirecionar);
-    function redirecionar(){
-        window.location.href = "http://127.0.0.1:5500/frontend/index.html";
-}
-
-
-const bot4 = document.getElementById("bot4")
-bot4.addEventListener("click",redirecionar);
-    function redirecionar(){
-        window.location.href = "http://127.0.0.1:5500/frontend/index.html";
-}
