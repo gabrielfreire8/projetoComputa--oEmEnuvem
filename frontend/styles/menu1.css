@@ -12,7 +12,7 @@ body{
     height: auto;
 }
 
-#breake1{
+#divisor-line{
     width: 70%;
     border: 1.5px solid #fff;
 
@@ -21,7 +21,7 @@ body{
 section{
     display: flex;
     flex-direction: column;
-    width: 42vw;
+    width: 21vw;
     height: 100vh;
     align-items: center;
 }
@@ -45,164 +45,104 @@ section{
 }
 aside{
     display: flex;
-    width: 200vw;
+    flex-direction: column;
+    width: 100%;
     height: 100vh;
     background-color: #ffffffec;
     z-index: 10;
-
+    align-items: center;
 }
 
 #img_princi{
-    position: absolute;
-    width: 180px;
-    right: 480px;
+    width: 20vh;
+    right: 20vh;
 }
 #string_pjb{
-    position: absolute;
-    width: 170px;
-    bottom: 500px;
-    right: 460px;
-    
+    width: 20vh;
+    right: 20vh;
 }
 
-
-
-aside form{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
-}
-input{
-    margin-bottom: 30px;
-    font-size: larger;
-    font-size: 25px;
-}
-
-input:focus{
-    border: none;
-    box-shadow: none;
-}
-
-input:hover{
-    text-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
-}
-
-#btnSub{
-    color: #fff;
-    background-color: #44A685;
-    height: 40px;
-    border: 5px 5px 5px rgb(0, 0, 0, 0.3);
-    box-shadow: none;
-    border-radius: 20px;
-}
-
-#btnSub:hover{
-    cursor: pointer;
-    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
-}
-
-#forgetPass{
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    color: #44A685;
-}
-
-#forgetPass:hover{
-    text-decoration: underline;
-    cursor: pointer;
-    text-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
-}
-
-
-
-.circle{
-    position: absolute;
-    width: 22vw;
-    height: 22vw;
-    background-color: #fff;
-    border-radius: 50%;
-    box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
-}
 
 #img-circle{
+    position: fixed;
+    width: 22vw;
+    height: 22vw;
+    border-radius: 50%;
+    box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
     background-image: url("../images/astronauta_laranja_Pag2.png");
     background-size: contain;
-    bottom: -9%;
-    left: -2%;
     box-shadow: 10px 10px 5px rgb(0, 0, 0, 0.3);
-    position:absolute;
-    z-index: 1000;
-    
+    z-index: 11;
+    bottom: -10%;
+    object-fit: scale-down;
 }
 
 .button{
     margin-bottom: 10px;
+    width: 200px; 
+    height: 40px;
+    object-fit: inherit;
 }
-
 
 #buttons{
     margin-top: 20%;
     align-items: center;
     display: flex;
     flex-direction: column;
-
 }
 
-#bt_ini{
-    width: 200px; 
-    height: 40px;
-
-
-}
-#bt_calen{
-    width: 200px; 
-    height: 40px;
-
-}
-#bt_ativ{
-    width: 200px; 
-    height: 40px;
-
-}
-#bt_sair{
-    width: 200px; 
-    height: 40px;
-
+#buttonsAside{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 60%;
+    justify-content: center;
+    align-items: center;
 }
 
 .BotPrincipal{
     position: relative;
     width: 250px;
-    height: 150px;
+    height: 20vh;
     border-radius: 30px; 
     background-color: #44A685;
     color: #fff;
-    border-color: black;
-    border-width: 2px solid;
+    border-width: 2px solid black;
     box-shadow:  0 0 5px black;
     font-weight: bolder;
     font-size: larger;
-        
-}
-
-#bot1{
-    left: 250px;
-    top: 250px;
+    margin-right: 20px;
+    margin-top: 10px;
 }
 
 
-#bot2{
-    top: 450px;
+@media screen and (min-width: 1960px){
+    .BotPrincipal{
+        width: 400px;
+        height: 20vh;
+    }
+
+    #img-circle{
+        width: 40vh;
+        height: 40vh;
+        bottom: -7%;
+    }
+
+    .button{
+        margin-bottom: 10px;
+        width: 300px; 
+        height: 60px;
+    }
+
+
+    section{
+        display: flex;
+        flex-direction: column;
+        width: 15vw;
+        height: 100vh;
+        align-items: center;
+    }
 }
 
-#bot3{
-    top: 260px;
-    left: 150px;
-}
 
-#bot4{
-    top: 460px;
-    right: 100px;
-}
