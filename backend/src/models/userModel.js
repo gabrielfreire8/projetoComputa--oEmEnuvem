@@ -32,6 +32,32 @@ class User{
         };
     };
 
+    async updateUser(id, coluna, novoValor){
+        try{
+            switch(coluna){
+                case "nome":
+                    let nome = novoValor;
+                    let updateName = knex.update({nome}).where({idusuarios: id}).table('usuarios')
+                    return updateName
+                case "usuario":
+                    let usuario = novoValor;
+                    let updateUser = knex.update({usuario}).where({idusuarios: id}).table('usuarios')
+                    return updateUser
+                case "senha":
+                    let senha = novoValor;
+                    let updatePass = knex.update({senha}).where({idusuarios: id}).table('usuarios')
+                    return updatePass
+                case "funcao":
+                    let funcao = novoValor;
+                    let updateFuncao = knex.update({funcao}).where({idusuarios: id}).table('usuarios')
+                    return updateFuncao
+                }
+        }catch(error){
+            console.log(error);
+            return 404
+        }
+    }
+
 };
 
 module.exports = new User

@@ -32,7 +32,7 @@ class UserController{
 
     async getById(req, res){
         try{
-            let {id} = req.body
+            let { id } = req.body;
             let user = await User.getByID(id) 
             return res.status(200).send({user})
         }
@@ -40,6 +40,22 @@ class UserController{
             return res.status(404).json({
                 message: "Erro ao retornar usuário"
             })
+        }
+    }
+
+    async updateUser(req, res){
+        try{
+            let {id, coluna, novoValor} = req.body
+            await User.updateUser(id, coluna, novoValor)
+            let user = await User.getByID(id);
+            return res.status(200).json({
+                message: `Usuário ID: ${id} Atualizado com sucesso`,
+                user
+            })
+        }
+        catch(
+            error){console.log(error)
+            return 404
         }
     }
 
