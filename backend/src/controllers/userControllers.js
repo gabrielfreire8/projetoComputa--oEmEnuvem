@@ -40,8 +40,8 @@ class UserController{
             return res.status(404).json({
                 message: "Erro ao retornar usuário"
             })
-        }
-    }
+        };
+    };
 
     async updateUser(req, res){
         try{
@@ -51,15 +51,29 @@ class UserController{
             return res.status(200).json({
                 message: `Usuário ID: ${id} Atualizado com sucesso`,
                 user
-            })
+            });
         }
         catch(
             error){console.log(error)
-            return 404
-        }
-    }
+            return res.status(403).json({
+                message: "não autorizado",
+            });
+        };
+    };
 
-
-}
+    async deleteUser(req, res){
+        try{
+            let {id, usuario} = req.body;
+            let userDeletado = await User.deleteUser(id, usuario);
+            
+            return res.status(200).json({
+                message: "usuario deletado com sucesso",
+                userDeletado
+            });
+        }catch(error){return res.status(403).json({
+            message: "não autorizado"
+        })};
+    };
+};
 
 module.exports = new UserController

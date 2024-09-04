@@ -58,6 +58,19 @@ class User{
         }
     }
 
+    async deleteUser(id, usuario){
+        try{
+            let findUser = await this.getByID(id);
+            if(findUser[0].usuario === usuario){
+                let excludeUser = knex.delete().where({idusuarios: id}).table("usuarios");
+                return excludeUser;
+            }else{
+                return 403
+            };
+        }catch(error){
+            return error
+        };
+    };
 };
 
 module.exports = new User
