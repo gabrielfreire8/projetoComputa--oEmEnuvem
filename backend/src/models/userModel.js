@@ -17,9 +17,8 @@ class User{
             if(error.code === "ER_DUP_ENTRY"){
                 return 409
             }
-            console.log(error) 
+            console.log(error)
             return 404}
-        
     }
 
     async getByID(id){
