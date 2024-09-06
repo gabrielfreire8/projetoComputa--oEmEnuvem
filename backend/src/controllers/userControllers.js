@@ -1,26 +1,35 @@
 const User = require('../models/userModel');
-
+const bcrypt = require('bcrypt');
 
 class UserController{
     async create(req, res){
 
         let {nome, usuario, senha, funcao} = req.body;
-    
+        const salts = 10
         try{
-            const user = await User.new(nome, usuario, senha, funcao);
-            if(user === 200){
-                return res.status(200).json({
-                    message : "Usuário cadastrado com sucesso"
+            await bcrypt.genSalt(salts, (error, salt) => {
+                if(error){
+                    return error
+                }
+                bcrypt.hash(senha, salt, async (error, hash) => {
+                    if(error) return 400
+                    const user = await User.new(nome, usuario, hash, funcao);
+                    if(user === 200){
+                        return res.status(200).json({
+                            message : "Usuário cadastrado com sucesso"
+                        })
+                    }else if(user === 409){
+                        return res.status(user).json({
+                            message : "Usuário já cadastrado"
+                        })
+                    }else{
+                        return res.status(400).json({
+                            message: "Erro na requisição"
+                        })
+                    }
                 })
-            }else if(user === 409){
-                return res.status(user).json({
-                    message : "Usuário já cadastrado"
-                })
-            }else{
-                return res.status(400).json({
-                    message: "Erro na requisição"
-                })
-            }
+            });
+            
 
         }catch(error){
             console.log(error)
@@ -45,11 +54,10 @@ class UserController{
 
     async updateUser(req, res){
         try{
-            let {id, coluna, novoValor} = req.body
-            await User.updateUser(id, coluna, novoValor)
-            let user = await User.getByID(id);
+            await User.updateUser(req.body)
+            let user = await User.getByID(req.body.id);
             return res.status(200).json({
-                message: `Usuário ID: ${id} Atualizado com sucesso`,
+                message: `Usuário ID: ${req.body.id} Atualizado com sucesso`,
                 user
             });
         }

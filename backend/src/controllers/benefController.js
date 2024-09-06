@@ -27,7 +27,34 @@ class BeneficiadoControllers{
             });
         };
     };
-}
+
+    async getBeneficiado(req, res){
+        try{
+            let user = await beneficiadoModel.getBeneficiadoById(req.params.id);
+            return res.status(200).json(user[0])
+        }catch(error){
+            return res.status(404).json({
+                message: "user not found"
+            });
+        };
+    };
+
+    async updateBeneficiado(req, res){
+        try{
+            await beneficiadoModel.updateBeneficado(req.params.id, req.body);
+            let newUser = await beneficiadoModel.getBeneficiadoById(req.params.id);
+            return res.status(200).json({
+                message: "usuário atualizado com sucesso",
+                user: newUser[0]
+            });
+        }catch(error){
+            console.log(error);
+            return res.status(422).josn({
+                messsage: "conflict"
+            });
+        };
+    };
+};
 
 
 module.exports = new BeneficiadoControllers;

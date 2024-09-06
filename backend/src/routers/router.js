@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const userController = require('../controllers/userControllers');
 const beneficiadoController = require('../controllers/benefController');
+const benefMiddlewares = require('../middlewares/benefMiddlewares');
 
 
 // Usuario
@@ -10,6 +11,8 @@ router.put('/user/', userController.updateUser);
 router.delete('/user/', userController.deleteUser);
 
 // Beneficiado
-router.post("/account/completeCad", beneficiadoController.create);
+router.post("/account/completeCad", benefMiddlewares.checkCpf, beneficiadoController.create);
+router.get("/account/:id", beneficiadoController.getBeneficiado);
+router.put("/account/:id", benefMiddlewares.checkCpf, beneficiadoController.updateBeneficiado);
 
 module.exports = router
