@@ -3,14 +3,15 @@ const knex = require('../data/connection');
 class User{
     async new(nome, usuario, pass ,funcao){
         try{
-            await knex.insert({
+            let newUser = await knex.insert({
                 nome: nome,
                 usuario: usuario,
                 senha: pass,
                 funcao: funcao
             }).table('usuarios')
             
-            return 200
+            
+            return newUser
 
 
         }catch(error){
@@ -23,7 +24,7 @@ class User{
 
     async getByID(id){
         try{
-            let user = await knex.select(['nome','usuario', 'funcao']).where({idusuarios: id}).table('usuarios');
+            let user = await knex.select(['nome','usuario', 'senha', 'funcao']).where({idusuarios: id}).table('usuarios');
             return user;
         }catch(error){
             console.log(error);
@@ -41,15 +42,10 @@ class User{
         }
     }
 
-    async deleteUser(id, usuario){
+    async deleteUser(id){
         try{
-            let findUser = await this.getByID(id);
-            if(findUser[0].usuario === usuario){
-                let excludeUser = knex.delete().where({idusuarios: id}).table("usuarios");
-                return excludeUser;
-            }else{
-                return 403
-            };
+            let excludeUser = knex.delete().where({idusuarios: id}).table("usuarios");
+            return excludeUser;
         }catch(error){
             return error
         };
