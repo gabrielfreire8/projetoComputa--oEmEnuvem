@@ -27,7 +27,6 @@ class User{
             let user = await knex.select(['nome','usuario', 'senha', 'funcao']).where({idusuarios: id}).table('usuarios');
             return user;
         }catch(error){
-            console.log(error);
             return 404;
         };
     };

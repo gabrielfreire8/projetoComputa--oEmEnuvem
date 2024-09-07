@@ -2,13 +2,14 @@ const router = require('express').Router();
 const userController = require('../controllers/userControllers');
 const beneficiadoController = require('../controllers/benefController');
 const benefMiddlewares = require('../middlewares/benefMiddlewares');
+const userMiddlewares = require('../middlewares/userMiddlewares');
 
 
 // Usuario
 router.post('/user/', userController.create);
 router.get('/user/', userController.getById);
 router.put('/user/', userController.updateUser);
-router.delete('/user/', userController.deleteUser);
+router.delete('/user/', userMiddlewares.checkDeletedUser, userController.deleteUser);
 
 // Beneficiado
 router.post("/account/completeCad", benefMiddlewares.checkCpf, beneficiadoController.create);
