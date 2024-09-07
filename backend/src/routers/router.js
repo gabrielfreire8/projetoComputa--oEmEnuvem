@@ -14,5 +14,5 @@ router.delete('/user/', userController.deleteUser);
 router.post("/account/completeCad", benefMiddlewares.checkCpf, beneficiadoController.create);
 router.get("/account/:id", beneficiadoController.getBeneficiado);
 router.put("/account/:id", benefMiddlewares.checkCpf, beneficiadoController.updateBeneficiado);
-router.delete("/account/delete/", beneficiadoController.deleteBeneficiado);
+router.delete("/account/delete/", benefMiddlewares.checkDeletedBenef ,beneficiadoController.deleteBeneficiado);
 module.exports = router

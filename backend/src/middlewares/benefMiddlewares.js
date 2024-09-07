@@ -12,6 +12,16 @@ class beneficiadosMidd{
                 });
             };
     };
+
+    async checkDeletedBenef(req, res, next){
+        let user = await beneficiadoModel.getBeneficiadoById(req.body.id);
+        if(user === 404){
+            return res.status(404).json({
+                message: "Usuário foi apagado/não criado"
+            });
+        }
+        next()
+    };
     
 };
 

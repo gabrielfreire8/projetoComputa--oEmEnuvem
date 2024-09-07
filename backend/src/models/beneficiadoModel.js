@@ -43,7 +43,6 @@ class Beneficiados{
             };
             
         }catch(error){
-            console.log(error)
             return 404;
         };
     };
@@ -53,7 +52,6 @@ class Beneficiados{
             let user = await knex.select('*').where({idBeneficiados: id}).table('beneficiado')
             return user
         }catch(error){
-            console.log(error)
             return 404}
     }
 
