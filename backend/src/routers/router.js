@@ -10,6 +10,7 @@ router.post('/user/', userController.create);
 router.get('/user/', userController.getById);
 router.put('/user/', userController.updateUser);
 router.delete('/user/', userMiddlewares.checkDeletedUser, userController.deleteUser);
+router.post('/login/', userController.login);
 
 // Beneficiado
 router.post("/account/completeCad", benefMiddlewares.checkCpf, beneficiadoController.create);

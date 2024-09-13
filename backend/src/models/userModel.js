@@ -31,6 +31,18 @@ class User{
         };
     };
 
+    async getByEmail(email){
+        try{
+            let user = await knex.select(['nome', 'usuario', 'senha']);
+            return user.length > 0
+            ? {status: true, values: user[0]}
+            : {status: undefined, message: "E-mail não encontrado."}
+        }catch(error){
+            console.log(error);
+            return error;
+        }
+    };
+
     async updateUser(user){
         try{
             await knex.update({nome: user.nome, usuario: user.usuario, senha: user.senha}).where({idusuarios: user.id}).table('usuarios');

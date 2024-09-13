@@ -1,7 +1,7 @@
-const userModel = require('../models/userModel');
+
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
 class UserController{
     async create(req, res){
 
@@ -99,6 +99,46 @@ class UserController{
                 message: "Usuário não pode ser excluido"
             });
         };
+    };
+
+    async login(req, res){
+        try{
+            let {email, password} = req.body;
+            let user = await User.getByEmail(email);
+            if(user.status === true){
+                let verifyPassword = await bcrypt.compare(password, user.senha, (error, result) => {
+                    if(error) return res.status(400).json({
+                        message: "Error! usuario ou senha errado!"
+                    });
+                    return result;
+                });
+
+                if(verifyPassword){
+                    let token = jwt.sign({nome: user.nome, email: user.email}, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
+                    return res.status(200).json({status: verifyPassword, token});
+                }else{
+                    return res.status(403).json({status: verifyPassword});
+                };
+                
+            }else if(user.status === undefined){
+                return res.status(404).json({
+                    message: "Error! User not found"
+                });
+
+            }else{
+                return res.status(400).json({
+                    message: "Erro ao fazer login"
+                });
+            }
+     
+        }catch(error){
+            console.log(error)
+            return res.status(403).json({ 
+                message: "erro ao fazer login",
+                error: error});
+        };
+        
+
     };
 };
 
