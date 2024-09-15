@@ -1,0 +1,161 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+
+}
+main{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: #01526F;
+
+}
+
+#divisor-line{
+  width: 80%;
+  border: 1.5px solid #fff;
+
+}
+
+section{
+  display:grid;
+  flex-direction: column;
+  width: 27vw;
+  height: 100vh;
+  place-items: center;
+  background-color: #01526F;
+  box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
+  gap: 10px;
+}
+
+#presentUser h1{
+  color: #fff;
+}
+#presentUser span{
+  color: #fff;
+}
+#presentUser{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.button{
+  color: #fff;
+  background-color: #44A685;
+  border-radius: 15px;
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+
+#img_princi{
+  width: 20vh;
+  right: 20vh;
+}
+#string_pjb{
+  width: 20vh;
+  right: 20vh;
+}
+
+
+
+aside{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+#buttons{
+  margin-top: 20%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.BotPrincipal{
+  display: inline;
+  width: 250px;
+  height: 20vh;
+  border-radius: 30px;
+  background-color: #44A685;
+  color: #fff;
+  font-size: medium;
+  font-weight: bold;
+  margin: 40px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 250px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+  .button{
+      margin-bottom: 10px;
+      width: 200px;
+      height: 60px;
+  }
+
+  section{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+
+  .imgs{
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+  }
+
+
+  #logoPjb{
+    justify-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+  }
+
+  #logoAvante{
+    justify-items: center;
+    position: absolute;
+    bottom: 0;
+  }
+
+  #logoGestao{
+    justify-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 100;
+  }
+
+@media (max-width:1280px){
+  .BotPrincipal{
+    flex-direction: column;
+    margin: 12px;
+  }
+}
+
+@media (max-width:480px){
+  main{
+    padding: 20px;
+  }
+}
+
+
+
+
+
+
+
+

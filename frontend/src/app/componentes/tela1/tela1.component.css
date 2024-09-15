@@ -1,0 +1,110 @@
+.caixa{
+  display: flex;
+    flex-direction:right;
+    background-color: #01526F;
+    justify-content: right;
+    overflow: hidden;
+    padding: 0;
+    height: 100vh;
+    justify-items: center;
+
+
+}
+
+aside{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+  height: auto;
+  background-color: #fff;
+  z-index: 10;
+  box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
+
+}
+
+.login-form{
+  display: flex;
+  text-align: right;
+  flex-direction: column;
+  justify-items: ri;
+
+
+
+
+}
+h1{
+  font-family: "Modak", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: #44A685;
+  font-size: 50px;
+}
+
+img{
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+
+
+}
+
+aside form{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+
+}
+input{
+  margin-bottom: 30px;
+  font-size: larger;
+  font-size: 25px;
+}
+
+input:focus{
+  border: none;
+  box-shadow: none;
+}
+
+input:hover{
+  text-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
+}
+
+#btnSub{
+  color: #fff;
+  background-color: #44A685;
+  border: 5px 5px 5px rgb(0, 0, 0, 0.3);
+  box-shadow: none;
+  border-radius: 20px;
+  height: 50px;
+
+}
+
+
+
+
+#forgetPass{
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: #44A685;
+}
+
+#forgetPass:hover{
+  text-decoration: underline;
+  cursor: pointer;
+  text-shadow: 5px 5px 5px rgb(0, 0, 0, 0.4);
+}
+
+.login-form{
+  width: 20vw;
+  height: 5vh;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  border-bottom: 1px solid #43665A;
+
+}
