@@ -31,14 +31,13 @@ class User{
         };
     };
 
-    async getByEmail(email){
+    async getByUser(userPar){
         try{
-            let user = await knex.select(['nome', 'usuario', 'senha']);
+            let user = await knex.select(['idusuarios', 'nome', 'usuario', 'senha','funcao']).where({usuario: userPar}).table('usuarios');
             return user.length > 0
             ? {status: true, values: user[0]}
             : {status: undefined, message: "E-mail não encontrado."}
         }catch(error){
-            console.log(error);
             return error;
         }
     };
@@ -48,7 +47,6 @@ class User{
             await knex.update({nome: user.nome, usuario: user.usuario, senha: user.senha}).where({idusuarios: user.id}).table('usuarios');
             return 200;
         }catch(error){
-            console.log(error);
             return 404
         }
     }

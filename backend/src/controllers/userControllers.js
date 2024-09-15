@@ -14,7 +14,7 @@ class UserController{
                 }
                 bcrypt.hash(senha, salt, async (error, hash) => {
                     if(error) return 400
-                    const user = await User.new(nome, usuario, hash, funcao);
+                    const user = await User.new(nome.toCapi, usuario.toLowerCase(), hash, funcao);
                     if(user === 409){
                         return res.status(user).json({
                             message : "Usuário já cadastrado"
@@ -25,7 +25,7 @@ class UserController{
                             message : "Erro no cadastro"
                         })
                     }
-                    let newUser = await userModel.getByID(user[0]);
+                    let newUser = await User.getByID(user[0]);
                     return res.status(200).json({
                         id: user[0],
                         message: "Usuário cadastrado com sucesso",
@@ -36,7 +36,6 @@ class UserController{
                     
                 })
             }catch(error){
-            console.log(error)
             return res.status(400).json({
                 message: error
                 });
@@ -76,14 +75,13 @@ class UserController{
     async deleteUser(req, res){
         try{
             let user = req.body;
-            let userHash = await userModel.getByID(user.id);
+            let userHash = await User.getByID(user.id);
             await bcrypt.compare(user.senha, userHash[0].senha, (error, result) => {
                 if(error){
-                    console.log(error)
                     return 400
                 };
                 if(result === true){
-                    userModel.deleteUser(user.id);
+                    User.deleteUser(user.id);
                     return res.status(200).json({
                         message: "Usuário apagado com sucesso"
                     })
@@ -94,7 +92,6 @@ class UserController{
                 };
             });
         }catch(error){
-            console.log(error)
             return res.status(404).json({
                 message: "Usuário não pode ser excluido"
             });
@@ -103,34 +100,26 @@ class UserController{
 
     async login(req, res){
         try{
-            let {email, password} = req.body;
-            let user = await User.getByEmail(email);
+            let {usuario, password} = req.body;
+            let user = await User.getByUser(usuario);
             if(user.status === true){
-                let verifyPassword = await bcrypt.compare(password, user.senha, (error, result) => {
+                let verifyPassword = await bcrypt.compare(password, user.values.senha, async (error, result) => {
                     if(error) return res.status(400).json({
-                        message: "Error! usuario ou senha errado!"
+                        message: "Error! Valores não conferem!"
                     });
-                    return result;
-                });
+                    let token = await jwt.sign({id: user.values.idusuarios,
+                        nome: user.values.nome,
+                        funcao: user.values.funcao
+                    }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
 
-                if(verifyPassword){
-                    let token = jwt.sign({nome: user.nome, email: user.email}, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
-                    return res.status(200).json({status: verifyPassword, token});
-                }else{
-                    return res.status(403).json({status: verifyPassword});
-                };
-                
-            }else if(user.status === undefined){
-                return res.status(404).json({
-                    message: "Error! User not found"
+                    return res.status(200).json({auth: true, 
+                        token: {token}});
                 });
-
             }else{
-                return res.status(400).json({
-                    message: "Erro ao fazer login"
+                return res.status(404).send({
+                    message: "Usuário não pode ser encontrado!"
                 });
-            }
-     
+            };
         }catch(error){
             console.log(error)
             return res.status(403).json({ 

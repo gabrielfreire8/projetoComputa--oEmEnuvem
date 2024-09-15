@@ -3,7 +3,6 @@ const beneficiadoModel = require("../models/beneficiadoModel");
 class beneficiadosMidd{
     async checkCpf(req, res, next){
         let cad = await beneficiadoModel.getCpf(req.body.cpf);
-            console.log(cad)
             if(cad === 404){
                 next();
             }else{

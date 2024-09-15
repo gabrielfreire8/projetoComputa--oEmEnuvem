@@ -26,7 +26,6 @@ class Beneficiados{
                 }).where({idBeneficiados: beneficiado.id}).table('beneficiado')
                 return 200;    
         }catch(error){
-            console.log(error)
             return 403;
         }
         
@@ -80,7 +79,6 @@ class Beneficiados{
             }).where({idBeneficiados: id}).table('beneficiado');
             return user;
         }catch(error){
-            console.log(error)
             return 404;
         };
     };
@@ -89,8 +87,6 @@ class Beneficiados{
         try{
             console.log("aq")
             let excludeUser = await knex.delete().where({idUsuarios: id}).table('beneficiado')
-            
-            console.log(excludeUser)
             return excludeUser;
         }catch(error){return error};
     };

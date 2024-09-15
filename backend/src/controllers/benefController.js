@@ -49,7 +49,6 @@ class BeneficiadoControllers{
                 user: newUser[0]
             });
         }catch(error){
-            console.log(error);
             return res.status(422).josn({
                 messsage: "conflict"
             });
@@ -62,7 +61,6 @@ class BeneficiadoControllers{
             let userHash = await userModel.getByID(user.id);
             await bcrypt.compare(user.senha, userHash[0].senha, (error, result) => {
                 if(error){
-                    console.log(error)
                     return 400
                 };
                 if(result === true){
@@ -77,7 +75,6 @@ class BeneficiadoControllers{
                 };
             });
         }catch(error){
-            console.log(error)
             return res.status(404).json({
                 message: "Usuário não pode ser excluido"
             });
