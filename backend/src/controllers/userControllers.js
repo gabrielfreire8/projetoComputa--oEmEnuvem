@@ -103,18 +103,23 @@ class UserController{
             let {usuario, password} = req.body;
             let user = await User.getByUser(usuario);
             if(user.status === true){
-                let verifyPassword = await bcrypt.compare(password, user.values.senha, async (error, result) => {
-                    if(error) return res.status(400).json({
-                        message: "Error! Valores não conferem!"
+            await bcrypt.compare(password, user.values.senha, async (error, result) => {
+                if(error){ 
+                    return res.status(400).json({
+                    message: "Error! Valores não conferem!"
+                })}else if(!result){
+                    return res.status(401).json({
+                        Message: "Error! Invalid Credentials"
                     });
-                    let token = await jwt.sign({id: user.values.idusuarios,
-                        nome: user.values.nome,
-                        funcao: user.values.funcao
-                    }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
+                };
+                let token = await jwt.sign({id: user.values.idusuarios,
+                    nome: user.values.nome,
+                    funcao: user.values.funcao
+                }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
 
-                    return res.status(200).json({auth: true, 
-                        token: {token}});
-                });
+                return res.status(200).json({auth: true, 
+                    token: {token}});
+            });
             }else{
                 return res.status(404).send({
                     message: "Usuário não pode ser encontrado!"
