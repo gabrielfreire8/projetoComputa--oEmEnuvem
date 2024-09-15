@@ -9,18 +9,14 @@ class User{
                 senha: pass,
                 funcao: funcao
             }).table('usuarios')
-            
-            
-            return newUser
-
-
+            return newUser;
         }catch(error){
             if(error.code === "ER_DUP_ENTRY"){
                 return 409
             }
             console.log(error)
             return 404}
-    }
+    };
 
     async getByID(id){
         try{
@@ -49,7 +45,7 @@ class User{
         }catch(error){
             return 404
         }
-    }
+    };
 
     async deleteUser(id){
         try{
@@ -61,4 +57,4 @@ class User{
     };
 };
 
-module.exports = new User
+module.exports = new User;

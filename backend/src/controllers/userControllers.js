@@ -2,11 +2,11 @@
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 class UserController{
     async create(req, res){
-
         let {nome, usuario, senha, funcao} = req.body;
-        const salts = 10
+        const salts = 10;
         try{
             await bcrypt.genSalt(salts, (error, salt) => {
                 if(error){
@@ -24,7 +24,7 @@ class UserController{
                         return res.status(200).json({
                             message : "Erro no cadastro"
                         })
-                    }
+                    };
                     let newUser = await User.getByID(user[0]);
                     return res.status(200).json({
                         id: user[0],
@@ -116,7 +116,6 @@ class UserController{
                     nome: user.values.nome,
                     funcao: user.values.funcao
                 }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
-
                 return res.status(200).json({auth: true, 
                     token: {token}});
             });
@@ -131,9 +130,7 @@ class UserController{
                 message: "erro ao fazer login",
                 error: error});
         };
-        
-
     };
 };
 
-module.exports = new UserController
+module.exports = new UserController;
