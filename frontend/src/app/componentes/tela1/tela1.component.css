@@ -1,14 +1,18 @@
+body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 100vh;
+}
+
 .caixa{
   display: flex;
     flex-direction:right;
     background-color: #01526F;
     justify-content: right;
-    overflow: hidden;
-    padding: 0;
+    overflow-y: hidden;
     height: 100vh;
     justify-items: center;
-
-
 }
 
 aside{
@@ -104,5 +108,4 @@ input:hover{
   box-shadow: none;
   text-align: center;
   border-bottom: 1px solid #43665A;
-
 }
