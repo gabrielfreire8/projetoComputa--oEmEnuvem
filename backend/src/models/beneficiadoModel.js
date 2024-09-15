@@ -48,7 +48,7 @@ class Beneficiados{
 
     async getBeneficiadoById(id){
         try{
-            let user = await knex.select('*').where({idBeneficiados: id}).table('beneficiado')
+            let user = await knex.select('*').where({idUsuarios: id}).table('beneficiado')
             return user
         }catch(error){
             return 404}
@@ -77,6 +77,7 @@ class Beneficiados{
                     imagemPerfil: beneficiado.imagemPerfil,
                     idUsuarios: beneficiado.idUsuario
             }).where({idBeneficiados: id}).table('beneficiado');
+            console.log(user)
             return user;
         }catch(error){
             return 404;

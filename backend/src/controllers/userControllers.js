@@ -14,7 +14,7 @@ class UserController{
                 }
                 bcrypt.hash(senha, salt, async (error, hash) => {
                     if(error) return 400
-                    const user = await User.new(nome.toCapi, usuario.toLowerCase(), hash, funcao);
+                    const user = await User.new(nome, usuario.toLowerCase(), hash, funcao);
                     if(user === 409){
                         return res.status(user).json({
                             message : "Usuário já cadastrado"
