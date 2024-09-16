@@ -1,5 +1,5 @@
 require("dotenv").config();
-const knex = require('knex')({
+export const knex = require('knex')({
     client: "mysql2",
     connection: {
         host: process.env.BD_HOST,
@@ -9,6 +9,3 @@ const knex = require('knex')({
         database: process.env.BD_NAME
     }
 })
-
-
-module.exports = knex

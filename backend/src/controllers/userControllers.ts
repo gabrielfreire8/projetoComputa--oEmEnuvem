@@ -1,18 +1,20 @@
 
-const User = require('../models/userModel');
+import User  from '../models/userModel';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+
+
 class UserController{
-    async create(req, res){
+    async create(req: any, res: any ){
         let {nome, usuario, senha, funcao} = req.body;
         const salts = 10;
         try{
-            await bcrypt.genSalt(salts, (error, salt) => {
+            await bcrypt.genSalt(salts, (error: string, salt: any) => {
                 if(error){
                     return error
                 }
-                bcrypt.hash(senha, salt, async (error, hash) => {
+                bcrypt.hash(senha, salt, async (error:string, hash:string) => {
                     if(error) return 400
                     const user = await User.new(nome, usuario.toLowerCase(), hash, funcao);
                     if(user === 409){
@@ -42,9 +44,9 @@ class UserController{
             };
         };
 
-    async getById(req, res){
+    async getById(req:any, res:any){
         try{
-            let { id } = req.body;
+            let { id } = req.params;
             let user = await User.getByID(id) ;
             return res.status(200).json(user[0]);
         }
@@ -55,14 +57,33 @@ class UserController{
         };
     };
 
-    async updateUser(req, res){
+    async updateUser(req:any, res:any){
+        let {id, nome, usuario, senha, funcao} = req.body;
+        const salts = 10;
+        await bcrypt.genSalt(salts, (error:string, salt:string) => {
         try{
-            await User.updateUser(req.body)
-            let user = await User.getByID(req.body.id);
-            return res.status(200).json({
-                message: `Usuário ID: ${req.body.id} Atualizado com sucesso`,
-                user
-            });
+            if(error){
+                return res.status(403).json({})
+            }
+            bcrypt.hash(senha, salt, async (error:string, hash:string) => {
+                if(error){
+                    return res.status(400).json({
+                        message: "Error"
+                    })
+                }
+                await User.updateUser(id ,nome, usuario, hash, funcao)
+                let user = await User.getByID(id);
+                if(user > 0){
+                    return res.status(200).json({
+                    message: `Usuário ID: ${req.body.id} Atualizado com sucesso`,
+                    user
+                })
+            }else{
+                return res.status(404).json({
+                    error: "Usuário não encontrado"
+                })
+            }                              
+            })
         }
         catch(
             error){console.log(error)
@@ -70,18 +91,21 @@ class UserController{
                 message: "não autorizado",
             });
         };
-    };
+    
+    })
+    }
 
-    async deleteUser(req, res){
+
+    async deleteUser(req:any, res:any){
         try{
             let user = req.body;
             let userHash = await User.getByID(user.id);
-            await bcrypt.compare(user.senha, userHash[0].senha, (error, result) => {
+            await bcrypt.compare(user.senha, userHash[0].senha, (error:string, result:boolean) => {
                 if(error){
                     return 400
                 };
                 if(result === true){
-                    User.deleteUser(user.id);
+                User.deleteUser(user.id);
                     return res.status(200).json({
                         message: "Usuário apagado com sucesso"
                     })
@@ -98,12 +122,12 @@ class UserController{
         };
     };
 
-    async login(req, res){
+    async login(req:any, res:any){
         try{
             let {usuario, password} = req.body;
-            let user = await User.getByUser(usuario);
+            let user: any = await User.getByUser(usuario);
             if(user.status === true){
-            await bcrypt.compare(password, user.values.senha, async (error, result) => {
+            await bcrypt.compare(password, user.values.senha, async (error: string, result:boolean) => {
                 if(error){ 
                     return res.status(400).json({
                     message: "Error! Valores não conferem!"
@@ -133,4 +157,5 @@ class UserController{
     };
 };
 
-module.exports = new UserController;
+
+export default new UserController

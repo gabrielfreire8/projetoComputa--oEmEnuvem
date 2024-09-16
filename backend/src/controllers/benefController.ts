@@ -1,11 +1,11 @@
-const beneficiadoModel = require("../models/beneficiadoModel");
-const userModel = require('../models/userModel');
+import Beneficiado from '../models/beneficiadoModel'
+const userModel = require('../models/userModel.ts');
 const bcrypt = require('bcrypt');
-
 class BeneficiadoControllers {
-    async create(req, res) {
+    async create(req: any, res:any) {
         try {
-            let cad = await beneficiadoModel.new(req.body);
+            let cad = await Beneficiado.new(req.body);
+            console.log(cad)
             if (cad === 200) {
                 return res.status(200).json({
                     message: "cadastro completo com sucesso"
@@ -26,10 +26,10 @@ class BeneficiadoControllers {
         }
     }
 
-    async getBeneficiado(req, res) {
+    async getBeneficiado(req: any, res: any) {
         try {
             console.log("GET");
-            let user = await beneficiadoModel.getBeneficiadoById(req.params.id);
+            let user = await Beneficiado.getBeneficiadoById(req.params.id);
             if(user === 404){
                 return res.status(404).send({
                     message: "User not found"
@@ -43,10 +43,10 @@ class BeneficiadoControllers {
         }
     }
 
-    async updateBeneficiado(req, res) {
+    async updateBeneficiado(req: any, res: any) {
         try {
-            await beneficiadoModel.updateBeneficado(req.params.id, req.body);
-            let newUser = await beneficiadoModel.getBeneficiadoById(req.params.id);
+            await Beneficiado.updateBeneficado(req.params.id, req.body);
+            let newUser = await Beneficiado.getBeneficiadoById(req.params.id);
             return res.status(200).json({
                 message: "usuário atualizado com sucesso",
                 user: newUser[0]
@@ -59,16 +59,16 @@ class BeneficiadoControllers {
     }
 
 
-    async deleteBeneficiado(req, res){
+    async deleteBeneficiado(req: any, res:any){
         try{
             let user = req.body;
             let userHash = await userModel.getByID(user.id);
-            await bcrypt.compare(user.senha, userHash[0].senha, (error, result) => {
+            await bcrypt.compare(user.senha, userHash[0].senha, (error:any, result: boolean) => {
                 if(error){
                     return 400
                 };
                 if(result === true){
-                    beneficiadoModel.deleteBeneficiado(user.id);
+                    Beneficiado.deleteBeneficiado(user.id);
                     return res.status(200).json({
                         message: "Dados apagados com sucesso"
                     })
@@ -87,4 +87,4 @@ class BeneficiadoControllers {
 };
 
 
-module.exports = new BeneficiadoControllers;
+export default new BeneficiadoControllers;

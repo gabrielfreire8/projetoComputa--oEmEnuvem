@@ -1,7 +1,7 @@
-const beneficiadoModel = require("../models/beneficiadoModel");
+import beneficiadoModel from "../models/beneficiadoModel";
 
 class beneficiadosMidd{
-    async checkCpf(req, res, next){
+    async checkCpf(req: any, res:any , next:any){
         let cad = await beneficiadoModel.getCpf(req.body.cpf);
             if(cad === 404){
                 next();
@@ -12,7 +12,7 @@ class beneficiadosMidd{
             };
     };
 
-    async checkDeletedBenef(req, res, next){
+    async checkDeletedBenef(req:any, res:any, next:any){
         let user = await beneficiadoModel.getBeneficiadoById(req.body.id);
         if(user === 404){
             return res.status(404).json({
@@ -25,4 +25,4 @@ class beneficiadosMidd{
 };
 
 
-module.exports = new beneficiadosMidd
+export default new beneficiadosMidd

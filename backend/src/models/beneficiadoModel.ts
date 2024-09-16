@@ -1,7 +1,27 @@
-const knex = require('../data/connection');
+import {knex} from '../data/connection';
 
 class Beneficiados{
-    async new(beneficiado){
+    async new(beneficiado: {
+        idUsuarios: number,
+        cpf: string,
+        dataNascimento: string,
+        genero: string,
+        cidade: string,
+        logradouro: string,
+        bairro: string,
+        cep: string,
+        telefone: string,
+        email: string,
+        condicoesMed: string,
+        alergias: string,
+        restricoes: string,
+        necEspeciais: string,
+        responsavelNome: string,
+        responsavelCelular: string,
+        responsavelEmprego: string,
+        observacoes: string,
+        imagemPerfil: string
+    }){
         try{
                 await knex.insert({
                     idUsuarios: beneficiado.idUsuarios,
@@ -22,17 +42,18 @@ class Beneficiados{
                     responsavelCelular: beneficiado.responsavelCelular,
                     responsavelEmprego: beneficiado.responsavelEmprego,
                     observacoes: beneficiado.observacoes,
-                    imagemPerfil: beneficiado.imagemPerfil,
-                }).where({idBeneficiados: beneficiado.id}).table('beneficiado')
+                    imagemPerfil: beneficiado.imagemPerfil
+                }).table('beneficiado');
                 return 200;    
         }catch(error){
+            console.log(error)
             return 403;
         }
         
     };
 
 
-    async getCpf(cpf){
+    async getCpf(cpf: string){
         try{
             let user = await knex.select(['email']).where({cpf: cpf}).table('beneficiado');
             if(user.length === 0){
@@ -46,7 +67,7 @@ class Beneficiados{
         };
     };
 
-    async getBeneficiadoById(id){
+    async getBeneficiadoById(id: number){
         try{
             let user = await knex.select('*').where({idUsuarios: id}).table('beneficiado')
             return user
@@ -54,7 +75,7 @@ class Beneficiados{
             return 404}
     }
 
-    async updateBeneficado(id, beneficiado){
+    async updateBeneficado(id: number, beneficiado: any){
         try{
             let user = await knex.update({
                     cpf: beneficiado.cpf,
@@ -77,20 +98,18 @@ class Beneficiados{
                     imagemPerfil: beneficiado.imagemPerfil,
                     idUsuarios: beneficiado.idUsuario
             }).where({idBeneficiados: id}).table('beneficiado');
-            console.log(user)
             return user;
         }catch(error){
             return 404;
         };
     };
 
-    async deleteBeneficiado(id){
+    async deleteBeneficiado(id:number){
         try{
-            console.log("aq")
             let excludeUser = await knex.delete().where({idUsuarios: id}).table('beneficiado')
             return excludeUser;
         }catch(error){return error};
     };
 };
 
-module.exports = new Beneficiados;
+export default new Beneficiados;
