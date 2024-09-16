@@ -1,18 +1,40 @@
-const knex = require('../data/connection');
+import { knex } from "../data/connection";
 
 class Atividades{
-    async new(ativiadeObj:any){
+    async new(atividadeObj:{
+    nome: string,
+    tipo: string,
+    descricao: string,
+    data:string}){
         try{
-            let cadastroAtividade = await knex.insert({nome: ativiadeObj.nome,
-                tipo: ativiadeObj.tipo,
-                descricao: ativiadeObj.descricao,
-                aprovada: 0
+            await knex.insert({nome: atividadeObj.nome,
+                tipo: atividadeObj.tipo,
+                descricao: atividadeObj.descricao,
+                aprovada: 0,
+                dataRealizacao: atividadeObj.data
             }).table('atividades');
-            return cadastroAtividade;
+            return {status: true,
+                    message: "Atividade cadastrada com sucesso"};
         }catch(error){
-            return error
+            return {
+                status: false,
+                error}
         };
     }
+
+    async getAtividades(){
+        try{
+            let atividades = await knex.select(['*']).table('atividades');
+            return {
+                status: true,
+                atividades
+            }
+        }catch(error){
+            return {status: false,
+                error
+            }
+        }
+    };
 };
 
-module.exports = new Atividades;
+export default new Atividades;
