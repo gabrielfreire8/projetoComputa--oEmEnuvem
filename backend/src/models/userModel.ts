@@ -45,7 +45,7 @@ class User{
         try{
             await knex.update({nome: nome, usuario: usuario, senha: hash, funcao: funcao}).where({idusuarios: id}).table('usuarios');
             return 200;
-        }catch(error){
+        }catch(error: any){
             return 404
         }
     };
@@ -54,7 +54,7 @@ class User{
         try{
             let excludeUser = knex.delete().where({idusuarios: id}).table("usuarios");
             return excludeUser;
-        }catch(error){
+        }catch(error:any){
             return error
         };
     };

@@ -35,6 +35,72 @@ class Atividades{
             }
         }
     };
+
+    async getPendentes(){
+        try{
+            let atividades: any = await knex.select().where({aprovada: 0}).table('atividades');
+            return {atividades}
+        }catch(error){
+            return {status: false,
+                error
+            }
+        }
+    };
+
+    async aprovarAtividades(aprovacaoAtividade:{}){};
+
+    async getAprovadas(){
+        try{
+            let atividades: any = await knex.select().where({aprovada: 1}).table('atividades');
+            return {atividades}
+        }catch(error){
+            return {status: false,
+                error
+            }
+        }
+    };
+
+    async updateAtividade(atividadeObj:{
+        id: number,
+        nome: string,
+        tipo: string,
+        descricao: string,
+        data:string}){
+        try{
+            let update = await knex.update({
+                nome: atividadeObj.nome,
+                tipo: atividadeObj.tipo,
+                descricao: atividadeObj.descricao,
+                aprovada: 0,
+                dataRealizacao: atividadeObj.data}).where({
+                idatividades: atividadeObj.id
+                }).table('atividades');
+                console.log(update)
+            return {status: true,
+                    message: "Atividade atualizada com sucesso",
+                    update
+            }
+        }catch(error: any){
+            return {status: false,
+                error: error
+            };
+        };
+    };
+
+
+    async deleteAtividade(id: number){
+        try{
+            let atividade = await knex.delete().where({idatividades: id}).table('atividades');
+            
+            return {status: true,
+                atividade
+            }
+        }catch(error: any){
+            return {status: false,
+                error
+            }
+        };
+    };
 };
 
 export default new Atividades;

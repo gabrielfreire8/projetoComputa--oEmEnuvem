@@ -21,4 +21,11 @@ router.delete("/account/delete/", benefMiddlewares.checkDeletedBenef ,beneficiad
 // Atividade
 router.post("/atividade/criar", atividadesControllers.new);
 router.get("/atividades/", atividadesControllers.getAll);
-export = router
+router.get("/atividades/pendentes", atividadesControllers.getPendentes);
+router.get("/atividades/aprovadas", atividadesControllers.getAprovadas);
+router.put('/atividade/:id', atividadesControllers.updateAtividade);
+router.delete("/atividade/apagar/:id", atividadesControllers.deleteAtividade);
+
+
+
+export = router;
