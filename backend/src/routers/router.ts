@@ -4,6 +4,9 @@ import beneficiadoController from '../controllers/benefController';
 import benefMiddlewares from '../middlewares/benefMiddlewares';
 import userMiddlewares from '../middlewares/userMiddlewares';
 import atividadesControllers from '../controllers/atividadesControllers';
+import aprovacaoAtividadesControllers from '../controllers/aprovacaoAtividadesControllers';
+import aprovacaoMiddlewares from '../middlewares/aprovacaoMiddlewares';
+
 
 // Usuario
 router.post('/user/', UserController.create);
@@ -26,6 +29,10 @@ router.get("/atividades/aprovadas", atividadesControllers.getAprovadas);
 router.put('/atividade/:id', atividadesControllers.updateAtividade);
 router.delete("/atividade/apagar/:id", atividadesControllers.deleteAtividade);
 
+// Aprovacao Atividade
+router.post("/atividades/aprovar/", aprovacaoMiddlewares.checkAtividade, aprovacaoAtividadesControllers.new);
+router.delete("/atividades/aprovadas/delete", aprovacaoAtividadesControllers.delete);
+router.get("/atividades/aprovacoes/", aprovacaoAtividadesControllers.getAll);
 
 
 export = router;

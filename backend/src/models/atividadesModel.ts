@@ -13,14 +13,23 @@ class Atividades{
                 aprovada: 0,
                 dataRealizacao: atividadeObj.data
             }).table('atividades');
-            return {status: true,
-                    message: "Atividade cadastrada com sucesso"};
+            return {
+                status: true,
+                message: "Atividade cadastrada com sucesso"};
         }catch(error){
             return {
                 status: false,
                 error}
         };
     }
+
+    async getByID(idAtividade: number){
+        let atividade = await knex.select(["*"]).where({idatividades: idAtividade}).table('atividades')
+        if(atividade.length > 0){
+            return true
+        }
+        return false
+    };
 
     async getAtividades(){
         try{
@@ -38,7 +47,7 @@ class Atividades{
 
     async getPendentes(){
         try{
-            let atividades: any = await knex.select().where({aprovada: 0}).table('atividades');
+            let atividades = await knex.select().where({aprovada: 0}).table('atividades');
             return {atividades}
         }catch(error){
             return {status: false,
@@ -47,11 +56,9 @@ class Atividades{
         }
     };
 
-    async aprovarAtividades(aprovacaoAtividade:{}){};
-
     async getAprovadas(){
         try{
-            let atividades: any = await knex.select().where({aprovada: 1}).table('atividades');
+            let atividades = await knex.select().where({aprovada: 1}).table('atividades');
             return {atividades}
         }catch(error){
             return {status: false,
