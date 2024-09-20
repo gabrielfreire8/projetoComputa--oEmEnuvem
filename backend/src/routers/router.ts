@@ -6,6 +6,7 @@ import userMiddlewares from '../middlewares/userMiddlewares';
 import atividadesControllers from '../controllers/atividadesControllers';
 import aprovacaoAtividadesControllers from '../controllers/aprovacaoAtividadesControllers';
 import aprovacaoMiddlewares from '../middlewares/aprovacaoMiddlewares';
+import presencaControllers from '../controllers/presencaControllers';
 
 
 // Usuario
@@ -34,5 +35,11 @@ router.post("/atividades/aprovar/", aprovacaoMiddlewares.checkAtividade, aprovac
 router.delete("/atividades/aprovadas/delete", aprovacaoAtividadesControllers.delete);
 router.get("/atividades/aprovacoes/", aprovacaoAtividadesControllers.getAll);
 
+// Presenca 
+
+router.get("/presenca/atividade/:idAtividade", presencaControllers.getPresencaByAtividade);
+router.post("/presenca/atividade/:idAtividade", presencaControllers.cadastro);
+router.delete("/presenca/atividade/:idAtividade", presencaControllers.deletePresenca);
+router.put("/presenca/editar/:idPresenca", presencaControllers.updatePresenca);
 
 export = router;
