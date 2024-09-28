@@ -1,7 +1,6 @@
 *{
     padding: 0;
     margin: 0;
-    border: 0;
     box-sizing: border-box;
 
 
@@ -119,6 +118,7 @@
       width: 700px;
       height: 450px;
 
+
   }
 
   .header {
@@ -150,7 +150,7 @@
 
   .caderno {
     width: 580px;
-    height: 200px;
+    height: 260px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;

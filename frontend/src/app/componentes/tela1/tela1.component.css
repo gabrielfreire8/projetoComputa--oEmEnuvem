@@ -6,7 +6,7 @@ body{
 }
 
 .caixa{
-  display: flex;
+    display: flex;
     flex-direction:right;
     background-color: #01526F;
     justify-content: right;
@@ -31,12 +31,9 @@ aside{
   display: flex;
   text-align: right;
   flex-direction: column;
-  justify-items: ri;
-
-
-
-
+  justify-items: right;
 }
+
 h1{
   font-family: "Modak", system-ui;
   font-weight: 400;
