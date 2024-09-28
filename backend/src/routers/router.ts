@@ -14,7 +14,7 @@ router.post('/user/', UserController.create);
 router.get('/user/:id', UserController.getById);
 router.put('/user/', UserController.updateUser);
 router.delete('/user/', userMiddlewares.checkDeletedUser, UserController.deleteUser);
-router.post('/login/', UserController.login);
+router.post('/login/', userMiddlewares.authAdmin, UserController.login);
 
 // Beneficiado
 router.post("/account/completeCad", benefMiddlewares.checkCpf, beneficiadoController.create);
@@ -36,7 +36,6 @@ router.delete("/atividades/aprovadas/delete", aprovacaoAtividadesControllers.del
 router.get("/atividades/aprovacoes/", aprovacaoAtividadesControllers.getAll);
 
 // Presenca 
-
 router.get("/presenca/atividade/:idAtividade", presencaControllers.getPresencaByAtividade);
 router.post("/presenca/atividade/:idAtividade", presencaControllers.cadastro);
 router.delete("/presenca/atividade/:idAtividade", presencaControllers.deletePresenca);

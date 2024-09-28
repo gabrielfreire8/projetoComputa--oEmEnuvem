@@ -3,8 +3,6 @@ import User  from '../models/userModel';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
-
 class UserController{
     async create(req: any, res: any ){
         let {nome, usuario, senha, funcao} = req.body;
@@ -126,6 +124,24 @@ class UserController{
         try{
             let {usuario, password} = req.body;
             let user: any = await User.getByUser(usuario);
+            if(user.values.funcao === "administrador"){
+                await bcrypt.compare(password, user.values.senha, async (error: string, result:boolean) => {
+                    if(error){ 
+                        return res.status(400).json({
+                        message: "Error! Valores não conferem!"
+                    })}else if(!result){
+                        return res.status(401).json({
+                            Message: "Error! Invalid Credentials"
+                        });
+                    };
+                    let token = await jwt.sign({id: user.values.idusuarios,
+                        nome: user.values.nome,
+                        administrador: true
+                    }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
+                    return res.status(200).json({auth: true, 
+                        token: {token}});
+                });
+            };
             if(user.status === true){
             await bcrypt.compare(password, user.values.senha, async (error: string, result:boolean) => {
                 if(error){ 
@@ -137,8 +153,7 @@ class UserController{
                     });
                 };
                 let token = await jwt.sign({id: user.values.idusuarios,
-                    nome: user.values.nome,
-                    funcao: user.values.funcao
+                    nome: user.values.nome
                 }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
                 return res.status(200).json({auth: true, 
                     token: {token}});
