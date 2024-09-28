@@ -67,7 +67,7 @@ aside{
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #EFF5F4;
   width: 100vw;
   height: 100vh;
 
@@ -79,11 +79,7 @@ aside{
   display: flex;
   flex-direction: column;
 
-
 }
-
-
-
 
   .button{
       margin-bottom: 10px;
@@ -126,13 +122,11 @@ aside{
 .perguntasAside{
   justify-content: center;
   justify-items: center;
-  position:absolute;
   flex-direction: column;
-  width: 60vw;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 12%;
+  position: absolute;
+
+
+
 
 }
 
@@ -180,14 +174,15 @@ aside{
 }
 
 
-#criaAtiv{
+#aproAtiv{
   display: flex;
   padding-top: 50px;
   font-size: 250%;
   font-family:'Lucida Sans', 'Lucida Sans Regular',
     'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
-    color: #43665A;
-    justify-content: center;
+  color: #43665A;
+  justify-content: center;
+  justify-items: center;
 }
 
 #nomeAtiv{
@@ -216,6 +211,18 @@ aside{
   width: 500px;
   border-bottom: 2px solid #43665A;
 }
+
+#dataCalen{
+  font-size: large;
+  border-color: #007BFF;
+  border-width: 0cap;
+  height: 50px;
+  width: 500px;
+  border-bottom: 2px solid #43665A;
+}
+
+
+
 
 #als{
   padding: 20px;

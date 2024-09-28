@@ -68,7 +68,7 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    background-color: #ffffff;
+    background-color: #EFF5F4;
     width: 100vw;
     height: 100vh;
 
@@ -88,7 +88,10 @@
         margin-bottom: 10px;
         width: 200px;
         height: 60px;
+        font-size:medium;
+        font-weight: bold;
     }
+
 
     section{
         display: flex;

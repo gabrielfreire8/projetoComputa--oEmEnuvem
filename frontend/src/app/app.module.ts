@@ -8,6 +8,7 @@ import { Tela1Component } from './componentes/tela1/tela1.component';
 import { Tela2Component } from './componentes/tela2/tela2.component';
 import { Tela3Component } from './componentes/tela3/tela3.component';
 import { Tela7Component } from './componentes/tela7/tela7.component';
+import { Tela6Component } from './componentes/tela6/tela6.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { Tela7Component } from './componentes/tela7/tela7.component';
     Tela1Component,
     Tela2Component,
     Tela3Component,
+    Tela6Component,
     Tela7Component
   ],
   imports: [
