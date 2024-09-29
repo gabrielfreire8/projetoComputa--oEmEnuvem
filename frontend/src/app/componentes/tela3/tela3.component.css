@@ -125,13 +125,18 @@
   }
 
   .header {
-      background-color: #007BFF;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      border-top-left-radius: 7px;
-      border-top-right-radius: 8px;
-  }
+    background-color: #01526F;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+}
 
   .dias, .semanas {
       display: grid;
@@ -163,12 +168,12 @@
     bottom: 0;
     overflow: hidden;
     display: flex;
-
 }
 
 #textin{
   height: 400px;
   width: 600px;
+  border: 0;
 }
 
 #texto {
@@ -201,6 +206,18 @@
     rotate: 90deg;
     height: 500px;
 }
+
+#anterior{
+  width: 40px;
+  height: 30px;
+}
+
+
+#sucessor{
+  width: 40px;
+  height: 30px;
+}
+
 
 
   @media (max-width:1280px){
