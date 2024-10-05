@@ -5,6 +5,8 @@ import { Tela2Component } from './componentes/tela2/tela2.component';
 import { Tela3Component } from './componentes/tela3/tela3.component';
 import { Tela7Component } from './componentes/tela7/tela7.component';
 import { Tela6Component } from './componentes/tela6/tela6.component';
+import { Tela4Component } from './componentes/tela4/tela4.component';
+import { Tela5Component } from './componentes/tela5/tela5.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path:"tela6",
     component: Tela6Component
+  },
+  {
+    path:"tela4",
+    component: Tela4Component
+  },
+  {
+    path:"tela5",
+    component: Tela5Component
   }
 ];
 

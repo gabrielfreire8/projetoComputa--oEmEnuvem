@@ -221,11 +221,59 @@
 
 
   @media (max-width:1280px){
+
+    aside{
+      padding-top: 25;
+      border-top : 60px solid #01526F;
+
+
+    }
     .BotPrincipal{
       flex-direction: column;
       margin: 12px;
     }
+
+
+    section{
+      width: 0%;
+      background-color: #01526F;
+      z-index: 1;
+
+    }
+    section:hover #buttons{
+      opacity: 1;
+      visibility: visible;
+
+    }
+
+    section:hover{
+      width: 350px;
+
+    }
+
+    #menuInic{
+      visibility: visible;
+      width: 50px;
+    }
+
+    #divisor-line{
+      visibility: hidden;
+    }
+
+
+    #presentUser{
+      visibility: hidden;
+    }
+
+    #buttons{
+      opacity: 0;
+    }
+
+    .imgsPrinci{
+      display: none;
+    }
   }
+  
 
   @media (max-width:480px){
     main{
