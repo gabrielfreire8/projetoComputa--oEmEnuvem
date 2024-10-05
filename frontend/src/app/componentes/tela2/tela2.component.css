@@ -148,6 +148,17 @@ aside{
 
 @media (max-width:1280px){
 
+  .button{
+    width: 200px;
+    height: 60px;
+    z-index: 1;
+    background-color: #44A685;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
   aside{
     padding-top: 25;
     border-top : 60px solid #01526F;
@@ -197,6 +208,11 @@ aside{
 
   .imgsPrinci{
     display: none;
+  }
+
+
+  #buttonsAside{
+    position: absolute;
   }
 }
 

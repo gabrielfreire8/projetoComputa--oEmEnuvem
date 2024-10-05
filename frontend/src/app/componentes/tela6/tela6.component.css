@@ -273,6 +273,10 @@ aside{
 
 }
 
+#menuInic{
+  display: none;
+}
+
 
 
 
@@ -281,11 +285,34 @@ aside{
 }
 
 #menuInic{
-  opacity: 0;
+  display: none;
 }
 
 
 @media (max-width:1280px){
+
+  .button{
+    width: 200px;
+    height: 60px;
+    z-index: 1;
+    background-color: #44A685;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #buttons{
+    width: 350px;
+  }
+
+  #presentUser{
+    visibility: hidden;
+  }
+
+  #aproAtiv{
+    white-space: nowrap;
+  }
 
   aside{
     padding-top: 25;
@@ -308,7 +335,6 @@ aside{
   section:hover #buttons{
     opacity: 1;
     visibility: visible;
-
   }
 
   section:hover{
@@ -318,6 +344,7 @@ aside{
 
   #menuInic{
     visibility: visible;
+    display: block;
     width: 50px;
   }
 
@@ -325,29 +352,59 @@ aside{
     visibility: hidden;
   }
 
+  #caixaAside{
+    position: fixed;
+    width: 400px;
+    top: 200px;
+    height: 250px;
 
-  #presentUser{
-    visibility: hidden;
+  }
+
+  #perAside{
+    width: 300px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    left: 13%;
+  }
+
+  #nomeAtiv{
+    width: 270px;
+
+  }
+  #topoAtiv{
+    width: 270px;
+  }
+  #descAtiv{
+    width: 270px;
+  }
+  #dataCalen{
+    width: 270px;
   }
 
   #buttons{
     opacity: 0;
   }
 
-  .imgsPrinci{
-    display: none;
-  }
 
   #btnVolt{
     opacity: 0;
   }
+
+  #mudar{
+    position: relative;
+    text-align: center;
+    display: inline;
+    left: 0%;
+    margin: 10px;
+
+}
 }
 
-@media (max-width:480px){
-  main{
-    padding: 20px;
-  }
-}
+
 
 
 

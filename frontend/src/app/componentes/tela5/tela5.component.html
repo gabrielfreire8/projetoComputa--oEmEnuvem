@@ -1,1 +1,99 @@
-<p>tela5 works!</p>
+<main>
+  <section>
+    <div id="presentUser">
+        <h1>Bem-vindo,</h1>
+        <span id="nomeUser">leticia</span>
+    </div>
+    <hr id="divisor-line">
+
+    <div id="buttons">
+        <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
+        <button routerLink="/tela3" class="button" id="bt_calen">Calendário</button>
+        <button routerLink="/tela6" class="button" id="bt_ativ">Aprovar Atividades</button>
+        <button routerLink="" class="button" id="bt_sair">Sair</button>
+    </div>
+  </section>
+  <aside>
+    <section class="container">
+      <h1  id="title" class="tituloRegistro">Registrar-se</h1>
+      <form id="formCadastro">
+        <div id="dadosLogin">
+          <h1>Dados de Login</h1>
+          <div class="nomeCompleto">
+            <label id="firstNome" for="firstName">Nome Completo</label>
+            <div class="nomeCompletoInput">
+              <input type="text" placeholder="Primeiro Nome" id="firstName">
+              <input type="text" placeholder="Sobrenome" id="secondName">
+            </div>
+          </div>
+          <div class="emailForm">
+            <label for="email" id="emailTitle">Email</label>
+            <input type="email" placeholder="Digite seu email" id="email">
+          </div>
+          <div class="senhaForm">
+            <label id="Senhas1" for="password">Senha</label>
+            <div class="senhaContainer">
+              <input type="password" placeholder="**********" id="senha">
+
+            </div>
+          </div>
+          <div class="cpfDateContainer">
+            <div class="cpfContainer">
+              <label id="ColCpf" for="cpf">CPF</label>
+              <input type="number" placeholder="Somente Números" id="cpf">
+            </div>
+            <div class="dateContainer">
+              <label id="date" for="date">Data de Nascimento:</label>
+              <input type="date" id="date">
+            </div>
+          </div>
+          <div class="celularForm">
+            <label id="NumCelu" for="numberPhone">Celular</label>
+            <input type="number" placeholder="Somente Números" id="numberPhone">
+          </div>
+        </div>
+
+        <div id="dadosComplementares">
+          <h1>Dados Complementares</h1>
+          <div class="cepForm">
+            <label id="mCep" for="cep">CEP</label>
+            <input type="number" placeholder="Somente Números" id="cep">
+
+          </div>
+          <a>Não sei meu CEP</a>
+          <div class="numeroLogradouro">
+            <div class="logradouro">
+              <label id="ruaPd" for="logradouro">Rua</label>
+              <input type="text" placeholder="Digite Sua rua" id="logradouro">
+            </div>
+            <div class="numero">
+              <label id="num1" for="numberHouse">Número</label>
+              <input type="number" placeholder="Somente Números " id="numberHouse">
+            </div>
+          </div>
+          <div class="complemento">
+            <label id="compl" for="complemento">Complemento</label>
+            <input type="text" placeholder="Apartamento, Ponto de referência e etc..." id="complemento">
+          </div>
+          <div class="bairro">
+            <label for="bairro">Bairro</label>
+            <input type="text" placeholder="Digite seu Bairro" id="bairro">
+          </div>
+          <div class="cidadeEstado">
+            <div class="cidade">
+              <label id="ruaa" for="cidade">Cidade</label>
+              <input type="text" placeholder="Digite sua Cidade" id="cidade">
+            </div>
+            <div class="estado">
+              <label id="estadoo" for="estado">Estado:</label>
+              <select name="estado" id="estado">Estado / UF
+                <option value="0">Selecione o Estado</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button type="submit" class="enviarFormulario">ALTERAR DADOS</button>
+    </section>
+  </aside>
+</main>

@@ -1,9 +1,8 @@
-
 *{
   padding: 0;
   margin: 0;
-  border: 0;
   box-sizing: border-box;
+
 
 }
 main{
@@ -32,6 +31,7 @@ section{
   background-color: #01526F;
   box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
   gap: 10px;
+
 }
 
 #presentUser h1{
@@ -72,8 +72,7 @@ aside{
   background-color: #ffffff;
   width: 100vw;
   height: 100vh;
-
-}
+  }
 
 #buttons{
   margin-top: 20%;
@@ -131,18 +130,19 @@ aside{
   flex-direction: column;
   align-items: center;
   background-color:#EFF5F4;
+  border: 0;
 }
 
 label{
   font-size: 1.25rem;
- }
+}
 .tituloRegistro {
   margin-top: 20px;
   color: #020202;
   font-family: var(--fonteTitulos);
   font-size: 50px;
 }
- #formCadastro {
+#formCadastro {
   width: 80%;
   height: 70%;
   display: flex;
@@ -358,6 +358,9 @@ input:focus {
   bottom: 0;
 }
 
+#firstNome{
+  padding: 10px;
+}
 
 #firstName{
   display: flex;
@@ -365,6 +368,7 @@ input:focus {
   width: 300px;
   font-weight:  bold;
   text-align: left;
+  padding: 10px;
 }
 
 #secondName{
@@ -381,6 +385,11 @@ input:focus {
 #title{
   color: #01526F;
 }
+
+#emailTitle{
+  padding: 10px;
+}
+
 #email{
   display: flex;
   font-weight: bold;
@@ -388,12 +397,23 @@ input:focus {
   text-align: left;
 
 }
+
+.senhaContainer{
+  justify-items: center;
+  justify-content: center;
+}
+
+#Senhas1{
+  padding: 10px;
+}
+
 #senha{
   display: flex;
   font-weight: bold;
-  padding: 10px;
-  text-align: left;
-  justify-content: left;
+  padding: 5px;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
 }
 #confirmPassword{
   display: flex;
@@ -405,7 +425,13 @@ input:focus {
 #ColCpf{
   align-items: center;
   width: 130px;
+  padding: 10px;
 
+}
+
+#date{
+  padding: 10px;
+  white-space: nowrap;
 }
 #cpf{
   display: flex;
@@ -423,24 +449,79 @@ input:focus {
   height: 30px;
 }
 #dadosComplementares{
-  width: 50%;
+  width: 45%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 13px;
 }
 #mCep{
   display: flex;
+  padding: 10px;
 }
 #cep{
   display: flex;
   font-weight: bold;
   height: 30px;
 }
-#logrdouro{
+
+#ruaPd{
+  padding: 10px;
+}
+#Rua1{
+  display: flex;
+}
+#logradouro{
   display: flex;
   font-weight: bold;
-  padding: 2px;
+  padding: 1px;
   height: 30px;
 }
+#num1{
+  padding: 10px;
+}
+
+#compl{
+  padding: 10px;
+}
+
+#mNumero{
+  display: flex;
+}
+#numberHouse{
+  display: flex;
+  font-weight: bold;
+  padding: 1px;
+  height: 30px;
+}
+#seila{
+  padding: 2px;
+}
+#complemento{
+  font-weight: bold;
+  display: flex;
+}
+#bairro{
+  font-weight: bold;
+  display: flex;
+}
+#mcidade{
+  display: flex;
+}
+#cidade{
+  font-weight: bold;
+  display: flex;
+}
+#cestado{
+  display: flex;
+}
+
+#ruaa{
+  padding: 10px;
+}
+
+#estadoo{
+  padding: 10px;
+}
+

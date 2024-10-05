@@ -165,7 +165,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     overflow: hidden;
     display: flex;
 }
@@ -199,7 +199,7 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0x;
     background-image: linear-gradient(to left, #e0e0e0 1px, transparent 1px);
     background-size: 25px 100%;
     pointer-events: none;
@@ -217,17 +217,34 @@
   width: 40px;
   height: 30px;
 }
+#menuInic{
+  display: none;
+}
 
 
 
-  @media (max-width:1280px){
+@media (max-width:1280px){
 
     aside{
       padding-top: 25;
       border-top : 60px solid #01526F;
+    }
 
+    .button{
+      width: 200px;
+      height: 60px;
+      z-index: 1;
+      background-color: #44A685;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
     }
+
+    #buttons{
+      width: 350px;
+    }
+
     .BotPrincipal{
       flex-direction: column;
       margin: 12px;
@@ -243,7 +260,6 @@
     section:hover #buttons{
       opacity: 1;
       visibility: visible;
-
     }
 
     section:hover{
@@ -254,6 +270,7 @@
     #menuInic{
       visibility: visible;
       width: 50px;
+      display: block;
     }
 
     #divisor-line{
@@ -272,14 +289,28 @@
     .imgsPrinci{
       display: none;
     }
-  }
-  
 
-  @media (max-width:480px){
-    main{
-      padding: 20px;
+    .calendario{
+      position: absolute;
+      width: 480px;
+      height: 400px;
+    }
+
+    .caderno{
+      display: flex;
+      position: fixed;
+      width: 400px;
+      height: 250px;
+      bottom: 20px;
+
+
+    }
+    #btnTela3{
+      display: none;
     }
   }
+
+
 
 
 
