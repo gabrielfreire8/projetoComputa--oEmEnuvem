@@ -82,20 +82,23 @@ aside{
 
 
 .BotPrincipal{
-  display: inline;
+  display: inline-block;
+  vertical-align: top;
   width: 250px;
   height: 20vh;
   border-radius: 30px;
   background-color: #44A685;
   color: #fff;
-  font-size: medium;
-  font-weight: bold;
-  margin: 40px;
+  font-size:larger;
+  font-weight: bolder;
+  margin: 15px;
   justify-content: center;
   align-items: center;
   margin-top: 300px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
+
+
 
 
   .button{
