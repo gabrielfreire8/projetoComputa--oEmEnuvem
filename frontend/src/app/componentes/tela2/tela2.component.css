@@ -142,8 +142,10 @@ aside{
   }
 
   #menuInic{
-    visibility: hidden;
+    display: none;
   }
+
+
 
 
 @media (max-width:1280px){
@@ -158,13 +160,16 @@ aside{
     align-items: center;
 
   }
+  #buttons{
+    width: 350px;
+  }
+
 
   aside{
     padding-top: 25;
     border-top : 60px solid #01526F;
-
-
   }
+
   .BotPrincipal{
     flex-direction: column;
     margin: 12px;
@@ -175,8 +180,8 @@ aside{
     width: 0%;
     background-color: #01526F;
     z-index: 1;
-
   }
+
   section:hover #buttons{
     opacity: 1;
     visibility: visible;
@@ -191,6 +196,7 @@ aside{
   #menuInic{
     visibility: visible;
     width: 50px;
+    display: block;
   }
 
   #divisor-line{
@@ -216,12 +222,7 @@ aside{
   }
 }
 
-@media (max-width:480px){
-  main{
-    padding: 20px;
-    border: 0;
-  }
-}
+
 
 
 

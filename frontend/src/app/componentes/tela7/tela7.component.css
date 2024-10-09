@@ -228,13 +228,67 @@ aside{
     flex-direction: column;
     margin: 12px;
   }
+
+  .calendario{
+    width: 400px;
+  }
+
+  .perguntasAside{
+    bottom: 220px;
+    right: 150px;
+  }
+  #nomeAtiv{
+    width: 400px;
+  }
+  #topoAtiv{
+    width: 400px;
+  }
+  #descAtiv{
+    width: 400px;
+  }
+
+  .button{
+    width: 200px;
+    height: 60px;
+    z-index: 1;
+    background-color: #44A685;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  section{
+    width: 0%;
+    background-color: #01526F;
+    z-index: 1;
+
+  }
+  section:hover{
+    width: 550px;
+
+  }
+  section:hover #buttons{
+    opacity: 1;
+    visibility: visible;
+
+  }
+  #buttons{
+    opacity: 0;
+    width: 350px;
+  }
+
+  #btnVolt{
+    opacity: 0;
+  }
+
+  #als{
+    display: flex;
+    justify-content: center;
+  }
+
 }
 
-@media (max-width:480px){
-  main{
-    padding: 20px;
-  }
-}
+
 
 
 
