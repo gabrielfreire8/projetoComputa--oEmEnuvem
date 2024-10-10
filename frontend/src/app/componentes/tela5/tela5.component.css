@@ -82,9 +82,24 @@ aside{
 }
 
   .button{
-      margin-bottom: 10px;
-      width: 200px;
-      height: 60px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 60px;
+    font-size:medium;
+    font-weight: bold;
+  }
+  #btnVolt{
+    align-items: center;
+      position: fixed;
+      left: 25%;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      color: #fff;
+      background-color: #44A685;
+      border-radius: 15px;
+      border-color: #ffffff;
+      bottom: 90%;
   }
 
   section{

@@ -80,11 +80,27 @@ aside{
   display: flex;
   flex-direction: column;
 }
+#btnVolt{
+
+  align-items: center;
+    position: fixed;
+    left: 25%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    background-color: #44A685;
+    border-radius: 15px;
+    border-color: #ffffff;
+    bottom: 90%;
+}
 
   .button{
-      margin-bottom: 10px;
-      width: 200px;
-      height: 60px;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 60px;
+    font-size:medium;
+    font-weight: bold;
   }
 
   section{
@@ -108,20 +124,6 @@ aside{
     position: absolute;
     top: 0;
   }
-
-@media (max-width:1280px){
-  .BotPrincipal{
-    flex-direction: column;
-    margin: 12px;
-  }
-}
-
-@media (max-width:480px){
-  main{
-    padding: 20px;
-  }
-}
-
 
 
 .container {
@@ -525,3 +527,81 @@ input:focus {
   padding: 10px;
 }
 
+
+@media (max-width:1280px){
+
+  .button{
+    width: 200px;
+    height: 60px;
+    z-index: 1;
+    background-color: #44A685;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  #buttons{
+    width: 350px;
+  }
+
+
+  aside{
+    padding-top: 25;
+    border-top : 60px solid #01526F;
+  }
+
+  .BotPrincipal{
+    flex-direction: column;
+    margin: 12px;
+  }
+
+
+  section{
+    width: 0%;
+    background-color: #01526F;
+    z-index: 1;
+  }
+
+  section:hover #buttons{
+    opacity: 1;
+    visibility: visible;
+
+  }
+
+  section:hover{
+    width: 350px;
+
+  }
+
+  #menuInic{
+    visibility: visible;
+    width: 50px;
+    display: block;
+  }
+
+  #divisor-line{
+    visibility: hidden;
+  }
+
+
+  #presentUser{
+    visibility: hidden;
+  }
+
+  #buttons{
+    opacity: 0;
+  }
+
+  .imgsPrinci{
+    display: none;
+  }
+
+
+  #buttonsAside{
+    position: absolute;
+  }
+
+  #btnVolt{
+    display: none;
+  }
+}

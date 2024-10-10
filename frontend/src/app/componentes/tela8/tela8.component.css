@@ -11,15 +11,15 @@
     max-width: 100%;
     max-height: 100%;
     background-color: #01526F;
-  
+
   }
-  
+
   #divisor-line{
     width: 80%;
     border: 1.5px solid #fff;
-  
+
   }
-  
+
   section{
     display:grid;
     flex-direction: column;
@@ -30,7 +30,7 @@
     box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
     gap: 10px;
   }
-  
+
   #presentUser h1{
     color: #fff;
   }
@@ -41,17 +41,17 @@
     text-align: center;
     margin-top: 50px;
   }
-  
+
   .button{
     color: #fff;
     background-color: #44A685;
     border-radius: 15px;
     border-color: #ffffff;
     box-shadow: none;
-  
+
   }
-  
-  
+
+
   #img_princi{
     width: 20vh;
     right: 20vh;
@@ -60,9 +60,9 @@
     width: 20vh;
     right: 20vh;
   }
-  
-  
-  
+
+
+
   aside{
     display: flex;
     justify-content: center;
@@ -70,17 +70,17 @@
     background-color: #EFF5F4;
     width: 100vw;
     height: 100vh;
-  
+
   }
-  
+
   #buttons{
     margin-top: 20%;
     align-items: center;
     display: flex;
     flex-direction: column;
-  
+
   }
-  
+
     .button{
         margin-bottom: 10px;
         width: 200px;
@@ -88,15 +88,15 @@
         font-size:medium;
         font-weight: bold;
     }
-  
+
     section{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-  
+
     #btnVolt{
-  
+
       align-items: center;
         position: fixed;
         left: 25%;
@@ -118,7 +118,7 @@
       height: 440px;
       bottom: 0;
   }
-  
+
   #perAside{
     position: absolute;
     text-align: left;
@@ -128,27 +128,18 @@
     padding-top: 20px;
     border-radius: 20px;
     background-color: #EFF5F4;
-    height: 250px;
+    display: flex;
+    height: 55px;
     width: 670px;
+    gap: 90px;
   }
-  
+
   .perguntasAside{
     background-color: #EFF5F4;
   }
-  
-  
-  #mudar{
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 17%;
-    left: 83%;
-    flex-direction: column;
-    gap: 10px;
-  
-  }
-  
-  
+
+
+
   .header {
       background-color: #01526F;
       color: white;
@@ -160,38 +151,54 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-  
+
   }
-  
+
   #anterior{
     width: 40px;
     height: 30px;
   }
-  
+
   #sucessor{
     width: 40px;
     height: 30px;
   }
-  
+
   .dias, .semanas {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
   }
-  
+
   .dia {
       padding: 15px;
       text-align: center;
   }
-  
+
   .dia.vazio {
       background-color: #f9f9f9;
   }
-  
+
   .dia:hover {
       background-color: #e0e0e0;
   }
-  
-  
+
+  #date{
+    display: flex;
+    position: absolute;
+    left: 80%;
+    top: 10%;
+  }
+
+  #data{
+    display: flex;
+    position: absolute;
+    left: 70%;
+    top: 10%;
+    font-size:large;
+    font-weight: bold;
+  }
+
+
   #aproAtiv{
     display: flex;
     position: absolute;
@@ -204,7 +211,7 @@
     justify-items: center;
     font-weight: bold;
   }
-  
+
   #nomeAtiv{
     font-size: large;
     border-color: #007BFF;
@@ -213,7 +220,7 @@
     width: 500px;
     border-bottom: 2px solid #43665A;
   }
-  
+
   #topoAtiv{
     font-size: large;
     border-color: #007BFF;
@@ -222,7 +229,7 @@
     width: 500px;
     border-bottom: 2px solid #43665A;
   }
-  
+
   #descAtiv{
     font-size: large;
     border-color: #007BFF;
@@ -231,7 +238,7 @@
     width: 500px;
     border-bottom: 2px solid #43665A;
   }
-  
+
   #dataCalen{
     font-size: large;
     border-color: #007BFF;
@@ -240,7 +247,7 @@
     width: 500px;
     border-bottom: 2px solid #43665A;
   }
-  
+
   #caixaAside{
     padding-bottom: 500px;
     height: 600px;
@@ -253,53 +260,87 @@
 
   }
 
+  #mudar{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 17%;
+    left: 83%;
+    gap: 10px;
+  }
 
-  
+
+
   #btnClose{
     background-color: #f39c12;
     background-position: center;
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-    border-radius: 20px;
-    text-align: center;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
-  
+
   }
 
 
-  
+
   #btnCheck{
     background-color: #44A685;
     background-position: center;
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-    border-radius: 20px;
-   padding:2px;
-  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #nomeAside{
+    position: absolute;
+    left: 15%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular',
+    'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif  ;
+    color: #43665A;
+    padding: 2px;
+  }
+
+  #matAside{
+    position: absolute;
+    left: 45%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular',
+    'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    color: #43665A;
+    padding: 2px;
+
   }
 
   #menuInic{
     display: none;
   }
-  
-  
-  
-  
+  #nomeComple{
+    width: 200px;
+    height: 20px;
+  }
+
+  #matricula{
+    width: 200px;
+    height: 20px;
+  }
+
+
+
+
   #als{
     padding: 20px;
   }
-  
+
   #menuInic{
     display: none;
   }
-  
-  
+
+
   @media (max-width:1280px){
-  
+
     .button{
       width: 200px;
       height: 60px;
@@ -308,67 +349,67 @@
       display: flex;
       justify-content: center;
       align-items: center;
-  
+
     }
-  
+
     #buttons{
       width: 350px;
     }
-  
+
     #presentUser{
       visibility: hidden;
     }
-  
+
     #aproAtiv{
       white-space: nowrap;
     }
-  
+
     aside{
       padding-top: 25;
       border-top : 60px solid #01526F;
-  
-  
+
+
     }
     .BotPrincipal{
       flex-direction: column;
       margin: 12px;
     }
-  
-  
+
+
     section{
       width: 0%;
       background-color: #01526F;
       z-index: 1;
-  
+
     }
     section:hover #buttons{
       opacity: 1;
       visibility: visible;
     }
-  
+
     section:hover{
       width: 350px;
-  
+
     }
-  
+
     #menuInic{
       visibility: visible;
       display: block;
       width: 50px;
     }
-  
+
     #divisor-line{
       visibility: hidden;
     }
-  
+
     #caixaAside{
       position: fixed;
       width: 400px;
       top: 200px;
       height: 250px;
-  
+
     }
-  
+
     #perAside{
       width: 300px;
       height: 400px;
@@ -379,10 +420,10 @@
       align-items: center;
       left: 13%;
     }
-  
+
     #nomeAtiv{
       width: 270px;
-  
+
     }
     #topoAtiv{
       width: 270px;
@@ -393,33 +434,32 @@
     #dataCalen{
       width: 270px;
     }
-  
+
     #buttons{
       opacity: 0;
     }
-  
-  
+
+
     #btnVolt{
       opacity: 0;
     }
-  
+
     #mudar{
       position: relative;
       text-align: center;
       display: inline;
       left: 0%;
       margin: 10px;
-  
+
   }
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
