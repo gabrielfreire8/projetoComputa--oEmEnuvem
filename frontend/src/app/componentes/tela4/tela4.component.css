@@ -533,7 +533,6 @@ input:focus {
   .button{
     width: 200px;
     height: 60px;
-    z-index: 1;
     background-color: #44A685;
     display: flex;
     justify-content: center;
@@ -544,11 +543,15 @@ input:focus {
     width: 350px;
   }
 
-
   aside{
-    padding-top: 25;
-    border-top : 60px solid #01526F;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
   }
+
 
   .BotPrincipal{
     flex-direction: column;
@@ -556,19 +559,19 @@ input:focus {
   }
 
 
-  section{
+  #sec1{
     width: 0%;
     background-color: #01526F;
     z-index: 1;
   }
 
-  section:hover #buttons{
+  #sec1:hover #buttons{
     opacity: 1;
     visibility: visible;
 
   }
 
-  section:hover{
+  #sec1:hover{
     width: 350px;
 
   }
@@ -604,4 +607,24 @@ input:focus {
   #btnVolt{
     display: none;
   }
+
+  #formCadastro{
+    background-color: #EFF5F4;
+    height: auto;
+    width: 100%;
+  }
+
+  #dadosLogin{
+    width: 80%;
+  }
+
+
+  #dadosComplementares{
+    height: 140vh;
+    width: 80%;
+    background-color: #EFF5F4;
+    padding-bottom: 10px;
+  }
+
+
 }

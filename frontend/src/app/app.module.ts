@@ -1,5 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,9 +15,11 @@ import { Tela4Component } from './componentes/tela4/tela4.component';
 import { Tela5Component } from './componentes/tela5/tela5.component';
 import { Tela8Component } from './componentes/tela8/tela8.component';
 
+
+
+
 @NgModule({
   declarations: [
-    AppComponent,
     Tela1Component,
     Tela2Component,
     Tela3Component,
@@ -27,7 +31,9 @@ import { Tela8Component } from './componentes/tela8/tela8.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

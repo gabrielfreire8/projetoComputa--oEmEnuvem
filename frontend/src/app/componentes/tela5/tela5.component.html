@@ -1,11 +1,10 @@
 <main>
-  <section>
+  <section id="sec1">
     <div id="presentUser">
         <h1>Bem-vindo,</h1>
         <span id="nomeUser">leticia</span>
     </div>
     <hr id="divisor-line">
-
     <div id="buttons">
         <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
         <button routerLink="/tela3" class="button" id="bt_calen">Calendário</button>
@@ -18,7 +17,7 @@
       <button routerLink="/tela2" class="botVolta" id="btnVolt">Voltar</button>
   </div>
     <section class="container">
-      <h1  id="title" class="tituloRegistro">Registrar-se</h1>
+      <h1  id="title" class="tituloRegistro">Perfil</h1>
       <form id="formCadastro">
         <div id="dadosLogin">
           <h1>Dados de Login</h1>
@@ -30,14 +29,14 @@
             </div>
           </div>
           <div class="emailForm">
-            <label for="email" id="emailTitle">Email</label>
+            <label id="emailTitle" for="email">Email</label>
             <input type="email" placeholder="Digite seu email" id="email">
           </div>
           <div class="senhaForm">
             <label id="Senhas1" for="password">Senha</label>
             <div class="senhaContainer">
-              <input type="password" placeholder="**********" id="senha">
-
+              <input type="password" placeholder="Digite sua senha" id="senha">
+              <input type="password" placeholder="Confirme sua senha" id="confirmPassword">
             </div>
           </div>
           <div class="cpfDateContainer">
@@ -58,12 +57,10 @@
 
         <div id="dadosComplementares">
           <h1>Dados Complementares</h1>
-          <div class="cepForm">
+          <div class="cepForm" id="cep2">
             <label id="mCep" for="cep">CEP</label>
-            <input type="number" placeholder="Somente Números" id="cep">
-
+            <input type="number" placeholder="Somente Números" id="cep1">
           </div>
-          <a>Não sei meu CEP</a>
           <div class="numeroLogradouro">
             <div class="logradouro">
               <label id="ruaPd" for="logradouro">Rua</label>
@@ -96,7 +93,8 @@
           </div>
         </div>
       </form>
-      <button type="submit" class="enviarFormulario">ALTERAR DADOS</button>
+      <button type="submit" class="enviarFormulario">Alterar Dados</button>
+      <button type="submit" class="enviarFormulario">Inativar Participante</button>
     </section>
   </aside>
 </main>

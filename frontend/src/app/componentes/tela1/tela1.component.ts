@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Tela1Service } from './tela1.service';
 
 
 @Component({
@@ -6,8 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './tela1.component.html',
   styleUrl: './tela1.component.css'
 })
-export class Tela1Component {
+export class Tela1Component implements OnInit {
 
+
+
+  ngOnInit(): void {
+
+  }
 }
 
 

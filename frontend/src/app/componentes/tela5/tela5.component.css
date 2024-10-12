@@ -80,6 +80,20 @@ aside{
   display: flex;
   flex-direction: column;
 }
+#btnVolt{
+
+  align-items: center;
+    position: fixed;
+    left: 25%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    background-color: #44A685;
+    border-radius: 15px;
+    border-color: #ffffff;
+    bottom: 90%;
+}
 
   .button{
     margin-bottom: 10px;
@@ -87,19 +101,6 @@ aside{
     height: 60px;
     font-size:medium;
     font-weight: bold;
-  }
-  #btnVolt{
-    align-items: center;
-      position: fixed;
-      left: 25%;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      color: #fff;
-      background-color: #44A685;
-      border-radius: 15px;
-      border-color: #ffffff;
-      bottom: 90%;
   }
 
   section{
@@ -123,20 +124,6 @@ aside{
     position: absolute;
     top: 0;
   }
-
-@media (max-width:1280px){
-  .BotPrincipal{
-    flex-direction: column;
-    margin: 12px;
-  }
-}
-
-@media (max-width:480px){
-  main{
-    padding: 20px;
-  }
-}
-
 
 
 .container {
@@ -261,61 +248,49 @@ label{
   width: 49%;
   display: flex;
   flex-direction: column;
- }
+  }
  .celularForm {
   grid-column: 1 / 3;
   display: flex;
   flex-direction: column;
- }
- .celularForm input {
+  }
+  .celularForm input {
   width: 49%;
- }
- #dadosComplementares {
+  }
+  #dadosComplementares {
   width: 40%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
- }
- #dadosComplementares h1 {
+  }
+  #dadosComplementares h1 {
   grid-column: 1 / 3;
   justify-self: center;
   color: #01526F;
- }
- #dadosComplementares a {
+  }
+  #dadosComplementares a {
   cursor: pointer;
 
- }
- .cepForm {
+  }
+  .cepForm {
   grid-column: 1 / 3;
   display: flex;
   flex-wrap: wrap;
- }
- .cepForm label {
+  }
+  .cepForm label {
   width: 100%;
- }
- .cepForm input {
+
+  }
+  .cepForm input {
   width: 40%;
- }
- .cepForm button {
-  margin-left: 10px;
-  border-radius: 5px;
-  border:  none;
-  background-color: #44A685;
-  box-shadow: 0px 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
-  padding: 0.625rem 1.5625rem;
-  color: rgb(255, 253, 253);
-  font-weight: 600;
-  cursor: pointer;
-  opacity: .8;
- }
- .cepForm button:hover {
-  opacity: 1;
- }
- .numeroLogradouro {
+  }
+
+
+  .numeroLogradouro {
   grid-column: 1 / 3;
   display: flex;
   gap: 10px;
- }
- .logradouro {
+  }
+  .logradouro {
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -323,8 +298,8 @@ label{
   font-weight:bold;
 
 
- }
- .numero {
+  }
+  .numero {
   display: flex;
   flex-direction: column;
   display: flex;
@@ -332,28 +307,28 @@ label{
   padding: 2px;
 
 
- }
- .complemento {
+  }
+  .complemento {
   grid-column: 1 / 3;
   display: flex;
   flex-direction: column;
- }
- .bairro {
+  }
+  .bairro {
   grid-column: 1 / 3;
   display: flex;
   flex-direction: column;
- }
- .cidadeEstado {
+  }
+  .cidadeEstado {
   grid-column: 1 / 3;
   display: flex;
   gap: 10px;
- }
- .cidade {
+  }
+  .cidade {
   display: flex;
   flex-direction: column;
   width: 50%;
- }
- .estado {
+  }
+  .estado {
   display: flex;
   flex-direction: column;
   width: 50%
@@ -474,11 +449,21 @@ input:focus {
 #mCep{
   display: flex;
   padding: 10px;
+  justify-content: center;
+
 }
-#cep{
-  display: flex;
+
+#cep1{
+ font-weight: bold;
+}
+#cep2{
+
   font-weight: bold;
-  height: 30px;
+  justify-content: center;
+  justify-items: center;
+
+
+
 }
 
 #ruaPd{
@@ -540,3 +525,103 @@ input:focus {
   padding: 10px;
 }
 
+
+@media (max-width:1280px){
+
+  .button{
+    width: 200px;
+    height: 60px;
+    background-color: #44A685;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  #buttons{
+    width: 350px;
+  }
+
+  aside{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+  }
+
+
+  .BotPrincipal{
+    flex-direction: column;
+    margin: 12px;
+  }
+
+
+  #sec1{
+    width: 0%;
+    background-color: #01526F;
+    z-index: 1;
+  }
+
+  #sec1:hover #buttons{
+    opacity: 1;
+    visibility: visible;
+
+  }
+
+  #sec1:hover{
+    width: 350px;
+
+  }
+
+  #menuInic{
+    visibility: visible;
+    width: 50px;
+    display: block;
+  }
+
+  #divisor-line{
+    visibility: hidden;
+  }
+
+
+  #presentUser{
+    visibility: hidden;
+  }
+
+  #buttons{
+    opacity: 0;
+  }
+
+  .imgsPrinci{
+    display: none;
+  }
+
+
+  #buttonsAside{
+    position: absolute;
+  }
+
+  #btnVolt{
+    display: none;
+  }
+
+  #formCadastro{
+    background-color: #EFF5F4;
+    height: auto;
+    width: 100%;
+  }
+
+  #dadosLogin{
+    width: 80%;
+  }
+
+
+  #dadosComplementares{
+    height: 140vh;
+    width: 70%;
+
+  }
+
+
+}

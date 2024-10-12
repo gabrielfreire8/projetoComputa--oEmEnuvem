@@ -367,6 +367,10 @@
     aside{
       padding-top: 25;
       border-top : 60px solid #01526F;
+      height: 150vh;
+      overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
 
 
     }
@@ -404,21 +408,28 @@
 
     #caixaAside{
       position: fixed;
-      width: 400px;
+      width: 90%;
       top: 200px;
       height: 250px;
 
     }
 
     #perAside{
-      width: 300px;
-      height: 400px;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: 10px;
-      justify-content: center;
+      width: 85%;
+      height: 1%;
+      top: 10%;
+      display: flex;
       align-items: center;
-      left: 13%;
+      grid-gap: 10px;
+    }
+
+    #nomeComple{
+      width: 150px;
+      left: 20px;
+    }
+
+    #matricula{
+      width: 80px;
     }
 
     #nomeAtiv{
@@ -446,12 +457,38 @@
 
     #mudar{
       position: relative;
-      text-align: center;
-      display: inline;
       left: 0%;
       margin: 10px;
-
   }
+
+  #btnCheck{
+    top: 25%;
+    justify-items: center;
+    width: 30px;
+    height: 30px;
+  }
+
+  #btnClose{
+    top: 25%;
+    justify-items: center;
+    width: 30px;
+    height: 30px;
+  }
+  #aproAtiv{
+    display: flex;
+    top: 2%;
+  }
+
+  #data{
+    left: 40%;
+    top: 23%
+  }
+
+  #date{
+    left: 70%;
+    top: 23%;
+  }
+
   }
 
 
