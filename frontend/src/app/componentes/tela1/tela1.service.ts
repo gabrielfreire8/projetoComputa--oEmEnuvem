@@ -1,17 +1,27 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Tela1Service {
 
-  private readonly API = 'http:localhost:3000/tela1'
+  private readonly API = '186.235.2.225:3000'
 
-  constructor(private http: HttpClient) { }
+  httpOptions = {
+    Headers: new HttpHeaders({
+      'content-type': 'application/json'
+    })
+  };
 
-  criar(){
-    return this.http.get(this.API)
+
+
+  constructor(private HttpClient: HttpClient) { }
+
+  public getLivesWithFlag(flag: string){
+    return this.HttpClient.get(this.API)
+  }
   }
 
-}
+

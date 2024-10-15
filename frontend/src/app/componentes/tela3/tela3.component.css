@@ -222,6 +222,14 @@
 }
 
 
+#btnSalv{
+  display: flex;
+  position: absolute;
+  left: 90%;
+  bottom: 5%;
+}
+
+
 
 @media (max-width:1280px){
 

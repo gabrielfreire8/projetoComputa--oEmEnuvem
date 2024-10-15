@@ -5,6 +5,10 @@ body{
   height: 100vh;
 }
 
+#login-email{
+  cursor: pointer;
+}
+
 .caixa{
     display: flex;
     flex-direction:right;
@@ -57,6 +61,8 @@ aside form{
   justify-items: center;
 
 }
+
+
 input{
   margin-bottom: 30px;
   font-size: larger;
@@ -106,3 +112,4 @@ input:hover{
   text-align: center;
   border-bottom: 1px solid #43665A;
 }
+

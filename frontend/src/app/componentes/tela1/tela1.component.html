@@ -4,10 +4,11 @@
       <img src ="../../../assets/imagens/logo_pjb.png">
       <img src="../../../assets/imagens/Gestão_PJB_Pag1.png" >
       <form action="POST">
-          <input class="login-form" type="text" name="" id="login-email" placeholder="Login">
+
+          <input (click)="submit()" class="login-form" type="text" name="" id="login-email" placeholder="Login">
           <input class="login-form" type="password" name="" id="login-pass" placeholder="Password">
-          <input   routerLink="/tela2" id="btnSub" type="submit" value="Login">
-          <button routerLink="/tela2" id="forgetPass">Esqueci minha senha</button>
+          <button routerLink="/tela2" id="btnSub" type="submit" value="Login"></button>
+
       </form>
       <img src="../../../assets/imagens/avante.png" alt="">
     </aside>

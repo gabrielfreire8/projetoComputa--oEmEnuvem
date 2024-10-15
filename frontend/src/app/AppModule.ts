@@ -18,14 +18,14 @@ import { Tela3Component } from "./componentes/tela3/tela3.component";
 @NgModule({
   declarations: [
     AppComponent,
-    Tela1Component,
+
     Tela2Component,
     Tela3Component,
     Tela6Component,
     Tela7Component,
     Tela4Component,
     Tela5Component,
-    Tela8Component
+
   ],
   imports: [
     BrowserModule,

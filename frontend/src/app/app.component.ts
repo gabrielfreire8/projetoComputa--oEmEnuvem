@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Tela1Service } from './componentes/tela1/tela1.service';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'projeto';
+  constructor(private tela1Service: Tela1Service) {}
+  ngOnInit(): void{
 
-  criar(){
 
 
-  }
+
+}
+
+
+
+
 }

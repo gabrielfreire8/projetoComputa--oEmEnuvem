@@ -14,26 +14,29 @@ import { Tela6Component } from './componentes/tela6/tela6.component';
 import { Tela4Component } from './componentes/tela4/tela4.component';
 import { Tela5Component } from './componentes/tela5/tela5.component';
 import { Tela8Component } from './componentes/tela8/tela8.component';
-
+import { PrimaryInputComponent } from './componentes/primary-input/primary-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    Tela1Component,
+
     Tela2Component,
     Tela3Component,
     Tela6Component,
     Tela7Component,
     Tela4Component,
     Tela5Component,
-    Tela8Component
+    Tela8Component,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
