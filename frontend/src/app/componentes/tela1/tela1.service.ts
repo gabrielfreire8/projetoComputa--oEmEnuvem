@@ -1,27 +1,18 @@
-import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../src/environment';  // Ajuste o caminho se necessário
 
 @Injectable({
   providedIn: 'root'
 })
 export class Tela1Service {
+  private readonly API = environment.apiUrl;  // Use a URL do ambiente
 
-  private readonly API = '186.235.2.225:3000'
+  constructor(private http: HttpClient) {}
 
-  httpOptions = {
-    Headers: new HttpHeaders({
-      'content-type': 'application/json'
-    })
-  };
-
-
-
-  constructor(private HttpClient: HttpClient) { }
-
-  public getLivesWithFlag(flag: string){
-    return this.HttpClient.get(this.API)
+  login(email: string, password: string): Observable<any> {
+    const loginData = { email, password };
+    return this.http.post(`${this.API}/login`, loginData);  // Ajuste a URL conforme sua API
   }
-  }
-
-
+}

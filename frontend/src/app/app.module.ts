@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     Tela3Component,
     Tela6Component,
     Tela7Component,
-    Tela4Component,
+
     Tela5Component,
     Tela8Component,
 
@@ -35,7 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+
     ReactiveFormsModule
   ],
   providers: [],

@@ -1,20 +1,34 @@
 <body>
   <div class="caixa">
     <aside>
-      <img src ="../../../assets/imagens/logo_pjb.png">
-      <img src="../../../assets/imagens/Gestão_PJB_Pag1.png" >
-      <form action="POST">
+      <img src="../../../assets/imagens/logo_pjb.png">
+      <img src="../../../assets/imagens/Gestão_PJB_Pag1.png">
 
-          <input (click)="submit()" class="login-form" type="text" name="" id="login-email" placeholder="Login">
-          <input class="login-form" type="password" name="" id="login-pass" placeholder="Password">
-          <button routerLink="/tela2" id="btnSub" type="submit" value="Login"></button>
+      <form (ngSubmit)="submit()" #loginForm="ngForm">
 
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          id="email"
+          placeholder="Digite seu email"
+          [(ngModel)]="loginData.email"
+          name="email"
+        />
+
+        <label for="password">Senha:</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Digite sua senha"
+          [(ngModel)]="loginData.password"
+          name="password"
+          required
+        />
+
+        <button id="btnSub" type="submit" [disabled]="!loginForm.valid">Login</button>
       </form>
+
       <img src="../../../assets/imagens/avante.png" alt="">
     </aside>
-
-
   </div>
 </body>
-
-

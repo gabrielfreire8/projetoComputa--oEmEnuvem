@@ -1,34 +1,34 @@
 <main>
   <section>
     <div id="presentUser">
-        <h1>Bem-vindo,</h1>
-        <span id="nomeUser">leticia</span>
+      <h1>Bem-vindo,</h1>
+      <span id="nomeUser">Leticia</span>
     </div>
     <hr id="divisor-line">
-    <img  id="menuInic" src="../../../assets/imagens/menu.png" alt=""  >
+    <img id="menuInic" src="../../../assets/imagens/menu.png" alt="">
     <div id="buttons">
-        <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
-        <button routerLink="/tela3" class="button" id="bt_calen">Calendário</button>
-        <button routerLink="/tela6" class="button" id="bt_ativ">Aprovar Atividades</button>
-        <button routerLink="" class="button" id="bt_sair">Sair</button>
+      <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
+      <button routerLink="/tela3" class="button" id="bt_calen">Calendário</button>
+      <button routerLink="/tela6" class="button" id="bt_ativ">Aprovar Atividades</button>
+      <button routerLink="" class="button" id="bt_sair">Sair</button>
     </div>
   </section>
-    <aside>
-        <div id="btnTela3">
-            <button routerLink="/tela2" class="botVolta" id="btnVolt">Voltar</button>
+  <aside>
+    <div id="btnTela3">
+      <button routerLink="/tela2" class="botVolta" id="btnVolt">Voltar</button>
+    </div>
+    <p id="aproAtiv">Aprovar Atividade</p>
+    <div id="caixaAside">
+      <div id="perAside" *ngFor="let atividade of atividades">
+        <input class="perguntasAside" type="text" [value]="atividade.nome" readonly placeholder="Nome da Atividade:">
+        <input class="perguntasAside" type="text" [value]="atividade.tipo" readonly placeholder="Tipo de Atividade:">
+        <input class="perguntasAside" type="text" [value]="atividade.descricao" readonly placeholder="Descrição:">
+        <input class="perguntasAside" type="text" [value]="atividade.data" readonly placeholder="Data:">
+        <div id="mudar">
+          <button (click)="aprovarAtividade(atividade)"><img src="../../../assets/imagens/check.png" alt=""></button>
+          <button (click)="rejeitarAtividade(atividade)"><img src="../../../assets/imagens/close.png" alt=""></button>
         </div>
-        <p id="aproAtiv">Aprovar Atividade</p>
-        <div id="caixaAside">
-          <div  id="perAside" >
-            <input class="perguntasAside" type="text" name="" id="nomeAtiv" placeholder="Nome da Atividade:">
-            <input class="perguntasAside" type="text" name="" id="topoAtiv" placeholder="Tipo de Atividade:">
-            <input class="perguntasAside" type="text" name="" id="descAtiv" placeholder="Descrição:">
-            <input class="perguntasAside" type="text" name="" id="dataCalen" placeholder="Data:">
-            <div id="mudar">
-            <button id="btnCheck"><img src="../../../assets/imagens/check.png" alt=""></button>
-            <button id="btnClose"><img src="../../../assets/imagens/close.png" alt=""></button>
-          </div>
-          </div>
-            </div>
+      </div>
+    </div>
   </aside>
 </main>

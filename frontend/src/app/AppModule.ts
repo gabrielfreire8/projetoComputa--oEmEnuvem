@@ -1,6 +1,6 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -12,19 +12,13 @@ import { Tela6Component } from "./componentes/tela6/tela6.component";
 import { Tela7Component } from "./componentes/tela7/tela7.component";
 import { Tela8Component } from "./componentes/tela8/tela8.component";
 import { Tela3Component } from "./componentes/tela3/tela3.component";
+import { FormsModule } from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
 
-    Tela2Component,
-    Tela3Component,
-    Tela6Component,
-    Tela7Component,
-    Tela4Component,
-    Tela5Component,
 
   ],
   imports: [

@@ -1,79 +1,83 @@
 <main>
   <section>
     <div id="presentUser">
-        <h1>Bem-vindo,</h1>
-        <span id="nomeUser">leticia</span>
+      <h1>Bem-vindo,</h1>
+      <span id="nomeUser">leticia</span>
     </div>
     <hr id="divisor-line">
-    <img  id="menuInic" src="../../../assets/imagens/menu.png" alt=""  >
+    <img id="menuInic" src="../../../assets/imagens/menu.png" alt="">
     <div id="buttons">
-        <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
-        <button routerLink="/tela3" class="button" id="bt_calen">Calendário</button>
-        <button routerLink="/tela6" class="button" id="bt_ativ">Aprovar Atividades</button>
-        <button routerLink="" class="button" id="bt_sair">Sair</button>
+      <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
+      <button routerLink="/tela3" class="button" id="bt_calen">Calendário</button>
+      <button routerLink="/tela6" class="button" id="bt_ativ">Aprovar Atividades</button>
+      <button routerLink="" class="button" id="bt_sair">Sair</button>
     </div>
   </section>
-    <aside>
-        <div id="btnTela3">
-            <button routerLink="/tela2" class="botVolta" id="btnVolt">Voltar</button>
-        </div>
-        <div class="calendario">
-          <div class="header">
-            <button  id="anterior"><</button>
-            <h2 id="mesesCalen"></h2>
-            <button   id="sucessor">></button>
-          </div>
-          <div class="dias">
-              <div class="dia"><strong>Dom</strong></div>
-              <div class="dia"><strong>Seg</strong></div>
-              <div class="dia"><strong>Ter</strong></div>
-              <div class="dia"><strong>Qua</strong></div>
-              <div class="dia"><strong>Qui</strong></div>
-              <div class="dia"><strong>Sex</strong></div>
-              <div class="dia"><strong>Sáb</strong></div>
-          </div>
-          <div class="semanas">
-              <div class="dia vazio"></div>
-              <div class="dia vazio"></div>
-              <div class="dia vazio"></div>
-              <div class="dia">1</div>
-              <div class="dia">2</div>
-              <div class="dia">3</div>
-              <div class="dia">4</div>
-              <div class="dia">5</div>
-              <div class="dia">6</div>
-              <div class="dia">7</div>
-              <div class="dia">8</div>
-              <div class="dia">9</div>
-              <div class="dia">10</div>
-              <div class="dia">11</div>
-              <div class="dia">12</div>
-              <div class="dia">13</div>
-              <div class="dia">14</div>
-              <div class="dia">15</div>
-              <div class="dia">16</div>
-              <div class="dia">17</div>
-              <div class="dia">18</div>
-              <div class="dia">19</div>
-              <div class="dia">20</div>
-              <div class="dia">21</div>
-              <div class="dia">22</div>
-              <div class="dia">23</div>
-              <div class="dia">24</div>
-              <div class="dia">25</div>
-              <div class="dia">26</div>
-              <div class="dia">27</div>
-              <div class="dia">28</div>
-              <div class="dia">29</div>
-              <div class="dia vazio"></div>
-              <div class="dia vazio"></div>
-          </div>
-
+  <aside>
+    <div id="btnTela3">
+      <button routerLink="/tela2" class="botVolta" id="btnVolt">Voltar</button>
+    </div>
+    <div class="calendario">
+      <div class="header">
+        <button id="anterior"><</button>
+        <h2 id="mesesCalen">Outubro</h2>
+        <button id="sucessor">></button>
       </div>
-      <div class="caderno">
-          <textarea  id="textin" placeholder="Escreva aqui..."></textarea>
-          <button id="btnSalv" >Salvar</button>
+      <div class="dias">
+        <div class="dia"><strong>Dom</strong></div>
+        <div class="dia"><strong>Seg</strong></div>
+        <div class="dia"><strong>Ter</strong></div>
+        <div class="dia"><strong>Qua</strong></div>
+        <div class="dia"><strong>Qui</strong></div>
+        <div class="dia"><strong>Sex</strong></div>
+        <div class="dia"><strong>Sáb</strong></div>
       </div>
-
+      <div class="semanas">
+        <div class="dia vazio"></div>
+        <div class="dia vazio"></div>
+        <div class="dia vazio"></div>
+        <div class="dia" (click)="selecionarDia(1)">1</div>
+        <div class="dia" (click)="selecionarDia(2)">2</div>
+        <div class="dia" (click)="selecionarDia(3)">3</div>
+        <div class="dia" (click)="selecionarDia(4)">4</div>
+        <div class="dia" (click)="selecionarDia(5)">5</div>
+        <div class="dia" (click)="selecionarDia(6)">6</div>
+        <div class="dia" (click)="selecionarDia(7)">7</div>
+        <div class="dia" (click)="selecionarDia(8)">8</div>
+        <div class="dia" (click)="selecionarDia(9)">9</div>
+        <div class="dia" (click)="selecionarDia(10)">10</div>
+        <div class="dia" (click)="selecionarDia(11)">11</div>
+        <div class="dia" (click)="selecionarDia(12)">12</div>
+        <div class="dia" (click)="selecionarDia(13)">13</div>
+        <div class="dia" (click)="selecionarDia(14)">14</div>
+        <div class="dia" (click)="selecionarDia(15)">15</div>
+        <div class="dia" (click)="selecionarDia(16)">16</div>
+        <div class="dia" (click)="selecionarDia(17)">17</div>
+        <div class="dia" (click)="selecionarDia(18)">18</div>
+        <div class="dia" (click)="selecionarDia(19)">19</div>
+        <div class="dia" (click)="selecionarDia(20)">20</div>
+        <div class="dia" (click)="selecionarDia(21)">21</div>
+        <div class="dia" (click)="selecionarDia(22)">22</div>
+        <div class="dia" (click)="selecionarDia(23)">23</div>
+        <div class="dia" (click)="selecionarDia(24)">24</div>
+        <div class="dia" (click)="selecionarDia(25)">25</div>
+        <div class="dia" (click)="selecionarDia(26)">26</div>
+        <div class="dia" (click)="selecionarDia(27)">27</div>
+        <div class="dia" (click)="selecionarDia(28)">28</div>
+        <div class="dia" (click)="selecionarDia(29)">29</div>
+        <div class="dia vazio"></div>
+        <div class="dia vazio"></div>
+      </div>
+    </div>
+    <div class="caderno">
+      <textarea id="textin" name="textoNota" placeholder="Escreva sua nota aqui..."></textarea>
+      <button id="btnSalv" (click)="salvarNota()">Salvar</button>
+    </div>
+    <div class="notas">
+      <h3>Notas Salvas</h3>
+      <ul>
+        <li *ngFor="let nota of notas">{{ nota.dia }}: {{ nota.texto }}</li>
+      </ul>
+    </div>
   </aside>
 </main>

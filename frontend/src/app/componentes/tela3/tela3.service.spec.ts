@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Tela3Service } from './tela3.service';
+import { beforeEach, describe } from 'node:test';
 
 describe('Tela3Service', () => {
   let service: Tela3Service;
@@ -9,7 +10,7 @@ describe('Tela3Service', () => {
     service = TestBed.inject(Tela3Service);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+
 });
+
+

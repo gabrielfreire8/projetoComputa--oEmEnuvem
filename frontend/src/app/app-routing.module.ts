@@ -11,7 +11,7 @@ import { Tela8Component } from './componentes/tela8/tela8.component';
 import { LoginComponent } from './componentes/login/login.component';
 
 
- export const routes: Routes = [
+  export const routes: Routes = [
   {
     path:"",
     redirectTo:'tela1',
@@ -49,10 +49,7 @@ import { LoginComponent } from './componentes/login/login.component';
     path:"tela8",
     component: Tela8Component
   },
-  {
-    path:"login",
-    component: LoginComponent
-  }
+
 ];
 
 @NgModule({
