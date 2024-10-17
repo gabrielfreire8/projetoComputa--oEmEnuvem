@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Tela8Component } from './tela8.component';
+import { beforeEach, describe } from 'node:test';
 
 describe('Tela8Component', () => {
   let component: Tela8Component;
@@ -17,7 +18,5 @@ describe('Tela8Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });

@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 import { CadastroService } from './cadastro.sevice';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-tela4',
   templateUrl: './tela4.component.html',
-  styleUrls: ['./tela4.component.css']
+  styleUrls: ['./tela4.component.css'],
+  standalone: true,
+  imports: [FormsModule] 
+
+
+
 })
 export class Tela4Component {
   usuario = {

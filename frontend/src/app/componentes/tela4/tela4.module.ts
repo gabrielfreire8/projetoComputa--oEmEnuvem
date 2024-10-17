@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tela6Service } from './tela6.service';
+
 
 @NgModule({
   declarations: [],
@@ -9,7 +9,6 @@ import { Tela6Service } from './tela6.service';
     CommonModule,
     FormsModule
   ],
-  providers: [Tela6Service],
-
+  exports: []
 })
-export class Tela6Module { }
+export class Tela4Module { }

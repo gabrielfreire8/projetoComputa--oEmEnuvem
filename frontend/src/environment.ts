@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,  // Define se está em modo de produção
-  apiUrl: 'http://localhost:3000',
+  production: false,  
+  apiUrl: '186.235.2.225',
 };

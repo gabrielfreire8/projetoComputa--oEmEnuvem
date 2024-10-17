@@ -24,11 +24,11 @@ export class Tela6Component implements OnInit {
 
   aprovarAtividade(atividade: any) {
     console.log(`Aprovada: ${atividade.nome}`);
-    // Aqui você pode chamar um serviço para atualizar o status da atividade
+
   }
 
   rejeitarAtividade(atividade: any) {
     console.log(`Rejeitada: ${atividade.nome}`);
-    // Aqui você pode chamar um serviço para remover ou atualizar a atividade
+
   }
 }
