@@ -7,7 +7,7 @@ import { environment } from '../../../../src/environment';
   providedIn: 'root'
 })
 export class Tela1Service {
-  private readonly API = environment.apiUrl;  
+  private readonly API = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

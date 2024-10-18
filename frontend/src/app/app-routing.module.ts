@@ -10,7 +10,7 @@ import { Tela5Component } from './componentes/tela5/tela5.component';
 import { Tela8Component } from './componentes/tela8/tela8.component';
 
 
-  export const routes: Routes = [
+export const routes: Routes = [
   {
     path:"",
     redirectTo:'tela1',
@@ -55,4 +55,6 @@ import { Tela8Component } from './componentes/tela8/tela8.component';
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+
+export class AppRoutingModule {}
