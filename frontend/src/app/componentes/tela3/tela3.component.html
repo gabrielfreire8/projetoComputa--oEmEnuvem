@@ -1,8 +1,7 @@
 <main>
   <section>
     <div id="presentUser">
-      <h1>Bem-vindo,</h1>
-      <span id="nomeUser">leticia</span>
+      <h1>Bem-vindo</h1>
     </div>
     <hr id="divisor-line">
     <img id="menuInic" src="../../../assets/imagens/menu.png" alt="">
@@ -73,11 +72,6 @@
       <textarea id="textin" name="textoNota" placeholder="Escreva sua nota aqui..."></textarea>
       <button id="btnSalv" (click)="salvarNota()">Salvar</button>
     </div>
-    <div class="notas">
-      <h3>Notas Salvas</h3>
-      <ul>
-        <li *ngFor="let nota of notas">{{ nota.dia }}: {{ nota.texto }}</li>
-      </ul>
-    </div>
+
   </aside>
 </main>

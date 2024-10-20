@@ -7,8 +7,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-tela8',
   templateUrl: './tela8.component.html',
   styleUrls: ['./tela8.component.css'],
-  standalone: true,
-  imports: [FormsModule]
+
 })
 export class Tela8Component {
   nomeCompleto: string = '';

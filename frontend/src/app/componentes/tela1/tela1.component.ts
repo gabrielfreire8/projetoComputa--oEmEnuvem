@@ -15,8 +15,8 @@ NgModule
   selector: 'app-tela1',
   templateUrl: './tela1.component.html',
   styleUrl: './tela1.component.css',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+
+
 })
 export class Tela1Component  {
 

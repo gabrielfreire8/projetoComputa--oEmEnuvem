@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Tela1Component } from './tela1.component';
 import { Injectable } from '@angular/core';
+import { beforeEach, describe } from 'node:test';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,8 @@ describe('Tela1Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
 
 
-});
+

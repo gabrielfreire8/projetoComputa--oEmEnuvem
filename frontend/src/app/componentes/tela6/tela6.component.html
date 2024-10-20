@@ -1,8 +1,8 @@
 <main>
   <section>
     <div id="presentUser">
-      <h1>Bem-vindo,</h1>
-      <span id="nomeUser">Leticia</span>
+      <h1>Bem-vindo</h1>
+
     </div>
     <hr id="divisor-line">
     <img id="menuInic" src="../../../assets/imagens/menu.png" alt="">
@@ -19,14 +19,14 @@
     </div>
     <p id="aproAtiv">Aprovar Atividade</p>
     <div id="caixaAside">
-      <div id="perAside" *ngFor="let atividade of atividades">
+      <div id="perAside" *ngFor="let atividade of atividades" class="atividade-container">
         <input class="perguntasAside" type="text" [value]="atividade.nome" readonly placeholder="Nome da Atividade:">
         <input class="perguntasAside" type="text" [value]="atividade.tipo" readonly placeholder="Tipo de Atividade:">
         <input class="perguntasAside" type="text" [value]="atividade.descricao" readonly placeholder="Descrição:">
         <input class="perguntasAside" type="text" [value]="atividade.data" readonly placeholder="Data:">
         <div id="mudar">
-          <button (click)="aprovarAtividade(atividade)"><img src="../../../assets/imagens/check.png" alt=""></button>
-          <button (click)="rejeitarAtividade(atividade)"><img src="../../../assets/imagens/close.png" alt=""></button>
+          <button id="btnCheck" (click)="aprovarAtividade(atividade)"><img src="../../../assets/imagens/check.png" alt=""></button>
+          <button id="btnClose" (click)="rejeitarAtividade(atividade)"><img src="../../../assets/imagens/close.png" alt=""></button>
         </div>
       </div>
     </div>

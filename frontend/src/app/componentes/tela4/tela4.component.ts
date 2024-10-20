@@ -7,8 +7,6 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-tela4',
   templateUrl: './tela4.component.html',
   styleUrls: ['./tela4.component.css'],
-  standalone: true,
-  imports: [FormsModule] 
 
 
 

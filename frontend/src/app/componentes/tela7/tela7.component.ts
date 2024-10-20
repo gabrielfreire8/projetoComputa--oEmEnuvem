@@ -8,8 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-tela7',
   templateUrl: './tela7.component.html',
   styleUrls: ['./tela7.component.css'],
-  standalone: true,
-  imports: [FormsModule,CommonModule]
+
 })
 export class Tela7Component {
   nomeAtividade: string = '';
