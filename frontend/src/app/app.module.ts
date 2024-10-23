@@ -1,4 +1,5 @@
-import { HttpClientModule } from "@angular/common/http";
+
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,7 @@ import { Tela4Component } from "./componentes/tela4/tela4.component";
 import { Tela5Component } from "./componentes/tela5/tela5.component";
 import { Tela6Component } from "./componentes/tela6/tela6.component";
 import { Tela7Component } from "./componentes/tela7/tela7.component";
+import { HttpClientModule } from '@angular/common/http';
 
 
 

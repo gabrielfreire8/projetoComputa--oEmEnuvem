@@ -69,9 +69,8 @@
       </div>
     </div>
     <div class="caderno">
-      <textarea id="textin" name="textoNota" placeholder="Escreva sua nota aqui..."></textarea>
+      <textarea id="textin" name="textoNota" placeholder="Escreva sua nota aqui..." [(ngModel)]="nota.texto"></textarea>
       <button id="btnSalv" (click)="salvarNota()">Salvar</button>
     </div>
-
   </aside>
 </main>
