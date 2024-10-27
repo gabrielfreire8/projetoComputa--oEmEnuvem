@@ -1,4 +1,5 @@
 export interface Usuario {
+                matricula: number;
                 cpf: string;
                 dataNascimento: string;
                 genero: string;
@@ -11,5 +12,6 @@ export interface Usuario {
                 nome: string;
                 sobrenome: string;
                 senha: string;
+
 
 }

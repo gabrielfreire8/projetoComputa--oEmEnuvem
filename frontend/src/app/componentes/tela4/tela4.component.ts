@@ -34,6 +34,40 @@ throw new Error('Method not implemented.');
 
     constructor(private usuarioService: UsuarioService) {}
 
+
+  ngOnInit() {
+    // Carregar as informações do usuário ao iniciar o componente
+    this.carregarUsuario();
+  }
+
+  carregarUsuario() {
+    this.usuarioService.getUsuarioLogado().subscribe(
+      (response: Usuario) => {
+        this.usuario.nome = response.nome;
+        this.usuario.sobrenome = response.sobrenome;
+        this.usuario.email = response.email;
+        this.usuario.senha = ''; // Por segurança, não exibe a senha ao carregar
+        this.usuario.cpf = response.cpf;
+        this.usuario.dataNascimento = response.dataNascimento;
+        this.usuario.telefone = response.telefone;
+        this.usuario.cep = response.cep;
+        this.usuario.logradouro = response.logradouro;
+        this.usuario.bairro = response.bairro;
+        this.usuario.cidade = response.cidade;
+
+        console.log('Dados do usuário carregados com sucesso:', this.usuario);
+      },
+    
+
+
+      (error: any) => {
+        console.error('Erro ao carregar usuário', error);
+      }
+    );
+  }
+
+
+
     cadastrar(form: NgForm) {
       if (form.valid) {
         console.log('Tentando cadastrar usuário:', this.usuario); // Log dos dados do usuário
@@ -57,10 +91,10 @@ throw new Error('Method not implemented.');
     buscarCEP() {
       if (this.usuario.cep) {
         this.usuarioService.buscarCEP(this.usuario.cep).subscribe(
-          (dados: { logradouro: string; bairro: string; cidade: string;}) => {
+          (dados: { logradouro: string; bairro: string; localidade: string;}) => {
             this.usuario.logradouro = dados.logradouro || "";
             this.usuario.bairro = dados.bairro || "";
-            this.usuario.cidade = dados.cidade || "";
+            this.usuario.cidade = dados.localidade || "";
 
             console.log('Dados do CEP:', dados); // Log dos dados recebidos
             console.log('Endereço completo:', this.usuario.logradouro, this.usuario.bairro, this.usuario.cidade);
@@ -72,6 +106,7 @@ throw new Error('Method not implemented.');
       }
     }
   }
+
 
 
 

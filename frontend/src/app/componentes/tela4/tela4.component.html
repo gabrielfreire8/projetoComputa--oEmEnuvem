@@ -60,7 +60,7 @@
         <h1>Dados Complementares</h1>
         <div class="cepForm">
           <label id="mCep" for="cep">CEP</label>
-          <input type="number" placeholder="Somente Números" id="cep" [(ngModel)]="usuario.cep" name="cep" required>
+          <input type="number" placeholder="Somente Números" id="cep" [(ngModel)]="usuario.cep" (blur)="buscarCEP()"  name="cep" required>
           <button type="button" (click)="buscarCEP()">BUSCAR CEP</button>
         </div>
         <a>Não sei meu CEP</a>
@@ -71,7 +71,7 @@
           </div>
           <div class="numero">
             <label id="num1" for="numberHouse">Número</label>
-            <input type="number" placeholder="Somente Números " id="numberHouse" [(ngModel)]="usuario.telefone" name="numero" required>
+            <input type="number" placeholder="Somente Números " id="numberHouse"  name="numero" required>
           </div>
         </div>
 

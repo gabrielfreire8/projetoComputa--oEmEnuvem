@@ -7,6 +7,12 @@ import { Usuario } from './usuario.model';
   providedIn: 'root'
 })
 export class UsuarioService {
+  inativarUsuario(id: any) {
+    throw new Error('Method not implemented.');
+  }
+  atualizarUsuario(usuario: Usuario) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = '186.235.2.225/atividades/aprovacoes'; // api
   constructor(private http: HttpClient) {}
 
@@ -17,6 +23,10 @@ export class UsuarioService {
   buscarCEP(cep: string): Observable<any> {
     return this.http.get(`https://viacep.com.br/ws/13710000/json/`);
 
+  }
+
+  getUsuarioLogado(): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.apiUrl}/me`); // Endpoint para obter o usuário logado
   }
 
 
