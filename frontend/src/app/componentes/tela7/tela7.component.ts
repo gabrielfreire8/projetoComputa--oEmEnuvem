@@ -23,21 +23,19 @@ export class Tela7Component implements OnInit {
   }
 
   ngOnInit() {
+    console.log('notaService:', this.notaService); // Verificar se notaService está definido
+    console.log('atividades$:', this.notaService.atividades$); // Verificar se atividades$ está definido
+
     this.calcularDiasDoMes();
 
-    // Carregar as atividades ao iniciar o componente
-    this.notaService.atividades$().subscribe(
-      (atividades: any[]) => {
+    // Assinar o BehaviorSubject para atualizações em tempo real
+    this.notaService.atividades$.subscribe({
+      next: (atividades: any[]) => {
         this.atividades = atividades;
       },
-      (error: any) => {
+      error: (error: any) => {
         console.error('Erro ao obter atividades:', error);
       }
-    );
-
-    // Assinar o BehaviorSubject para atualizações em tempo real
-    this.notaService.atividades$.subscribe((atividades: any[]) => {
-      this.atividades = atividades;
     });
   }
 
@@ -58,30 +56,22 @@ export class Tela7Component implements OnInit {
         this.descricaoAtividade,
         this.nomeAtividade,
         this.tipoAtividade
-      ).subscribe(
-        () => {
+      ).subscribe({
+        next: () => {
           alert('Atividade enviada para análise!');
           this.nomeAtividade = '';
           this.tipoAtividade = '';
           this.descricaoAtividade = '';
           this.diaSelecionado = null;
         },
-        (error) => {
+        error: (error) => {
           console.error('Erro ao salvar atividade:', error);
           alert('Erro ao enviar a atividade. Tente novamente mais tarde.');
         }
-      );
+      });
     } else {
       alert('Por favor, preencha todos os campos e selecione um dia.');
     }
-  }
-
-  aprovarAtividade(atividade: any) {
-    this.notaService.aprovarAtividade(atividade.id);
-  }
-
-  rejeitarAtividade(atividade: any) {
-    this.notaService.rejeitarAtividade(atividade.id);
   }
 
   mudarMes(delta: number) {

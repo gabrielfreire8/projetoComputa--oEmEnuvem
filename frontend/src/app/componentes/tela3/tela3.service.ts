@@ -19,7 +19,7 @@ interface Nota {
 export class Tela3Service {
   private notas: Nota[] = [];
   private notasSubject = new BehaviorSubject<Nota[]>(this.notas);
-  private apiUrl = 'http://localhost:3000/api/notas';
+  private apiUrl = 'http://186.235.2.225/atividades';
 
   constructor(private http: HttpClient) {}
 

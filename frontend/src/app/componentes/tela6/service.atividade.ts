@@ -13,7 +13,7 @@ export class AtividadeService {
   private atividadesSubject = new BehaviorSubject<Atividade[]>(this.atividades);
   public atividades$ = this.atividadesSubject.asObservable();
 
-  private apiUrl = 'http://localhost:3000/api/atividades'; // URL da sua API
+  private apiUrl = 'http://186.235.2.225/atividades'; // URL da sua API
 
   constructor(private http: HttpClient) {
     this.obterAtividades(); // Carrega as atividades ao inicializar o serviço

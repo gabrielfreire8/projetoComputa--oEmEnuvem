@@ -1,4 +1,3 @@
-// nota.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -19,7 +18,7 @@ export class NotaService {
   private atividadesSubject = new BehaviorSubject<Atividade[]>(this.atividades);
   public atividades$ = this.atividadesSubject.asObservable(); // Expondo o Observable
 
-  private apiUrl = 'http://localhost:3000/api/atividades'; // URL da sua API
+  private apiUrl = 'http://186.235.2.225/atividade/criar'; // URL da sua API
 
   constructor(private http: HttpClient) {
     this.obterAtividades(); // Chama o método para obter atividades ao inicializar
@@ -41,6 +40,8 @@ export class NotaService {
         this.atividades = atividades;
         this.atividadesSubject.next(this.atividades); // Atualiza o BehaviorSubject
       })
-    ).subscribe(); // Assina para que a requisição seja feita
+    ).subscribe({
+      error: (err) => console.error('Erro ao obter atividades:', err),
+    });
   }
 }

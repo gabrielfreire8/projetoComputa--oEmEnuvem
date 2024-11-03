@@ -18,6 +18,6 @@ export class NotaService {
 
   salvarNota(dia: number, texto: string, nomeAtividade: string, tipoAtividade: string): Observable<any> {
     const atividade = { dia, texto };
-    return this.http.post<any>('http://localhost:3000/api/atividades', atividade);
+    return this.http.post<any>('186.235.2.225/atividade/criar', atividade);
   }
 }

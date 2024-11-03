@@ -12,7 +12,7 @@ export class Tela1Component {
 
   constructor(private tela1Service: Tela1Service, private router: Router) {}
 
-  // Método para enviar o login
+
   submit() {
     this.tela1Service.login(this.loginData.email, this.loginData.password).subscribe(
       (response) => {
