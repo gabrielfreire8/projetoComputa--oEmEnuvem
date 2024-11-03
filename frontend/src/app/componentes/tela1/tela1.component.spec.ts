@@ -1,15 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Tela1Component } from './tela1.component';
-import { Injectable } from '@angular/core';
 import { beforeEach, describe } from 'node:test';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class Tela1{
-  constructor(){}
-}
-
 
 describe('Tela1Component', () => {
   let component: Tela1Component;
@@ -17,17 +8,14 @@ describe('Tela1Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Tela1Component]
+      declarations: [ Tela1Component ] // Declare o componente que está sendo testado
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(Tela1Component);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = fixture.componentInstance; // Cria uma instância do componente
+    fixture.detectChanges(); // Inicializa o componente
   });
 
-  });
 
-
-
-
+});

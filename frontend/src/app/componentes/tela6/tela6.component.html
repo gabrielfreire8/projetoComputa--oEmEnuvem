@@ -2,10 +2,9 @@
   <section>
     <div id="presentUser">
       <h1>Bem-vindo</h1>
-
     </div>
     <hr id="divisor-line">
-    <img id="menuInic" src="../../../assets/imagens/menu.png" alt="">
+    <img id="menuInic" src="../../../assets/imagens/menu.png" alt="Menu">
     <div id="buttons">
       <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
       <button routerLink="/tela3" class="button" id="bt_calen">Calendário</button>
@@ -20,13 +19,17 @@
     <p id="aproAtiv">Aprovar Atividade</p>
     <div id="caixaAside">
       <div id="perAside" *ngFor="let atividade of atividades" class="atividade-container">
-        <input class="perguntasAside" type="text" [value]="atividade.nome" readonly placeholder="Nome da Atividade:">
-        <input class="perguntasAside" type="text" [value]="atividade.tipo" readonly placeholder="Tipo de Atividade:">
-        <input class="perguntasAside" type="text" [value]="atividade.descricao" readonly placeholder="Descrição:">
-        <input class="perguntasAside" type="text" [value]="atividade.data" readonly placeholder="Data:">
+        <p class="perguntasAside">Nome da Atividade: {{ atividade.nome }}</p>
+        <p class="perguntasAside">Tipo de Atividade: {{ atividade.tipo }}</p>
+        <p class="perguntasAside">Descrição: {{ atividade.descricao }}</p>
+        <p class="perguntasAside">Data: {{ atividade.data }}</p>
         <div id="mudar">
-          <button id="btnCheck" (click)="aprovarAtividade(atividade)"><img src="../../../assets/imagens/check.png" alt=""></button>
-          <button id="btnClose" (click)="rejeitarAtividade(atividade)"><img src="../../../assets/imagens/close.png" alt=""></button>
+          <button id="btnCheck" (click)="aprovarAtividade(atividade)">
+            <img src="../../../assets/imagens/check.png" alt="Aprovar">
+          </button>
+          <button id="btnClose" (click)="rejeitarAtividade(atividade)">
+            <img src="../../../assets/imagens/close.png" alt="Rejeitar">
+          </button>
         </div>
       </div>
     </div>

@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../../src/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class Tela1Service {
-  private readonly API = environment.apiUrl;
+  private apiUrl = '';
 
   constructor(private http: HttpClient) {}
 
+
   login(email: string, password: string): Observable<any> {
-    const loginData = { email, password };
-    return this.http.post(`${this.API}/186.235.2.225`, loginData);
+    return this.http.post<any>(`${this.apiUrl}/login/`, { email, password });
+  }
+
+
+  recuperarSenha(email: string): Observable<any> {
+    // Implemente o método de recuperação de senha, caso exista no backend
+    return this.http.post(`${this.apiUrl}/recuperar-senha/`, { email });
   }
 }

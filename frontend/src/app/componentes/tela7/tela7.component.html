@@ -24,9 +24,9 @@
     </div>
     <div class="calendario">
       <div class="header">
-        <button id="anterior" (click)="navegarMes(-1)"><</button>
-        <h2 id="mesesCalen">{{ mesAtual }}</h2>
-        <button id="sucessor" (click)="navegarMes(1)">></button>
+        <button id="anterior" (click)="mudarMes(-1)"><</button>
+        <h2 id="mesesCalen">{{ mes }} {{ ano }}</h2>
+        <button id="sucessor" (click)="mudarMes(1)">></button>
       </div>
       <div class="dias">
         <div class="dia"><strong>Dom</strong></div>
@@ -38,11 +38,19 @@
         <div class="dia"><strong>Sáb</strong></div>
       </div>
       <div class="semanas">
-        <div *ngFor="let dia of diasCalen" class="dia" (click)="selecionarDia(dia)">{{ dia }}</div>
+        <div *ngFor="let dia of dias; let i = index" class="dia"
+              [ngClass]="{'selecionado': dia === diaSelecionado}"
+              (click)="selecionarDia(dia)">
+          {{ dia }}
+        </div>
+
       </div>
       <div id="als">
         <button class="button" id="bt_als" (click)="enviarAtividade()">Enviar para Análise</button>
       </div>
-    </div>
+      </div>
+
+
+
   </aside>
 </main>

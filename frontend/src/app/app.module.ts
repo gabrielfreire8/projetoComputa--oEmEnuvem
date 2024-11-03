@@ -17,6 +17,7 @@ import { Tela5Component } from "./componentes/tela5/tela5.component";
 import { Tela6Component } from "./componentes/tela6/tela6.component";
 import { Tela7Component } from "./componentes/tela7/tela7.component";
 import { HttpClientModule } from '@angular/common/http';
+import { ForgetPassComponent } from './componentes/forget-pass/forget-pass.component';
 
 
 
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     Tela5Component,
     Tela6Component,
     Tela7Component,
-    Tela8Component
+    Tela8Component,
+    ForgetPassComponent
 
 
   ],

@@ -1,9 +1,16 @@
+// tela3.service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 interface Nota {
   dia: number;
   texto: string;
+  data?: string;
+  descricao?: string;
+  tipo?: string;
+  nome?: string;
 }
 
 @Injectable({
@@ -12,15 +19,26 @@ interface Nota {
 export class Tela3Service {
   private notas: Nota[] = [];
   private notasSubject = new BehaviorSubject<Nota[]>(this.notas);
+  private apiUrl = 'http://localhost:3000/api/notas';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  salvarNota(dia: number, texto: string): void {
-    this.notas.push({ dia, texto });
-    this.notasSubject.next(this.notas);
+  salvarNota(dia: number, texto: string): Observable<Nota> {
+    const novaNota = { dia, texto };
+    return this.http.post<Nota>(this.apiUrl, novaNota).pipe(
+      tap((notaSalva) => {
+        this.notas.push(notaSalva);
+        this.notasSubject.next(this.notas);
+      })
+    );
   }
 
-  obterNotas() {
-    return this.notasSubject.asObservable();
+  obterNotas(): Observable<Nota[]> {
+    return this.http.get<Nota[]>(this.apiUrl).pipe(
+      tap((notas) => {
+        this.notas = notas;
+        this.notasSubject.next(this.notas);
+      })
+    );
   }
 }

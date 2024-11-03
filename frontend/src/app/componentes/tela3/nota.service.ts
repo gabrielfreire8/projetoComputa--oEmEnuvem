@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Nota } from './nota.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotaService {
-
-  private apiUrl = ''; // api
+  rejeitarAtividade(id: any) {
+    throw new Error('Method not implemented.');
+  }
+  aprovarAtividade(id: any) {
+    throw new Error('Method not implemented.');
+  }
+  atividades$: any;
 
   constructor(private http: HttpClient) {}
 
-  salvarNota(nota: Nota): Observable<any> {
-    return this.http.post<any>(this.apiUrl, nota);
+  salvarNota(dia: number, texto: string, nomeAtividade: string, tipoAtividade: string): Observable<any> {
+    const atividade = { dia, texto };
+    return this.http.post<any>('http://localhost:3000/api/atividades', atividade);
   }
 }

@@ -1,4 +1,8 @@
 export interface Nota {
-  data: string; // Representa a data da nota (dia selecionado)
-  texto: string; // Representa o texto da nota
+data: any;
+descricao: any;
+tipo: any;
+nome: any;
+  dia: number;
+  texto: string;
 }

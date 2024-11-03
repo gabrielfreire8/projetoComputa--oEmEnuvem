@@ -1,7 +1,8 @@
+import { Usuario } from './../tela4/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../tela4/usuario.service';
-import { Usuario } from '../tela4/usuario.model';
+
 
 @Component({
   selector: 'app-tela5',
@@ -9,7 +10,7 @@ import { Usuario } from '../tela4/usuario.model';
   styleUrls: ['./tela5.component.css']
 })
 export class Tela5Component implements OnInit {
-  usuario: Usuario = new Usuario(); // Inicialização do objeto usuario
+  usuario: Usuario = {} as Usuario; // Inicialização do objeto usuario
 
   constructor(private usuarioService: UsuarioService) {}
 

@@ -18,9 +18,9 @@
     </div>
     <div class="calendario">
       <div class="header">
-        <button id="anterior"><</button>
-        <h2 id="mesesCalen">Outubro</h2>
-        <button id="sucessor">></button>
+        <button id="anterior" (click)="mudarMes(-1)"><</button>
+        <h2 id="mesesCalen">{{ mes }} {{ ano }}</h2>
+        <button id="sucessor" (click)="mudarMes(1)">></button>
       </div>
       <div class="dias">
         <div class="dia"><strong>Dom</strong></div>
@@ -32,40 +32,11 @@
         <div class="dia"><strong>Sáb</strong></div>
       </div>
       <div class="semanas">
-        <div class="dia vazio"></div>
-        <div class="dia vazio"></div>
-        <div class="dia vazio"></div>
-        <div class="dia" (click)="selecionarDia(1)">1</div>
-        <div class="dia" (click)="selecionarDia(2)">2</div>
-        <div class="dia" (click)="selecionarDia(3)">3</div>
-        <div class="dia" (click)="selecionarDia(4)">4</div>
-        <div class="dia" (click)="selecionarDia(5)">5</div>
-        <div class="dia" (click)="selecionarDia(6)">6</div>
-        <div class="dia" (click)="selecionarDia(7)">7</div>
-        <div class="dia" (click)="selecionarDia(8)">8</div>
-        <div class="dia" (click)="selecionarDia(9)">9</div>
-        <div class="dia" (click)="selecionarDia(10)">10</div>
-        <div class="dia" (click)="selecionarDia(11)">11</div>
-        <div class="dia" (click)="selecionarDia(12)">12</div>
-        <div class="dia" (click)="selecionarDia(13)">13</div>
-        <div class="dia" (click)="selecionarDia(14)">14</div>
-        <div class="dia" (click)="selecionarDia(15)">15</div>
-        <div class="dia" (click)="selecionarDia(16)">16</div>
-        <div class="dia" (click)="selecionarDia(17)">17</div>
-        <div class="dia" (click)="selecionarDia(18)">18</div>
-        <div class="dia" (click)="selecionarDia(19)">19</div>
-        <div class="dia" (click)="selecionarDia(20)">20</div>
-        <div class="dia" (click)="selecionarDia(21)">21</div>
-        <div class="dia" (click)="selecionarDia(22)">22</div>
-        <div class="dia" (click)="selecionarDia(23)">23</div>
-        <div class="dia" (click)="selecionarDia(24)">24</div>
-        <div class="dia" (click)="selecionarDia(25)">25</div>
-        <div class="dia" (click)="selecionarDia(26)">26</div>
-        <div class="dia" (click)="selecionarDia(27)">27</div>
-        <div class="dia" (click)="selecionarDia(28)">28</div>
-        <div class="dia" (click)="selecionarDia(29)">29</div>
-        <div class="dia vazio"></div>
-        <div class="dia vazio"></div>
+        <div *ngFor="let dia of dias; let i = index" class="dia"
+              [ngClass]="{'selecionado': dia === diaSelecionado}"
+              (click)="selecionarDia(dia)">
+          {{ dia }}
+        </div>
       </div>
     </div>
     <div class="caderno">

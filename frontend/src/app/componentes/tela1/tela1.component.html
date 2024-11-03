@@ -1,11 +1,10 @@
 <body>
   <div class="caixa">
     <aside>
-      <img src="../../../assets/imagens/logo_pjb.png">
-      <img src="../../../assets/imagens/Gestão_PJB_Pag1.png">
+      <img src="../../../assets/imagens/logo_pjb.png" />
+      <img src="../../../assets/imagens/Gestão_PJB_Pag1.png" />
 
       <form (ngSubmit)="submit()" #loginForm="ngForm">
-
         <label for="email">Email:</label>
         <input
           type="text"
@@ -25,10 +24,11 @@
           required
         />
 
-        <button id="btnSub" type="submit" [disabled]="!loginForm.valid">Login</button>
+        <button  id="btnSub" type="submit" [disabled]="!loginForm.valid">Login</button>
+        <button type="button" routerLink="/forget-pass" id="esqueciSenha" >Esqueci minha senha</button>
       </form>
 
-      <img src="../../../assets/imagens/avante.png" alt="">
+      <img src="../../../assets/imagens/avante.png" alt="" />
     </aside>
   </div>
 </body>

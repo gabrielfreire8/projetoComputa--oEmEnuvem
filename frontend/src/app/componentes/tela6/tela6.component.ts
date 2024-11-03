@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Tela6Service } from './tela6.service';
 
+import { Atividade } from './atividade.model'; // Certifique-se de que esse caminho está correto
+import { AtividadeService } from './service.atividade';
 
 @Component({
   selector: 'app-tela6',
@@ -8,27 +9,28 @@ import { Tela6Service } from './tela6.service';
   styleUrls: ['./tela6.component.css']
 })
 export class Tela6Component implements OnInit {
-  atividades: { nome: string; tipo: string; descricao: string; data: string }[] = [];
+  atividades: Atividade[] = []; // Lista de atividades
 
-  constructor(private tela6Service: Tela6Service) {}
+  constructor(private atividadeService: AtividadeService) {}
 
-  ngOnInit(): void {
-    this.obterAtividades();
-  }
-
-  obterAtividades() {
-    this.tela6Service.getAtividades().subscribe((atividades: { nome: string; tipo: string; descricao: string; data: string; }[]) => {
-      this.atividades = atividades;
+  ngOnInit() {
+    // Inscreva-se para obter as atividades
+    this.atividadeService.atividades$.subscribe((atividades: Atividade[]) => {
+      this.atividades = atividades; // Atualiza a lista de atividades
     });
   }
 
-  aprovarAtividade(atividade: any) {
-    console.log(`Aprovada: ${atividade.nome}`);
-
+  aprovarAtividade(atividade: Atividade) {
+    console.log('Aprovada:', atividade);
+    this.atividadeService.aprovarAtividade(atividade).subscribe(() => {
+      this.atividades = this.atividades.filter(a => a !== atividade); // Remove a atividade da lista
+    });
   }
 
-  rejeitarAtividade(atividade: any) {
-    console.log(`Rejeitada: ${atividade.nome}`);
-
+  rejeitarAtividade(atividade: Atividade) {
+    console.log('Rejeitada:', atividade);
+    this.atividadeService.rejeitarAtividade(atividade).subscribe(() => {
+      this.atividades = this.atividades.filter(a => a !== atividade); // Remove a atividade da lista
+    });
   }
 }

@@ -1,4 +1,6 @@
 export interface Usuario {
+complemento: any;
+numero: any;
                 matricula: number;
                 cpf: string;
                 dataNascimento: string;

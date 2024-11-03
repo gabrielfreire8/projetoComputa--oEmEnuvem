@@ -9,6 +9,24 @@ body{
   cursor: pointer;
 }
 
+#forgeth2{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #43665A;
+}
+#btnVolt{
+
+  align-items: center;
+    position: fixed;
+    left: 59%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    background-color: #44A685;
+    border-radius: 15px;
+    border-color: #ffffff;
+    bottom: 90%;
+}
 
 .caixa{
     display: flex;
@@ -18,11 +36,6 @@ body{
     overflow-y: hidden;
     height: 100vh;
     justify-items: center;
-}
-
-#esqueciSenha{
-  margin-top: 20px;
-
 }
 
 aside{

@@ -7,13 +7,8 @@ import { Usuario } from './usuario.model';
   providedIn: 'root'
 })
 export class UsuarioService {
-  inativarUsuario(id: any) {
-    throw new Error('Method not implemented.');
-  }
-  atualizarUsuario(usuario: Usuario) {
-    throw new Error('Method not implemented.');
-  }
-  private apiUrl = '186.235.2.225/atividades/aprovacoes'; // api
+  private apiUrl = 'http://186.235.2.225/atividades/aprovacoes'; // URL da API
+
   constructor(private http: HttpClient) {}
 
   cadastrarUsuario(usuario: Usuario): Observable<any> {
@@ -21,13 +16,18 @@ export class UsuarioService {
   }
 
   buscarCEP(cep: string): Observable<any> {
-    return this.http.get(`https://viacep.com.br/ws/13710000/json/`);
-
+    return this.http.get(`https://viacep.com.br/ws/${cep}/json/`);
   }
 
   getUsuarioLogado(): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.apiUrl}/me`); // Endpoint para obter o usuário logado
   }
 
+  atualizarUsuario(usuario: Usuario): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/usuarios/${usuario.matricula}`, usuario); // Ajuste o endpoint conforme necessário
+  }
 
+  inativarUsuario(matricula: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/usuarios/${matricula}`); // Ajuste o endpoint conforme necessário
+  }
 }

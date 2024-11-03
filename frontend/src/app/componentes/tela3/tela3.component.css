@@ -228,6 +228,25 @@
   left: 90%;
   bottom: 5%;
 }
+.dia {
+  width: 60px; /* Ajuste conforme necessário */
+  height: 60px; /* Ajuste conforme necessário */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Para uma transição suave */
+}
+
+.dia:hover {
+  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+
+.selecionado {
+  background-color: #007bff; /* Cor de fundo do dia selecionado */
+  color: white; /* Cor do texto do dia selecionado */
+  border-radius: 50%; /* Para arredondar os cantos */
+}
 
 
 

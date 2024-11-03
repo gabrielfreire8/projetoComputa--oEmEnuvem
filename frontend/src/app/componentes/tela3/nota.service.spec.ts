@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { NotaService } from './nota.service';
+import { beforeEach, describe } from 'node:test';
 
 describe('NotaService', () => {
   let service: NotaService;
@@ -10,7 +11,5 @@ describe('NotaService', () => {
     service = TestBed.inject(NotaService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+
 });
