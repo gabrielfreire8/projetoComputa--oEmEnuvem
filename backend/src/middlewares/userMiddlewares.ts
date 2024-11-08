@@ -1,6 +1,6 @@
-
+const jwt = require("jsonwebtoken")
 import userModel from "../models/userModel";
-const jwt = require('jsonwebtoken');
+
 
 class userMidd{
     async checkDeletedUser(req:any, res:any, next:any){
@@ -15,27 +15,41 @@ class userMidd{
     
 
     async authAdmin(req: any, res: any, next: any){
-        const jwt = require("jsonwebtoken")
-        const token = req.cookies.jwt
-        if (token) {
-            jwt.verify(token, process.env.JWT_SIGN_KEYN, (err: any, decodedToken: any) => {
-            if (err) {
-                return res.status(401).json({ message: "Not authorized" })
-            } else {
-                if (decodedToken.administrator !== true) {
-                return res.status(401).json({ message: "Not authorized" })
-                } else {
-                next()
-                }
-            }
-            })
+        const list: any = {};
+        const cookieHeader = req.headers?.cookie;
+        if (!cookieHeader) return list;
+
+        cookieHeader.split(`;`).forEach(function(cookie: any): any {
+            let [ name, ...rest] = cookie.split(`=`);
+            name = name?.trim();
+            if (!name) return;
+            const value = rest.join(`=`).trim();
+            if (!value) return;
+            list[name] = decodeURIComponent(value);
+        });
+    let token = `${list.jwt}`
+    if(!token){ return res
+        .status(401)
+        .json({ message: "Not authorized, token not available" })}
+    if (token) {
+        jwt.verify(`${token}`, process.env.JWT_SIGN_KEY, (err: any, decodedToken: any) => {
+        if (err) {
+            console.log(err)
+            return res.status(401).json({ message: "Not authorized" })
         } else {
-            return res
-            .status(401)
-            .json({ message: "Not authorized, token not available" })
+            if (decodedToken.administrator !== true) {
+            return res.status(401).json({ message: "Not authorized" })
+            } else {
+            next()
+            }
         }
-    };
+        })
+    } else {
+        
+    }
 };
+};
+    
 
 
 export default new userMidd;

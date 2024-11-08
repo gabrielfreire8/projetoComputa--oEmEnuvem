@@ -10,13 +10,14 @@ class Atividades{
             await knex.insert({nome: atividadeObj.nome,
                 tipo: atividadeObj.tipo,
                 descricao: atividadeObj.descricao,
-                aprovada: 0,
-                dataRealizacao: atividadeObj.data
+                status: 0,
+                data: atividadeObj.data
             }).table('atividades');
             return {
                 status: true,
                 message: "Atividade cadastrada com sucesso"};
         }catch(error){
+            console.log(error)
             return {
                 status: false,
                 error}
@@ -47,7 +48,7 @@ class Atividades{
 
     async getPendentes(){
         try{
-            let atividades = await knex.select().where({aprovada: 0}).table('atividades');
+            let atividades = await knex.select().where({status: 0}).table('atividades');
             return {atividades}
         }catch(error){
             return {status: false,
@@ -58,7 +59,7 @@ class Atividades{
 
     async getAprovadas(){
         try{
-            let atividades = await knex.select().where({aprovada: 1}).table('atividades');
+            let atividades = await knex.select().where({status: 1}).table('atividades');
             return {atividades}
         }catch(error){
             return {status: false,
@@ -72,20 +73,23 @@ class Atividades{
         nome: string,
         tipo: string,
         descricao: string,
+        status: boolean,
         data:string}){
         try{
             let update = await knex.update({
                 nome: atividadeObj.nome,
                 tipo: atividadeObj.tipo,
                 descricao: atividadeObj.descricao,
-                aprovada: 0,
-                dataRealizacao: atividadeObj.data}).where({
+                status: atividadeObj.status,
+                data: atividadeObj.data}).where({
                 idatividades: atividadeObj.id
                 }).table('atividades');
                 console.log(update)
-            return {status: true,
-                    message: "Atividade atualizada com sucesso",
-                    update
+
+                if(update === 0){
+                    return {status: false,
+                    error: "Atividade inexistente"
+                }
             }
         }catch(error: any){
             return {status: false,

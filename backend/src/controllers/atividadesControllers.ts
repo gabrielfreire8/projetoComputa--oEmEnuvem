@@ -23,6 +23,7 @@ class AtividadesController{
     async getAll(req: any, res: any){
         try{
             let atividades = await atividadesModel.getAtividades();
+            console.log(atividades);
             if(atividades.status === false){
                 return res.status(409).json({
                     message: "Erro ao requisitar as atividades"
@@ -41,11 +42,11 @@ class AtividadesController{
     async getPendentes(req: any, res: any){
         try{
             let atividades = await atividadesModel.getPendentes();
-        if(atividades.status === false){
-            return res.status(404).json({
-                message: "Erro ao localizar atividades",
-                atividades
-            })
+            if(atividades.status === false){
+                return res.status(404).json({
+                    message: "Erro ao localizar atividades",
+                    atividades
+                })
         }
         return res.status(200).json(atividades);
 
@@ -84,17 +85,19 @@ class AtividadesController{
                 nome: string,
                 tipo: string
                 descricao: string,
+                status: boolean,
                 data: string
             } = {
                 id: req.params.id,
                 nome: req.body.nome,
                 tipo: req.body.tipo,
                 descricao: req.body.descricao,
+                status: req.body.status,
                 data: req.body.data
             }
-            let atividade = await atividadesModel.updateAtividade(atividadeObj)
-            if(atividade.status === false){
-                return res.status(400).json({atividade})
+            let atividade = await atividadesModel.updateAtividade(atividadeObj);
+            if(atividade!.status === false){
+                return res.status(404).json(atividade)
             }
             return res.status(200).json({atividade})
 

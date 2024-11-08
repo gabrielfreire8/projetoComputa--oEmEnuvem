@@ -2,15 +2,11 @@ import { knex } from "../data/connection"
 
 class AtividadesApprove{
     async new(Atividade:{
-        idAtividade: number,
-        idAprovador: number}){
+        idAtividade: number}){
             try{
-                let today = new Date().toISOString().slice(0,10)
                 let approve = await knex.insert({atividades_idatividades: Atividade.idAtividade,
-                    status: "Aprovado",
-                    aprovadoPor: Atividade.idAprovador,
-                    dataAprovacao: today
-                }).table('aprovacaoAtividades');
+                    status: 1
+                }).table('aprovacaoatividades');
                 return {status: true,
                         message: "Aprovacao inserida com sucesso",
                         approve
@@ -23,7 +19,7 @@ class AtividadesApprove{
         }
     async delete(id: number){
         try{
-            let aprovacao = await knex.delete().where({idaprovacaoAtividades: id}).table('aprovacaoAtividades');
+            let aprovacao = await knex.delete().where({atividades_idatividades: id}).table('aprovacaoatividades');
             if(aprovacao === 1){ return {
                 status: true,
                 message: "Apagado com sucesso"

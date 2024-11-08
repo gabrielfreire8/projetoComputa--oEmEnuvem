@@ -14,10 +14,10 @@ router.post('/user/', UserController.create);
 router.get('/user/:id', UserController.getById);
 router.put('/user/', UserController.updateUser);
 router.delete('/user/', userMiddlewares.checkDeletedUser, UserController.deleteUser);
-router.post('/login/', userMiddlewares.authAdmin, UserController.login);
+router.post('/login/', UserController.login);
 
 // Beneficiado
-router.post("/account/completeCad", benefMiddlewares.checkCpf, beneficiadoController.create);
+router.post("/beneficiados/completeCad", benefMiddlewares.checkCpf, beneficiadoController.create);
 router.get("/account/:id", beneficiadoController.getBeneficiado);
 router.put("/account/:id", benefMiddlewares.checkCpf, beneficiadoController.updateBeneficiado);
 router.delete("/account/delete/", benefMiddlewares.checkDeletedBenef ,beneficiadoController.deleteBeneficiado);
@@ -28,10 +28,10 @@ router.get("/atividades/", atividadesControllers.getAll);
 router.get("/atividades/pendentes", atividadesControllers.getPendentes);
 router.get("/atividades/aprovadas", atividadesControllers.getAprovadas);
 router.put('/atividade/:id', atividadesControllers.updateAtividade);
-router.delete("/atividade/apagar/:id", atividadesControllers.deleteAtividade);
+router.delete("/atividade/apagar/:id", userMiddlewares.authAdmin, atividadesControllers.deleteAtividade);
 
 // Aprovacao Atividade
-router.post("/atividades/aprovar/", aprovacaoMiddlewares.checkAtividade, aprovacaoAtividadesControllers.new);
+router.post("/atividades/aprovar/", userMiddlewares.authAdmin, aprovacaoMiddlewares.checkAtividade, aprovacaoAtividadesControllers.new);
 router.delete("/atividades/aprovadas/delete", aprovacaoAtividadesControllers.delete);
 router.get("/atividades/aprovacoes/", aprovacaoAtividadesControllers.getAll);
 

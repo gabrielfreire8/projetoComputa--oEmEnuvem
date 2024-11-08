@@ -9,7 +9,7 @@ class User{
                 usuario: usuario,
                 senha: pass,
                 funcao: funcao
-            }).table('usuarios')
+            }).table('usuario')
             return newUser;
         }catch(error: any){
             if(error.code === "ER_DUP_ENTRY"){
@@ -21,8 +21,8 @@ class User{
 
     async getByID(id: number){
         try{
-            let user = await knex.select(['nome','usuario', 'senha', 'funcao']).where({idusuarios: id}).table('usuarios');
-            return user;
+            let user = await knex.select(['nome','usuario', 'senha', 'funcao']).where({idusuario: id}).table('usuario');
+            return user[0];
         }catch(error){
             return 404;
         };
@@ -30,10 +30,10 @@ class User{
 
     async getByUser(userPar: string){
         try{
-            let user = await knex.select(['idusuarios', 'nome', 'usuario', 'senha','funcao']).where({usuario: userPar}).table('usuarios');
+            let user = await knex.select(['idusuario', 'nome', 'usuario', 'senha','funcao']).where({usuario: userPar}).table('usuario');
             return user.length > 0
             ? {status: true, values: user[0]}
-            : {status: undefined, message: "E-mail não encontrado."}
+            : {status: false, message: "Usuario não encontrado."}
         }catch(error){
             return error;
         }
@@ -43,16 +43,19 @@ class User{
 
     async updateUser(id:number, nome:string, usuario:string, hash:string, funcao:string){
         try{
-            await knex.update({nome: nome, usuario: usuario, senha: hash, funcao: funcao}).where({idusuarios: id}).table('usuarios');
+            let user = await knex.update({nome: nome, usuario: usuario, senha: hash, funcao: funcao}).where({idusuario: id}).table('usuario');
+            console.log(user)
             return 200;
         }catch(error: any){
+            console.log(error);
             return 404
         }
     };
 
     async deleteUser(id:number){
         try{
-            let excludeUser = knex.delete().where({idusuarios: id}).table("usuarios");
+            let excludeUser = knex.delete().where({idusuario: id}).table("usuario");
+            console.log(excludeUser)
             return excludeUser;
         }catch(error:any){
             return error

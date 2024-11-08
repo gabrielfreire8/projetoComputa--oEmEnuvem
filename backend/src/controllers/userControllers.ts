@@ -45,7 +45,7 @@ class UserController{
     async getById(req:any, res:any){
         try{
             let { id } = req.params;
-            let user = await User.getByID(id) ;
+            let user = await User.getByID(id);
             return res.status(200).json(user[0]);
         }
         catch(error){
@@ -69,9 +69,9 @@ class UserController{
                         message: "Error"
                     })
                 }
-                await User.updateUser(id ,nome, usuario, hash, funcao)
+                await User.updateUser(id ,nome, usuario, hash, funcao);
                 let user = await User.getByID(id);
-                if(user > 0){
+                if(user){
                     return res.status(200).json({
                     message: `Usuário ID: ${req.body.id} Atualizado com sucesso`,
                     user
@@ -98,7 +98,7 @@ class UserController{
         try{
             let user = req.body;
             let userHash = await User.getByID(user.id);
-            await bcrypt.compare(user.senha, userHash[0].senha, (error:string, result:boolean) => {
+            await bcrypt.compare(user.senha, userHash.senha, (error:string, result:boolean) => {
                 if(error){
                     return 400
                 };
@@ -114,6 +114,7 @@ class UserController{
                 };
             });
         }catch(error){
+            console.log(error)
             return res.status(404).json({
                 message: "Usuário não pode ser excluido"
             });
@@ -124,36 +125,28 @@ class UserController{
         try{
             let {usuario, password} = req.body;
             let user: any = await User.getByUser(usuario);
-            if(user.values.funcao === "administrador"){
-                await bcrypt.compare(password, user.values.senha, async (error: string, result:boolean) => {
-                    if(error){ 
-                        return res.status(400).json({
-                        message: "Error! Valores não conferem!"
-                    })}else if(!result){
-                        return res.status(401).json({
-                            Message: "Error! Invalid Credentials"
-                        });
-                    };
-                    let token = await jwt.sign({id: user.values.idusuarios,
-                        nome: user.values.nome,
-                        administrador: true
-                    }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
-                    return res.status(200).json({auth: true, 
-                        token: {token}});
-                });
-            };
             if(user.status === true){
             await bcrypt.compare(password, user.values.senha, async (error: string, result:boolean) => {
                 if(error){ 
                     return res.status(400).json({
                     message: "Error! Valores não conferem!"
-                })}else if(!result){
+                })}else if(result === false){
                     return res.status(401).json({
                         Message: "Error! Invalid Credentials"
                     });
                 };
-                let token = await jwt.sign({id: user.values.idusuarios,
-                    nome: user.values.nome
+                if(user.values.funcao === "administrador"){
+                    let token = await jwt.sign({id: user.values.idusuario,
+                        nome: user.values.nome,
+                        administrator: true
+                    }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
+                    return res.status(200).json({auth: true, 
+                        token: {token}});
+                }
+                
+                let token = await jwt.sign({id: user.values.idusuario,
+                    nome: user.values.nome,
+                    funcao: user.values.funcao
                 }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
                 return res.status(200).json({auth: true, 
                     token: {token}});
