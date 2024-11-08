@@ -4,24 +4,28 @@ import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../tela4/usuario.service';
 
 
+
 @Component({
   selector: 'app-tela5',
   templateUrl: './tela5.component.html',
   styleUrls: ['./tela5.component.css']
 })
 export class Tela5Component implements OnInit {
-  usuario: Usuario = {} as Usuario; // Inicialização do objeto usuario
+  usuario: Usuario = {} as Usuario;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(
+    private usuarioService: UsuarioService,
+
+  ) {}
 
   ngOnInit(): void {
-    this.carregarUsuario(); // Carregar os dados do usuário ao iniciar
+    this.carregarUsuario(); 
   }
 
   carregarUsuario() {
     this.usuarioService.getUsuarioLogado().subscribe(
       (response: Usuario) => {
-        this.usuario = response; // Preencher os dados do usuário no formulário
+        this.usuario = response; 
       },
       (error) => {
         console.error('Erro ao carregar usuário', error);
@@ -29,7 +33,6 @@ export class Tela5Component implements OnInit {
     );
   }
 
-  // Método para atualizar o usuário
   alterarDados(form: NgForm) {
     if (form.valid) {
       this.usuarioService.atualizarUsuario(this.usuario).subscribe(
@@ -46,7 +49,6 @@ export class Tela5Component implements OnInit {
     }
   }
 
-  // Método para inativar o usuário
   inativarParticipante() {
     if (this.usuario.matricula) {
       this.usuarioService.inativarUsuario(this.usuario.matricula).subscribe(
@@ -62,4 +64,6 @@ export class Tela5Component implements OnInit {
       alert('Usuário não encontrado.');
     }
   }
+
+
 }

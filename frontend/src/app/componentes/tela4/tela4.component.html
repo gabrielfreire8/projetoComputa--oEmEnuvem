@@ -25,21 +25,15 @@
         <div class="nomeCompleto">
           <label id="firstNome" for="firstName">Nome Completo</label>
           <div class="nomeCompletoInput">
-            <input type="text" placeholder="Primeiro Nome" id="firstName" [(ngModel)]="usuario.nome" name="primeiroNome" required>
-            <input type="text" placeholder="Sobrenome" id="secondName" [(ngModel)]="usuario.sobrenome" name="sobrenome" required>
+            <input type="text" placeholder="Nome" id="firstName" [(ngModel)]="usuario.nome" name="primeiroNome" required>
+            
           </div>
         </div>
         <div class="emailForm">
           <label id="emailTitle" for="email">Email</label>
           <input type="email" placeholder="Digite seu email" id="email" [(ngModel)]="usuario.email" name="email" required>
         </div>
-        <div class="senhaForm">
-          <label id="Senhas1" for="password">Senha</label>
-          <div class="senhaContainer">
-            <input type="password" placeholder="Digite sua senha" id="senha" [(ngModel)]="usuario.senha" name="senha" required>
-            <input type="password" placeholder="Confirme sua senha" id="confirmPassword" [(ngModel)]="usuario.senha" name="confirmPassword" required>
-          </div>
-        </div>
+
         <div class="cpfDateContainer">
           <div class="cpfContainer">
             <label id="ColCpf" for="cpf">CPF</label>
@@ -61,9 +55,8 @@
         <div class="cepForm">
           <label id="mCep" for="cep">CEP</label>
           <input type="number" placeholder="Somente Números" id="cep" [(ngModel)]="usuario.cep" (blur)="buscarCEP()"  name="cep" required>
-          <button type="button" (click)="buscarCEP()">BUSCAR CEP</button>
+          <button id="btnCep" type="button" (click)="buscarCEP()">BUSCAR CEP</button>
         </div>
-        <a>Não sei meu CEP</a>
         <div class="numeroLogradouro">
           <div class="logradouro">
             <label id="ruaPd" for="logradouro">Rua</label>

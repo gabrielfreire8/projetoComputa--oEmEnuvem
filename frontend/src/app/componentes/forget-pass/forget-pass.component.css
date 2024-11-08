@@ -109,7 +109,6 @@ input:hover{
 
 
 
-
 #forgetPass{
   background-color: transparent;
   border: none;
@@ -131,4 +130,65 @@ input:hover{
   text-align: center;
   border-bottom: 1px solid #43665A;
 }
+
+#btnenv{
+  color: #fff;
+  background-color: #44A685;
+  border: 5px 5px 5px rgb(0, 0, 0, 0.3);
+  box-shadow: none;
+  border-radius: 20px;
+  height: 50px;
+  width: 100px;
+
+}
+
+@media (min-width:576px){
+
+  #btnVolt{
+    display: flex;
+    left: 13%;
+  }
+
+  
+} 
+
+
+@media (min-width:800px){
+
+  #btnVolt{
+    display: flex;
+    left: 59%;
+  }
+
+  
+} 
+@media (min-width:1200px){
+
+  #btnVolt{
+    display: flex;
+    left: 63%;
+  }
+}
+@media (min-width:1250px){
+
+  #btnVolt{
+    display: flex;
+    left: 67%;
+  }
+}
+
+@media  (min-width: 1920px){
+  #btnVolt{
+    left: 69%;
+  }}
+
+
+
+
+
+
+
+
+  
+
 

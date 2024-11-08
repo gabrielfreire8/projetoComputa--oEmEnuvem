@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
 import { PresencaService } from './presenca.service';
-import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-tela8',
   templateUrl: './tela8.component.html',
   styleUrls: ['./tela8.component.css'],
-
 })
 export class Tela8Component {
   nomeCompleto: string = '';
@@ -23,9 +20,17 @@ export class Tela8Component {
         matricula: this.matricula,
         data: this.dataPresenca
       };
-      this.presencaService.salvarPresenca(presenca);
-      this.limparCampos();
-      console.log('Presença salva:', presenca);
+      
+      this.presencaService.salvarPresenca(presenca).subscribe(
+        (response) => {
+          console.log('Presença salva com sucesso:', response);
+          this.limparCampos();
+        },
+        (error) => {
+          console.error('Erro ao salvar presença:', error);
+          alert('Ocorreu um erro ao salvar a presença.');
+        }
+      );
     } else {
       alert('Por favor, preencha todos os campos.');
     }

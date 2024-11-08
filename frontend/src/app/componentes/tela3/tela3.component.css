@@ -84,7 +84,7 @@
 
 
 
-    .button{
+  .button{
         margin-bottom: 10px;
         width: 200px;
         height: 60px;
@@ -229,23 +229,36 @@
   bottom: 5%;
 }
 .dia {
-  width: 60px; /* Ajuste conforme necessário */
-  height: 60px; /* Ajuste conforme necessário */
+  width: 60px; 
+  height: 60px; 
   display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* Para uma transição suave */
+  transition: background-color 0.3s, color 0.3s; 
 }
 
 .dia:hover {
-  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+  background-color: #e0e0e0; 
 }
 
 .selecionado {
-  background-color: #007bff; /* Cor de fundo do dia selecionado */
-  color: white; /* Cor do texto do dia selecionado */
-  border-radius: 50%; /* Para arredondar os cantos */
+  background-color: #007bff; 
+  color: white; 
+  border-radius: 50%; 
+}
+
+#btnSalv{
+  width: 70px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  left: 85%;
+  font-size: 16px;
+  color: #fff;
+  background-color: #44A685;
+  border-radius: 15px;
 }
 
 

@@ -63,6 +63,13 @@ section{
   right: 20vh;
 }
 
+.celularForm{
+  justify-content: center;
+  align-items: center;
+
+}
+
+
 
 
 aside{
@@ -72,6 +79,7 @@ aside{
   background-color: #ffffff;
   width: 100vw;
   height: 100vh;
+  
   }
 
 #buttons{

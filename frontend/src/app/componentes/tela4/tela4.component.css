@@ -72,6 +72,7 @@ aside{
   background-color: #ffffff;
   width: 100vw;
   height: 100vh;
+
   }
 
 #buttons{
@@ -158,6 +159,7 @@ label{
   color: #44A685;
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
 
  }
 .enviarFormulario {
@@ -189,7 +191,12 @@ label{
   justify-content: center;
   align-items: center;
 
+
  }
+
+
+
+
  #dadosLogin h1 {
   grid-column: 1 / 3;
   justify-self: center;
@@ -451,6 +458,24 @@ input:focus {
   padding: 10px;
   justify-content: center;
 
+
+}
+
+#btnCep{
+  display: flex;
+  justify-content: center;
+
+}
+.cepForm{
+  justify-content: center;
+  align-items: center;
+}
+
+#cep{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-items: center;
 }
 
 #cep1{
