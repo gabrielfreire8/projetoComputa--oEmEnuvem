@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SenhaService {
-  private apiUrl = 'http://seu-backend-api.com'; // Altere para a URL real da sua API
-
+  private apiUrl = ''; 
   constructor(private http: HttpClient) {}
 
   solicitarRecuperacao(email: string): Observable<any> {

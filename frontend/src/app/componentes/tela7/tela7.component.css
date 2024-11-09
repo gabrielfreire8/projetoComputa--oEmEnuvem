@@ -129,7 +129,7 @@ aside{
   position:absolute;
   flex-direction: column;
   width: 60vw;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   padding-bottom: 12%;
@@ -189,22 +189,23 @@ aside{
     color: #43665A;
     justify-content: center;
     font-weight: bold;
+
 }
 
 #nomeAtiv{
   font-size: large;
   border-color: #007BFF;
   border-width: 0cap;
-  height: 50px;
+  height: 35px;
   width: 500px;
   border-bottom: 2px solid #43665A;
 }
 
-#topoAtiv{
+#tipoAtiv{
   font-size: large;
   border-color: #007BFF;
   border-width: 0cap;
-  height: 50px;
+  height: 35px;
   width: 500px;
   border-bottom: 2px solid #43665A;
 }
@@ -213,7 +214,7 @@ aside{
   font-size: large;
   border-color: #007BFF;
   border-width: 0cap;
-  height: 50px;
+  height: 35px;
   width: 500px;
   border-bottom: 2px solid #43665A;
 }
@@ -221,23 +222,23 @@ aside{
 
 
 .dia {
-  width: 60px; /* Ajuste conforme necessário */
-  height: 60px; /* Ajuste conforme necessário */
+  width: 60px;
+  height: 60px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* Para uma transição suave */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .dia:hover {
-  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+  background-color: #e0e0e0;
 }
 
 .selecionado {
-  background-color: #007bff; /* Cor de fundo do dia selecionado */
-  color: white; /* Cor do texto do dia selecionado */
-  border-radius: 50%; /* Para arredondar os cantos */
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
 }
 
 #bt_als{
@@ -257,13 +258,13 @@ aside{
   }
 
   .perguntasAside{
-    bottom: 220px;
+    bottom: 237px;
     right: 150px;
   }
   #nomeAtiv{
     width: 400px;
   }
-  #topoAtiv{
+  #tipoAtiv{
     width: 400px;
   }
   #descAtiv{
@@ -306,28 +307,29 @@ aside{
 
 
   .dia {
-    width: 60px; /* Ajuste conforme necessário */
-    height: 60px; /* Ajuste conforme necessário */
+    width: 60px;
+    height: 60px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Para uma transição suave */
+    transition: background-color 0.3s, color 0.3s;
   }
 
   .dia:hover {
-    background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+    background-color: #e0e0e0;
   }
 
   .selecionado {
-    background-color: #007bff; /* Cor de fundo do dia selecionado */
-    color: white; /* Cor do texto do dia selecionado */
-    border-radius: 50%; /* Para arredondar os cantos */
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
   }
 
   #bt_als{
-    position: fixed;
+    display: flex;
     left: 30%;
+
   }
 
 

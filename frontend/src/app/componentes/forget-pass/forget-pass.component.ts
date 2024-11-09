@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { SenhaService } from './senha.service'; // Altere para o caminho correto do seu serviço
+import { SenhaService } from './senha.service';
 
 @Component({
   selector: 'app-forget-pass',
@@ -11,7 +11,7 @@ export class ForgetPassComponent {
   email: string = '';
   novaSenha: string = '';
   mensagem: string = '';
-  tokenRecebido: boolean = false; // Controla a exibição do formulário de redefinição de senha
+  tokenRecebido: boolean = false;
 
   constructor(private senhaService: SenhaService) {}
 
@@ -20,7 +20,7 @@ export class ForgetPassComponent {
       this.senhaService.solicitarRecuperacao(this.email).subscribe(
         response => {
           this.mensagem = 'Instruções de recuperação de senha foram enviadas para o seu e-mail.';
-          this.tokenRecebido = true; // Se o e-mail foi enviado, mostramos o campo para redefinir a senha
+          this.tokenRecebido = true; 
           console.log('Resposta da API:', response);
         },
         error => {

@@ -159,7 +159,7 @@ label{
   color: #44A685;
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
+  border-radius: 50px;
 
  }
 .enviarFormulario {
@@ -207,6 +207,7 @@ label{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
  }
  .nomeCompleto label {
   width: 100%;
@@ -334,12 +335,9 @@ label{
   display: flex;
   flex-direction: column;
   width: 50%;
+
   }
-  .estado {
-  display: flex;
-  flex-direction: column;
-  width: 50%
-}
+
 .estado select {
   height: 100%;
   border: none;
@@ -362,22 +360,14 @@ input:focus {
 #firstName{
   display: flex;
   gap: 3px;
-  width: 300px;
+  width: 400px;
   font-weight:  bold;
   text-align: left;
   padding: 10px;
+  border-radius: 20px;
 }
 
-#secondName{
-  display: flex;
-  font-weight: bold;
-  gap: 3px;
-  width: 300px;
-  justify-content: left;
-  font-weight:  bold;
-  padding: 15px;
-  text-align: left;
-}
+
 
 #title{
   color: #01526F;
@@ -392,6 +382,7 @@ input:focus {
   font-weight: bold;
   padding: 10px;
   text-align: left;
+  border-radius: 20px;
 
 }
 
@@ -429,21 +420,26 @@ input:focus {
 #date{
   padding: 10px;
   white-space: nowrap;
+  border-radius: 20px;
 }
 #cpf{
   display: flex;
   font-weight: bold;
   padding: 5px;
   height: 50px;
+  border-radius: 20px;
 }
 #NumCelu{
   padding: 7px;
 }
+
 #numberPhone{
   display: flex;
   font-weight: bold;
   padding: 2px;
-  height: 30px;
+  height: 40px;
+  width: 200px;
+  border-radius: 20px;
 }
 #dadosComplementares{
   width: 45%;
@@ -476,6 +472,8 @@ input:focus {
   display: flex;
   align-items: center;
   justify-items: center;
+  border-radius: 20px;
+  height: 25px;
 }
 
 #cep1{
@@ -489,19 +487,23 @@ input:focus {
 
 
 
+
 }
 
 #ruaPd{
   padding: 10px;
+
 }
 #Rua1{
   display: flex;
+
 }
 #logradouro{
   display: flex;
   font-weight: bold;
   padding: 1px;
   height: 30px;
+  border-radius: 20px;
 }
 #num1{
   padding: 10px;
@@ -519,17 +521,18 @@ input:focus {
   font-weight: bold;
   padding: 1px;
   height: 30px;
+  border-radius: 20px;
 }
 #seila{
   padding: 2px;
+
 }
-#complemento{
-  font-weight: bold;
-  display: flex;
-}
+
 #bairro{
   font-weight: bold;
   display: flex;
+  border-radius: 20px;
+  height: 30px;
 }
 #mcidade{
   display: flex;
@@ -537,18 +540,20 @@ input:focus {
 #cidade{
   font-weight: bold;
   display: flex;
+  border-radius: 20px;
+  height: 30px;
 }
 #cestado{
   display: flex;
+    border-radius: 20px;
 }
 
 #ruaa{
   padding: 10px;
+
 }
 
-#estadoo{
-  padding: 10px;
-}
+
 
 
 @media (max-width:1280px){
@@ -643,7 +648,7 @@ input:focus {
 
 
   #dadosComplementares{
-    height: 140vh;
+    height: 90vh;
     width: 70%;
 
   }

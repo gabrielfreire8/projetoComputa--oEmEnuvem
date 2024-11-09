@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 import { RouterModule } from '@angular/router';
 import { Tela8Component } from "./componentes/tela8/tela8.component";
 import { Tela1Component } from "./componentes/tela1/tela1.component";
@@ -44,7 +45,7 @@ import { ForgetPassComponent } from './componentes/forget-pass/forget-pass.compo
     HttpClientModule,
     RouterModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -79,7 +79,7 @@ aside{
   background-color: #ffffff;
   width: 100vw;
   height: 100vh;
-  
+
   }
 
 #buttons{
@@ -190,12 +190,14 @@ label{
   margin-bottom: 20px;
 
  }
- #dadosLogin {
+  #dadosLogin {
   width: 40%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
+
+
 
  }
  #dadosLogin h1 {
@@ -203,19 +205,22 @@ label{
   justify-self: center;
   color: #01526F;
  }
- .nomeCompleto {
+  .nomeCompleto {
   grid-column: 1 / 3;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
  }
  .nomeCompleto label {
   width: 100%;
+
  }
  .nomeCompletoInput {
   width: 100%;
   display: flex;
   justify-content: space-between;
+
 
 
  }
@@ -363,22 +368,16 @@ input:focus {
 #firstName{
   display: flex;
   gap: 3px;
-  width: 300px;
+  width: 400px;
   font-weight:  bold;
   text-align: left;
   padding: 10px;
+  border-radius: 20px;
+
+
 }
 
-#secondName{
-  display: flex;
-  font-weight: bold;
-  gap: 3px;
-  width: 300px;
-  justify-content: left;
-  font-weight:  bold;
-  padding: 15px;
-  text-align: left;
-}
+
 
 #title{
   color: #01526F;
@@ -393,6 +392,7 @@ input:focus {
   font-weight: bold;
   padding: 10px;
   text-align: left;
+  border-radius: 20px;
 
 }
 
@@ -405,14 +405,7 @@ input:focus {
   padding: 10px;
 }
 
-#senha{
-  display: flex;
-  font-weight: bold;
-  padding: 5px;
-  text-align: center;
-  justify-content: center;
-  justify-items: center;
-}
+
 #confirmPassword{
   display: flex;
   font-weight: bold;
@@ -430,12 +423,14 @@ input:focus {
 #date{
   padding: 10px;
   white-space: nowrap;
+  border-radius: 20px;
 }
 #cpf{
   display: flex;
   font-weight: bold;
   padding: 5px;
   height: 50px;
+  border-radius: 20px;
 }
 #NumCelu{
   padding: 7px;
@@ -444,7 +439,8 @@ input:focus {
   display: flex;
   font-weight: bold;
   padding: 2px;
-  height: 30px;
+  height: 40px;
+  border-radius: 20px;
 }
 #dadosComplementares{
   width: 45%;
@@ -458,11 +454,15 @@ input:focus {
   display: flex;
   padding: 10px;
   justify-content: center;
+  border-radius: 20px;
 
 }
 
-#cep1{
- font-weight: bold;
+
+
+#cep{
+  border-radius: 20px;
+  height: 25px;
 }
 #cep2{
 
@@ -485,6 +485,7 @@ input:focus {
   font-weight: bold;
   padding: 1px;
   height: 30px;
+  border-radius: 20px;
 }
 #num1{
   padding: 10px;
@@ -502,6 +503,7 @@ input:focus {
   font-weight: bold;
   padding: 1px;
   height: 30px;
+  border-radius: 20px;
 }
 #seila{
   padding: 2px;
@@ -509,10 +511,14 @@ input:focus {
 #complemento{
   font-weight: bold;
   display: flex;
+  border-radius: 20px;
 }
 #bairro{
   font-weight: bold;
   display: flex;
+  border-radius: 20px;
+  height: 30px;
+
 }
 #mcidade{
   display: flex;
@@ -520,6 +526,8 @@ input:focus {
 #cidade{
   font-weight: bold;
   display: flex;
+  border-radius: 20px;
+  height: 30px;
 }
 #cestado{
   display: flex;
@@ -529,8 +537,11 @@ input:focus {
   padding: 10px;
 }
 
-#estadoo{
-  padding: 10px;
+
+#inatPartic{
+  position: fixed;
+  bottom: 10px;
+
 }
 
 
@@ -628,6 +639,11 @@ input:focus {
   #dadosComplementares{
     height: 140vh;
     width: 70%;
+
+  }
+
+  #enviarFormulario{
+    width: 50px;
 
   }
 

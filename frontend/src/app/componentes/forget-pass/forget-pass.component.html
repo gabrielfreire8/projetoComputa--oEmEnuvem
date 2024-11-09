@@ -18,11 +18,11 @@
               required
             />
           </div>
-          <button type="submit" id="btnenv">Enviar</button > <!-- Botão para solicitar recuperação -->
+          <button type="submit" id="btnenv">Enviar</button >
         </form>
         <p *ngIf="mensagem">{{ mensagem }}</p>
 
-        <div *ngIf="tokenRecebido"> <!-- Se o token foi recebido -->
+        <div *ngIf="tokenRecebido">
           <h2 id="resetPasswordTitle">Redefinir Senha</h2>
           <form (ngSubmit)="resetarSenha()">
             <div>
@@ -35,7 +35,7 @@
                 required
               />
             </div>
-            <button type="submit">Redefinir Senha</button> <!-- Botão para redefinir a senha -->
+            <button type="submit">Redefinir Senha</button> 
           </form>
         </div>
       </div>
