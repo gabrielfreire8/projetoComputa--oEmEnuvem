@@ -62,22 +62,18 @@ class BeneficiadoControllers {
     async deleteBeneficiado(req: any, res:any){
         try{
             let user = req.body;
-            let userHash = await userModel.getByID(user.id);
-            await bcrypt.compare(user.senha, userHash[0].senha, (error:any, result: boolean) => {
-                if(error){
-                    return 400
-                };
-                if(result === true){
-                    Beneficiado.deleteBeneficiado(user.id);
-                    return res.status(200).json({
-                        message: "Dados apagados com sucesso"
-                    })
-                }else{
-                    return res.status(400).json({
-                        message: "Error! As informações do usuário não conferem"
+            let deleted = await Beneficiado.deleteBeneficiado(user.id);
+            if(deleted === 1){
+                return res.status(200).json({
+                    message: "Dados apagados com sucesso"
                     });
-                };
-            });
+            }else{
+                return res.status(400).json({
+                    message: "Beneficiado não pode ser apagado",
+                    status: deleted
+                })
+            }
+            
         }catch(error){
             return res.status(404).json({
                 message: "Usuário não pode ser excluido"
