@@ -20,6 +20,7 @@ class UserController{
                             message : "Usuário já cadastrado"
                         })
                     }
+                
                     if(user === 404){
                         return res.status(200).json({
                             message : "Erro no cadastro"
