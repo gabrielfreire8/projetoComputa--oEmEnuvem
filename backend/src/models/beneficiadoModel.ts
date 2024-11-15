@@ -1,49 +1,32 @@
+import { StringMappingType } from 'typescript';
 import {knex} from '../data/connection';
 
 class Beneficiados{
     async new(beneficiado: {
-        idUsuarios: number,
+        nome: string,
         cpf: string,
         dataNascimento: string,
-        genero: string,
-        cidade: string,
-        logradouro: string,
-        bairro: string,
-        cep: string,
         telefone: string,
         email: string,
-        condicoesMed: string,
-        alergias: string,
-        restricoes: string,
-        necEspeciais: string,
-        responsavelNome: string,
-        responsavelCelular: string,
-        responsavelEmprego: string,
-        observacoes: string,
-        imagemPerfil: string
+        cep: string,
+        rua: string,
+        numero: number,
+        bairro: string,
+        cidade: string
     }){
         try{
                 await knex.insert({
-                    idUsuarios: beneficiado.idUsuarios,
+                    nome: beneficiado.nome,
                     cpf: beneficiado.cpf,
                     dataNascimento: beneficiado.dataNascimento,
-                    genero: beneficiado.genero,
-                    cidade: beneficiado.cidade,
-                    logradouro: beneficiado.logradouro,
-                    bairro: beneficiado.bairro,
-                    cep: beneficiado.cep,
                     telefone: beneficiado.telefone,
                     email: beneficiado.email,
-                    condicoesMed: beneficiado.condicoesMed,
-                    alergias: beneficiado.alergias,
-                    restricoes: beneficiado.restricoes,
-                    necEspeciais: beneficiado.necEspeciais,
-                    responsavelNome: beneficiado.responsavelNome,
-                    responsavelCelular: beneficiado.responsavelCelular,
-                    responsavelEmprego: beneficiado.responsavelEmprego,
-                    observacoes: beneficiado.observacoes,
-                    imagemPerfil: beneficiado.imagemPerfil
-                }).table('beneficiado');
+                    cep: beneficiado.cep,
+                    enderecoRua: beneficiado.rua,
+                    enderecoNumero: beneficiado.numero,
+                    enderecoBairro: beneficiado.bairro,
+                    cidade: beneficiado.cidade
+                }).table('participantes');
                 return 200;    
         }catch(error){
             console.log(error)
@@ -55,7 +38,7 @@ class Beneficiados{
 
     async getCpf(cpf: string){
         try{
-            let user = await knex.select(['email']).where({cpf: cpf}).table('beneficiado');
+            let user = await knex.select(['email']).where({cpf: cpf}).table('participantes');
             if(user.length === 0){
                 return 404;
             }else{
@@ -69,7 +52,7 @@ class Beneficiados{
 
     async getBeneficiadoById(id: number){
         try{
-            let user = await knex.select('*').where({idUsuarios: id}).table('beneficiado')
+            let user = await knex.select('*').where({idparticipantes: id}).table('participantes')
             return user
         }catch(error){
             return 404}
@@ -78,26 +61,17 @@ class Beneficiados{
     async updateBeneficado(id: number, beneficiado: any){
         try{
             let user = await knex.update({
-                    cpf: beneficiado.cpf,
-                    dataNascimento: beneficiado.dataNascimento,
-                    genero: beneficiado.genero,
-                    cidade: beneficiado.cidade,
-                    logradouro: beneficiado.logradouro,
-                    bairro: beneficiado.bairro,
-                    cep: beneficiado.cep,
-                    telefone: beneficiado.telefone,
-                    email: beneficiado.email,
-                    condicoesMed: beneficiado.condicoesMed,
-                    alergias: beneficiado.alergias,
-                    restricoes: beneficiado.restricoes,
-                    necEspeciais: beneficiado.necEspeciais,
-                    responsavelNome: beneficiado.responsavelNome,
-                    responsavelCelular: beneficiado.responsavelCelular,
-                    responsavelEmprego: beneficiado.responsavelEmprego,
-                    observacoes: beneficiado.observacoes,
-                    imagemPerfil: beneficiado.imagemPerfil,
-                    idUsuarios: beneficiado.idUsuario
-            }).where({idBeneficiados: id}).table('beneficiado');
+                nome: beneficiado.nome,
+                cpf: beneficiado.cpf,
+                dataNascimento: beneficiado.dataNascimento,
+                telefone: beneficiado.telefone,
+                email: beneficiado.email,
+                cep: beneficiado.cep,
+                enderecoRua: beneficiado.rua,
+                enderecoNumero: beneficiado.numero,
+                enderecoBairro: beneficiado.bairro,
+                cidade: beneficiado.cidade
+            }).where({idparticipantes: id}).table('participantes');
             return user;
         }catch(error){
             return 404;
@@ -106,7 +80,7 @@ class Beneficiados{
 
     async deleteBeneficiado(id:number){
         try{
-            let excludeUser = await knex.delete().where({idUsuarios: id}).table('beneficiado')
+            let excludeUser = await knex.delete().where({idparticipantes: id}).table('participantes')
             return excludeUser;
         }catch(error){return error};
     };

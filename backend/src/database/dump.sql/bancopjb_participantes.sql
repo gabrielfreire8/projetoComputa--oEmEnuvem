@@ -1,0 +1,37 @@
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: bancopjb
+-- ------------------------------------------------------
+-- Server version	9.0.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Dumping data for table `participantes`
+--
+
+LOCK TABLES `participantes` WRITE;
+/*!40000 ALTER TABLE `participantes` DISABLE KEYS */;
+INSERT INTO `participantes` VALUES (2,'Marcos Roberto','74493779691','1969-10-27','35999070274','marcos@gmail.com','37780000','Rui Barbosa',225,'Centro','Caldas'),(3,'Lucas Marques','78478813063','1969-09-27','35999070274','luquinhas@gmail.com','37780000','Rui Barbosa',215,'Centro','Caldas'),(4,'Thayna Bittencourt','69196933054','1969-09-27','35999070274','thay123@gmail.com','37780000','Rod BR 459',70,'Zona Rural','Caldas'),(5,'Madre Tereza','47135494016','1989-09-27','35999070274','madrecaucuta@gmail.com','37780000','Rua das Flores',15,'Jardim Bela Vista','Caldas'),(6,'Ana Ferreira Lopes','28534981078','2004-05-13','35999070274','anaferreira@gmail.com','37780000','Rua Treze de Maio',13,'Centro','Caldas');
+/*!40000 ALTER TABLE `participantes` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-11-11 20:47:18
