@@ -1,58 +1,69 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './componentes/login/login.component';
+import { MenuInicialComponent } from './componentes/menuInicial/menuInicial.component';
+import { CalendarioAtivComponent } from './componentes/calendarioAtiv/calendarioAtiv.component';
 
-import { Tela1Component } from './componentes/tela1/tela1.component';
-import { Tela2Component } from './componentes/tela2/tela2.component';
-import { Tela3Component } from './componentes/tela3/tela3.component';
-import { Tela7Component } from './componentes/tela7/tela7.component';
-import { Tela6Component } from './componentes/tela6/tela6.component';
-import { Tela4Component } from './componentes/tela4/tela4.component';
-import { Tela5Component } from './componentes/tela5/tela5.component';
-import { Tela8Component } from './componentes/tela8/tela8.component';
+import { CriaAtivComponent } from './componentes/criaAtiv/criaAtiv.component';
+import { CadastroUserComponent } from './componentes/cadastroUser/cadastroUser.component';
+import { AprovaAtivComponent } from './componentes/aprovaAtiv/aprovaAtiv.component';
+
+
 import { ForgetPassComponent } from './componentes/forget-pass/forget-pass.component';
+
+import { PresencaListComponent } from './componentes/presencaList/presencaList.component';
+import { PerfilUserComponent } from './componentes/perfilUser/perfilUser.component';
+
+
+
+
+
 
 
 export const routes: Routes = [
   {
     path:"",
-    redirectTo:'tela1',
+    redirectTo:'login',
     pathMatch:'full'
   },
   {
-    path:"tela1",
-    component: Tela1Component
+    path:"login",
+    component: LoginComponent
   },
   {
-    path:"tela2",
-    component: Tela2Component
+    path:"menuInicial",
+    component: MenuInicialComponent
   },
   {
-    path:"tela3",
-    component: Tela3Component
+    path:"calendarioAtiv",
+    component: CalendarioAtivComponent
   },
   {
-    path:"tela7",
-    component: Tela7Component
+    path:"perfilUser",
+    component: PerfilUserComponent
   },
   {
-    path:"tela6",
-    component: Tela6Component
+    path:"criaAtiv",
+    component: CriaAtivComponent
   },
   {
-    path:"tela4",
-    component: Tela4Component
+    path:"cadastroUser",
+    component: CadastroUserComponent
   },
   {
-    path:"tela5",
-    component: Tela5Component
+    path:"aprovaAtiv",
+    component: AprovaAtivComponent
   },
   {
-    path:"tela8",
-    component: Tela8Component
+    path:"presencaList",
+    component: PresencaListComponent
   },
-  { path: 'forget-pass',
+  {
+    path: "ForgetPass",
     component: ForgetPassComponent
-  },
+  }
+
 
 ];
 

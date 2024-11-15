@@ -1,38 +1,40 @@
+import { CalendarioAtivComponent } from './componentes/calendarioAtiv/calendarioAtiv.component';
 
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
 import { RouterModule } from '@angular/router';
-import { Tela8Component } from "./componentes/tela8/tela8.component";
-import { Tela1Component } from "./componentes/tela1/tela1.component";
-import { Tela2Component } from "./componentes/tela2/tela2.component";
-import { Tela3Component } from "./componentes/tela3/tela3.component";
-import { Tela4Component } from "./componentes/tela4/tela4.component";
-import { Tela5Component } from "./componentes/tela5/tela5.component";
-import { Tela6Component } from "./componentes/tela6/tela6.component";
-import { Tela7Component } from "./componentes/tela7/tela7.component";
+
 import { HttpClientModule } from '@angular/common/http';
+
+import { AprovaAtivComponent } from './componentes/aprovaAtiv/aprovaAtiv.component';
+import { CadastroUserComponent } from './componentes/cadastroUser/cadastroUser.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { MenuInicialComponent } from './componentes/menuInicial/menuInicial.component';
+
+import { PresencaListComponent } from './componentes/presencaList/presencaList.component';
 import { ForgetPassComponent } from './componentes/forget-pass/forget-pass.component';
+import { PerfilUserComponent } from './componentes/perfilUser/perfilUser.component';
+import { CriaAtivComponent } from './componentes/criaAtiv/criaAtiv.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    Tela1Component,
-    Tela2Component,
-    Tela3Component,
-    Tela4Component,
-    Tela5Component,
-    Tela6Component,
-    Tela7Component,
-    Tela8Component,
+    AprovaAtivComponent,
+    CadastroUserComponent,
+    CalendarioAtivComponent,
+    CriaAtivComponent,
+    LoginComponent,
+    MenuInicialComponent,
+    PerfilUserComponent,
+    PresencaListComponent,
     ForgetPassComponent
 
 
@@ -45,7 +47,7 @@ import { ForgetPassComponent } from './componentes/forget-pass/forget-pass.compo
     HttpClientModule,
     RouterModule
   ],
-  providers: [CookieService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

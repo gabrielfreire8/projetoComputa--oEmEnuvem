@@ -1,0 +1,263 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+main{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: #01526F;
+
+}
+#buttons{
+  margin-top: 20%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#divisor-line{
+  width: 80%;
+  border: 1.5px solid #fff;
+
+}
+#btnVolt{
+
+  align-items: center;
+    position: fixed;
+    left: 25%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    background-color: #44A685;
+    border-radius: 15px;
+    border-color: #ffffff;
+    bottom: 90%;
+}
+
+section{
+  display:grid;
+  flex-direction: column;
+  width: 27vw;
+  height: 100vh;
+  place-items: center;
+  background-color: #01526F;
+  box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
+  gap: 10px;
+}
+
+
+
+
+#presentUser h1{
+  color: #fff;
+}
+#presentUser span{
+  color: #fff;
+}
+#presentUser{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.button{
+  color: #fff;
+  background-color: #44A685;
+  border-radius: 15px;
+  border-color: #ffffff;
+  box-shadow: none;
+
+}
+
+
+#img_princi{
+  width: 20vh;
+  right: 20vh;
+}
+#string_pjb{
+  width: 20vh;
+  right: 20vh;
+}
+
+
+
+aside{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: #EFF5F4;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+
+
+
+.BotPrincipal{
+  display: inline-block;
+  vertical-align: top;
+  width: 250px;
+  height: 20vh;
+  border-radius: 30px;
+  background-color: #44A685;
+  color: #fff;
+  font-size:larger;
+  font-weight: bolder;
+  margin: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 300px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+  .button{
+    margin-bottom: 10px;
+    width: 200px;
+    height: 60px;
+    font-size:medium;
+    font-weight: bold;
+}
+
+
+  section{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+
+  .imgs{
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+  }
+
+
+  #logo_pjb{
+    justify-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+  }
+  #logoGestao{
+    justify-items: center;
+    flex-direction: column;
+    position: absolute;
+    padding-top: 180px;
+
+  }
+
+  #logoAvante{
+    justify-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    height: 100px;
+  }
+
+  #menuInic{
+    display: none;
+  }
+
+
+
+
+@media (max-width:1280px){
+
+  .button{
+    width: 200px;
+    height: 60px;
+    z-index: 1;
+    background-color: #44A685;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  #buttons{
+    width: 350px;
+  }
+
+
+  aside{
+    padding-top: 25;
+    border-top : 60px solid #01526F;
+  }
+
+  .BotPrincipal{
+    flex-direction: column;
+    margin: 12px;
+  }
+
+
+  section{
+    width: 0%;
+    background-color: #01526F;
+    z-index: 1;
+  }
+
+  section:hover #buttons{
+    opacity: 1;
+    visibility: visible;
+
+  }
+
+  section:hover{
+    width: 350px;
+
+  }
+
+  #menuInic{
+    visibility: visible;
+    width: 50px;
+    display: block;
+  }
+
+  #divisor-line{
+    visibility: hidden;
+  }
+
+
+  #presentUser{
+    visibility: hidden;
+  }
+
+  #buttons{
+    opacity: 0;
+  }
+
+  .imgsPrinci{
+    display: none;
+  }
+
+
+  #buttonsAside{
+    position: absolute;
+  }
+
+  #btnVolt{
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+<main>
+  <section>
+    <div id="presentUser">
+      <h1>Bem-vindo</h1>
+
+    </div>
+    <hr id="divisor-line">
+    <img id="menuInic" src="../../../assets/imagens/menu.png" alt="">
+    <div id="buttons">
+      <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
+      <button routerLink="/calendarioAtiv" class="button" id="bt_calen">Calendário</button>
+      <button routerLink="/aprovaAtiv" class="button" id="bt_ativ">Aprovar Atividades</button>
+      <button routerLink="" class="button" id="bt_sair">Sair</button>
+    </div>
+  </section>
+  <aside>
+    <div id="btnTela3">
+      <button routerLink="/menuInicial" class="botVolta" id="btnVolt">Voltar</button>
+    </div>
+    <p id="aproAtiv">Presença</p>
+    <div id="calenPresenc">
+      <label id="data" for="date">Data da Presença:</label>
+      <input type="date" [(ngModel)]="dataPresenca" id="date">
+    </div>
+    <div id="caixaAside">
+      <h1 id="nomeAside">Nome</h1>
+      <h1 id="matAside">Matrícula</h1>
+      <div id="perAside">
+        <input type="text" [(ngModel)]="nomeCompleto" placeholder="Nome" id="nomeComple">
+        <input type="text" [(ngModel)]="matricula" placeholder="Matrícula" id="matricula">
+        <div id="mudar">
+          <button id="btnCheck" (click)="salvarPresenca()">
+            <img src="../../../assets/imagens/check.png" alt="">
+          </button>
+          <button id="btnClose">
+            <img src="../../../assets/imagens/close.png" alt="">
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+</main>
