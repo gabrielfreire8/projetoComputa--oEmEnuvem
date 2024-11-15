@@ -12,17 +12,26 @@
       <button routerLink="" class="button" id="bt_sair">Sair</button>
     </div>
   </section>
+
   <aside>
     <div id="btnTela3">
       <button routerLink="/menuInicial" class="botVolta" id="btnVolt">Voltar</button>
     </div>
     <p id="aproAtiv">Aprovar Atividade</p>
+
     <div id="caixaAside">
+
+      <div *ngIf="atividades.length === 0">
+        <p>Não há atividades para aprovar no momento.</p>
+      </div>
+
+
       <div id="perAside" *ngFor="let atividade of atividades" class="atividade-container">
-        <p class="perguntasAside">Nome da Atividade: {{ atividade.nome }}</p>
-        <p class="perguntasAside">Tipo de Atividade: {{ atividade.tipo }}</p>
-        <p class="perguntasAside">Descrição: {{ atividade.descricao }}</p>
-        <p class="perguntasAside">Data: {{ atividade.data }}</p>
+        <p class="perguntasAside"><strong>Nome da Atividade:</strong> {{ atividade.nome }}</p>
+        <p class="perguntasAside"><strong>Tipo de Atividade:</strong> {{ atividade.tipo }}</p>
+        <p class="perguntasAside"><strong>Descrição:</strong> {{ atividade.descricao }}</p>
+        <p class="perguntasAside"><strong>Data:</strong> {{ atividade.data }}</p>
+
         <div id="mudar">
           <button id="btnCheck" (click)="aprovarAtividade(atividade)">
             <img src="../../../assets/imagens/check.png" alt="Aprovar">

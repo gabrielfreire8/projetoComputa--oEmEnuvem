@@ -33,11 +33,12 @@
       </div>
       <div class="semanas">
         <div *ngFor="let dia of dias; let i = index" class="dia"
-              [ngClass]="{'selecionado': dia === diaSelecionado}"
+              [ngClass]="{'selecionado': dia === diaSelecionado, 'com-nota': notasSalvas[formatarData(dia)]}"
               (click)="selecionarDia(dia)">
           {{ dia }}
         </div>
       </div>
+
     </div>
     <div class="caderno">
       <textarea id="textin" name="textoNota" placeholder="Escreva sua nota aqui..." [(ngModel)]="nota.texto"></textarea>

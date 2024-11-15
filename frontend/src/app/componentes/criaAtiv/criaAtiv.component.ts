@@ -16,7 +16,7 @@ export class CriaAtivComponent implements OnInit {
   tipoAtividade: string = '';
   descricaoAtividade: string = '';
 
-  private apiUrl = 'Http://44.203.161.167';
+  private apiUrl = 'Http://98.81.212.202';
 
   constructor(private http: HttpClient) {
     const dataAtual = new Date();
@@ -28,7 +28,7 @@ export class CriaAtivComponent implements OnInit {
     this.calcularDiasDoMes();
 
 
-    this.http.get<any[]>("http://44.203.161.167/atividades").subscribe({
+    this.http.get<any[]>("http://98.81.212.202/atividades").subscribe({
 
       next: (atividades: any[]) => {
         this.atividades = atividades;
@@ -73,7 +73,7 @@ export class CriaAtivComponent implements OnInit {
       };
 
 
-      this.http.post<any>( "http://44.203.161.167/atividade/criar",body).subscribe({
+      this.http.post<any>( "http:/98.81.212.202/atividade/criar",body).subscribe({
         next: () => {
           alert('Atividade enviada para análise!');
 

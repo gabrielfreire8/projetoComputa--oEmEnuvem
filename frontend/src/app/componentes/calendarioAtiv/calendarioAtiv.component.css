@@ -229,23 +229,23 @@
   bottom: 5%;
 }
 .dia {
-  width: 60px; 
-  height: 60px; 
+  width: 60px;
+  height: 60px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; 
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .dia:hover {
-  background-color: #e0e0e0; 
+  background-color: #e0e0e0;
 }
 
 .selecionado {
-  background-color: #007bff; 
-  color: white; 
-  border-radius: 50%; 
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
 }
 
 #btnSalv{
@@ -260,6 +260,19 @@
   background-color: #44A685;
   border-radius: 15px;
 }
+
+.dia.com-nota {
+  background-color: #ffeb3b;
+  border: 1px solid #ffc107;
+  border-radius: 50%;
+}
+
+.dia.selecionado {
+  background-color: #4caf50;
+  color: white;
+  border-radius: 50%;
+}
+
 
 
 

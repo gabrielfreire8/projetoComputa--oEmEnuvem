@@ -2,7 +2,6 @@
   <section>
     <div id="presentUser">
       <h1>Bem-vindo</h1>
-
     </div>
     <hr id="divisor-line">
     <img id="menuInic" src="../../../assets/imagens/menu.png" alt="">
@@ -26,10 +25,26 @@
       <h1 id="nomeAside">Nome</h1>
       <h1 id="matAside">Matrícula</h1>
       <div id="perAside">
-        <input type="text" [(ngModel)]="nomeCompleto" placeholder="Nome" id="nomeComple">
-        <input type="text" [(ngModel)]="matricula" placeholder="Matrícula" id="matricula">
+        <input
+          type="text"
+          [(ngModel)]="nomeCompleto"
+          placeholder="Nome"
+          id="nomeComple"
+          (ngModelChange)="buscarMatricula(nomeCompleto)"
+        >
+        <input
+          type="text"
+          [(ngModel)]="matricula"
+          placeholder="Matrícula"
+          id="matricula"
+          [disabled]="true"
+        >
         <div id="mudar">
-          <button id="btnCheck" (click)="salvarPresenca()">
+          <button
+            id="btnCheck"
+            (click)="salvarPresenca()"
+            [disabled]="!dataPresenca || !matricula"
+          >
             <img src="../../../assets/imagens/check.png" alt="">
           </button>
           <button id="btnClose">

@@ -9,7 +9,9 @@ import { Atividade } from './atividade.model';
 })
 export class AprovaAtivComponent implements OnInit {
   atividades: Atividade[] = [];
-  private apiUrl = 'Http://44.203.161.167';
+
+
+  private apiUrl = 'http://44.203.161.167';
 
   constructor(private http: HttpClient) {}
 
@@ -17,10 +19,12 @@ export class AprovaAtivComponent implements OnInit {
     this.buscarAtividades();
   }
 
+
   buscarAtividades(): void {
     this.http.get<Atividade[]>(`${this.apiUrl}/atividades`).subscribe({
       next: (data) => {
         this.atividades = data;
+        console.log('Atividades recebidas:', this.atividades);
       },
       error: (error) => {
         console.error('Erro ao buscar atividades:', error);
@@ -28,26 +32,32 @@ export class AprovaAtivComponent implements OnInit {
     });
   }
 
+
   aprovarAtividade(atividade: Atividade): void {
     this.http.post(`${this.apiUrl}/aprovar`, { id: atividade.id }).subscribe({
       next: () => {
         console.log('Atividade aprovada:', atividade.nome);
+        alert(`Atividade "${atividade.nome}" aprovada com sucesso!`);
         this.buscarAtividades();
       },
       error: (error) => {
         console.error('Erro ao aprovar atividade:', error);
+        alert('Erro ao aprovar atividade. Tente novamente.');
       },
     });
   }
+
 
   rejeitarAtividade(atividade: Atividade): void {
     this.http.post(`${this.apiUrl}/rejeitar`, { id: atividade.id }).subscribe({
       next: () => {
         console.log('Atividade rejeitada:', atividade.nome);
+        alert(`Atividade "${atividade.nome}" rejeitada com sucesso!`);
         this.buscarAtividades();
       },
       error: (error) => {
         console.error('Erro ao rejeitar atividade:', error);
+        alert('Erro ao rejeitar atividade. Tente novamente.');
       },
     });
   }
