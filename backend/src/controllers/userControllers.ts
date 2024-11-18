@@ -124,8 +124,8 @@ class UserController{
 
     async login(req:any, res:any){
         try{
-            let {usuario, password} = req.body;
-            let user: any = await User.getByUser(usuario);
+            let {email, password} = req.body;
+            let user: any = await User.getByUser(email);
             if(user.status === true){
             await bcrypt.compare(password, user.values.senha, async (error: string, result:boolean) => {
                 if(error){ 
@@ -137,20 +137,20 @@ class UserController{
                     });
                 };
                 if(user.values.funcao === "administrador"){
-                    let token = await jwt.sign({id: user.values.idusuario,
+                    let bearer = await jwt.sign({id: user.values.idusuario,
                         nome: user.values.nome,
                         administrator: true
                     }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
                     return res.status(200).json({auth: true, 
-                        token: {token}});
+                        bearer});
                 }
                 
-                let token = await jwt.sign({id: user.values.idusuario,
+                let bearer = await jwt.sign({id: user.values.idusuario,
                     nome: user.values.nome,
                     funcao: user.values.funcao
                 }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
                 return res.status(200).json({auth: true, 
-                    token: {token}});
+                    bearer});
             });
             }else{
                 return res.status(404).send({
