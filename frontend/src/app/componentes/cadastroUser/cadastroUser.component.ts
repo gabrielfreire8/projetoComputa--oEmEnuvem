@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 interface CepResponse {
   logradouro: string;
@@ -13,12 +14,12 @@ interface CepResponse {
   selector: 'app-cadastroUser',
   templateUrl: './cadastroUser.component.html',
   styleUrls: ['./cadastroUser.component.css'],
+  providers: [DatePipe],
 })
 export class CadastroUserComponent {
   usuario = {
     cpf: "",
     dataNascimento: "",
-    genero: "",
     cidade: "",
     logradouro: "",
     bairro: "",
@@ -26,27 +27,22 @@ export class CadastroUserComponent {
     telefone: "",
     email: "",
     nome: '',
-    sobrenome: '',
-    matricula: 0,
-    complemento: undefined,
     numero: undefined,
   };
 
+  private apiUrl = 'http://44.201.147.191/beneficiados/cadastro';
 
-  private apiUrl = 'http://172.31.30.218/api/usuarios';
-
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private datePipe: DatePipe) {}
 
   cadastrar(form: NgForm) {
     if (form.valid) {
 
       if (this.usuario.dataNascimento) {
-        const data = new Date(this.usuario.dataNascimento);
-        this.usuario.dataNascimento = data.toISOString().split('T')[0];
+        const formattedDate = this.datePipe.transform(this.usuario.dataNascimento, 'yyyy-MM-dd');
+        this.usuario.dataNascimento = formattedDate!;
       }
 
       console.log('Tentando cadastrar usuário:', this.usuario);
-
 
       this.http.post(this.apiUrl, this.usuario).subscribe(
         (response: any) => {

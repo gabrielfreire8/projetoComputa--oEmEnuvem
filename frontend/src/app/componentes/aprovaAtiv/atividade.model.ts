@@ -6,4 +6,5 @@ export interface Atividade {
   tipo: string;
   descricao: string;
   data: string;
+  status:boolean;
 }

@@ -1,34 +1,51 @@
 <body>
   <div class="caixa">
     <aside>
-      <img src="../../../assets/imagens/logo_pjb.png" />
-      <img src="../../../assets/imagens/Gestão_PJB_Pag1.png" />
+      <img src="../../../assets/imagens/logo_pjb.png" alt="Logo PJB" />
+      <img src="../../../assets/imagens/Gestão_PJB_Pag1.png" alt="Gestão PJB" />
 
-      <form  #loginForm="ngForm">
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
         <label for="email">Email:</label>
         <input
           type="text"
           id="email"
           placeholder="Digite seu email"
-          [(ngModel)]="loginData.email"
-          name="email"
+          formControlName="email"
+          required
         />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          <small *ngIf="loginForm.get('email')?.errors?.['required']">O email é obrigatório.</small>
+          <small *ngIf="loginForm.get('email')?.errors?.['email']">Digite um email válido.</small>
+        </div>
+
 
         <label for="password">Senha:</label>
         <input
           type="password"
           id="password"
           placeholder="Digite sua senha"
-          [(ngModel)]="loginData.password"
-          name="password"
+          formControlName="password"
           required
         />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          <small>O campo senha é obrigatório.</small>
+        </div>
 
-        <button  id="btnSub" type="submit" [disabled]="!loginForm.valid">Login</button>
-        <button type="button" routerLink="/ForgetPass" id="esqueciSenha" >Esqueci minha senha</button>
+
+        <button id="btnSub" type="submit" [disabled]="loginForm.invalid">Login</button>
+        <button type="button" routerLink="/ForgetPass" id="esqueciSenha">
+          Esqueci minha senha
+        </button>
       </form>
 
-      <img src="../../../assets/imagens/avante.png" alt="" />
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <img src="../../../assets/imagens/avante.png" alt="Avante" />
     </aside>
   </div>
 </body>

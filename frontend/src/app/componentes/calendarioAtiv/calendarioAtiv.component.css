@@ -275,6 +275,65 @@
 
 
 
+.tooltip {
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.dia {
+  position: relative;
+}
+
+
+
+.dia:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.dia.com-atividade {
+  background-color: #d3f9d8;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 5px;
+  font-size: 12px;
+  color: #333;
+  z-index: 10;
+}
+
+.com-atividade {
+  background-color: #ffeb3b; 
+  font-weight: bold;
+}
+
+.selecionado {
+  background-color: #4caf50;
+  color: white;
+}
+
+.atividade-info {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+
+
+
+
+
 
 @media (max-width:1280px){
 

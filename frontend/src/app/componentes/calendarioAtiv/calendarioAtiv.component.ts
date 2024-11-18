@@ -8,16 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./calendarioAtiv.component.css']
 })
 export class CalendarioAtivComponent implements OnInit {
+  atividades: any[] = [];
   mes!: string;
   ano!: number;
   dias: number[] = [];
   diaSelecionado: number | null = null;
-  nota = { texto: '' };
+  atividadeSelecionada: any = null;
+
   notasSalvas: { [data: string]: string } = {};
 
-  private apiUrl = 'https://98.81.212.202/atividade/criar';
-
-
+  private apiUrl = "http://44.201.147.191/atividades";
 
   private meses: string[] = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
@@ -30,7 +30,7 @@ export class CalendarioAtivComponent implements OnInit {
     this.mes = 'Janeiro';
     this.ano = 2024;
     this.carregarCalendario();
-    this.carregarNotas();
+    this.obterAtividades();
   }
 
   carregarCalendario() {
@@ -39,10 +39,29 @@ export class CalendarioAtivComponent implements OnInit {
     this.dias = Array.from({ length: diasNoMes }, (_, i) => i + 1);
   }
 
-  selecionarDia(dia: number) {
-    this.diaSelecionado = dia;
-    const dataFormatada = this.formatarData();
-    this.nota.texto = this.notasSalvas[dataFormatada] || '';
+  obterAtividades() {
+    this.http.get<any[]>(this.apiUrl).subscribe({
+      next: (data) => {
+        console.log('Dados recebidos da API:', data);
+        this.atividades = data || [];
+        this.marcarAtividadesNoCalendario();
+      },
+      error: (error) => {
+        console.error('Erro ao obter atividades:', error);
+      }
+    });
+  }
+
+  marcarAtividadesNoCalendario() {
+    if (Array.isArray(this.atividades)) {
+      this.atividades.forEach((atividade) => {
+        const dataAtividade = new Date(atividade.data);
+        const diaAtividade = dataAtividade.getDate();
+        const dataFormatada = this.formatarData(diaAtividade);
+
+        this.notasSalvas[dataFormatada] = atividade.descricao;
+      });
+    }
   }
 
   getNumeroMes(mes: string): number {
@@ -60,43 +79,17 @@ export class CalendarioAtivComponent implements OnInit {
     return '';
   }
 
+  selecionarDia(dia: number) {
+    this.diaSelecionado = dia;
+    const dataSelecionada = this.formatarData(dia);
 
-  salvarNota() {
-    if (this.diaSelecionado !== null && this.nota.texto) {
-      const dataFormatada = this.formatarData();
-      const body = {
-        data: dataFormatada,
-        texto: this.nota.texto
-      };
+    this.atividadeSelecionada = this.atividades.find(atividade => {
+      const dataAtividade = new Date(atividade.data);
+      const dataFormatadaAtividade = this.formatarData(dataAtividade.getDate());
 
-      this.http.post(`${this.apiUrl}/notas`, body).subscribe(
-        (response: any) => {
-          this.notasSalvas[dataFormatada] = this.nota.texto;
-          console.log('Nota salva com sucesso:', response);
-          alert('Nota salva com sucesso!');
-        },
-        (error: any) => {
-          console.error('Erro ao salvar nota:', error);
-          alert('Erro ao salvar nota. Tente novamente.');
-        }
-      );
-    } else {
-      alert('Selecione um dia e escreva sua nota!');
-    }
-  }
 
-  carregarNotas() {
-    this.http.get(`${this.apiUrl}/notas`).subscribe(
-      (response: any) => {
-        this.notasSalvas = response.reduce((acc: any, nota: any) => {
-          acc[nota.data] = nota.texto;
-          return acc;
-        }, {});
-      },
-      (error: any) => {
-        console.error('Erro ao carregar notas:', error);
-      }
-    );
+      return dataFormatadaAtividade === dataSelecionada;
+    });
   }
 
   mudarMes(direcao: number) {

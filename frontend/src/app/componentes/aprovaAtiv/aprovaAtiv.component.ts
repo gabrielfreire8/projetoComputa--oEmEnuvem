@@ -11,7 +11,7 @@ export class AprovaAtivComponent implements OnInit {
   atividades: Atividade[] = [];
 
 
-  private apiUrl = 'http://44.203.161.167';
+  private apiUrl = 'http://44.201.147.191';
 
   constructor(private http: HttpClient) {}
 
@@ -21,10 +21,10 @@ export class AprovaAtivComponent implements OnInit {
 
 
   buscarAtividades(): void {
-    this.http.get<Atividade[]>(`${this.apiUrl}/atividades`).subscribe({
-      next: (data) => {
-        this.atividades = data;
-        console.log('Atividades recebidas:', this.atividades);
+    this.http.get(`${this.apiUrl}/atividades`).subscribe({
+      next: (data: any) => {
+        console.log('Resposta da API:', data);
+        this.atividades = Array.isArray(data.atividades) ? data.atividades : [];
       },
       error: (error) => {
         console.error('Erro ao buscar atividades:', error);
@@ -33,8 +33,9 @@ export class AprovaAtivComponent implements OnInit {
   }
 
 
+
   aprovarAtividade(atividade: Atividade): void {
-    this.http.post(`${this.apiUrl}/aprovar`, { id: atividade.id }).subscribe({
+    this.http.post(`${this.apiUrl}/atividades/aprovar`, { id: atividade.id }).subscribe({
       next: () => {
         console.log('Atividade aprovada:', atividade.nome);
         alert(`Atividade "${atividade.nome}" aprovada com sucesso!`);
@@ -49,7 +50,7 @@ export class AprovaAtivComponent implements OnInit {
 
 
   rejeitarAtividade(atividade: Atividade): void {
-    this.http.post(`${this.apiUrl}/rejeitar`, { id: atividade.id }).subscribe({
+    this.http.post(`${this.apiUrl}/atividades/delete`, { id: atividade.id }).subscribe({
       next: () => {
         console.log('Atividade rejeitada:', atividade.nome);
         alert(`Atividade "${atividade.nome}" rejeitada com sucesso!`);

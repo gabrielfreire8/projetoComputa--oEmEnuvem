@@ -1,9 +1,14 @@
-*{
-
+* {
   margin: 0;
   box-sizing: border-box;
 }
-main{
+
+body, html {
+  height: 100%;
+  overflow-x: hidden; /* Impede rolagem horizontal */
+}
+
+main {
   display: flex;
   text-align: center;
   justify-content: center;
@@ -11,17 +16,16 @@ main{
   max-width: 100%;
   max-height: 100%;
   background-color: #01526F;
-
+  overflow-y: auto; /* Permite rolagem vertical */
 }
 
-#divisor-line{
+#divisor-line {
   width: 80%;
   border: 1.5px solid #fff;
-
 }
 
-section{
-  display:grid;
+section {
+  display: grid;
   flex-direction: column;
   width: 27vw;
   height: 100vh;
@@ -29,103 +33,103 @@ section{
   background-color: #01526F;
   box-shadow: -10px 10px 5px rgb(0, 0, 0, 0.3);
   gap: 10px;
+  overflow-y: auto; /* Permite rolagem no conteúdo da section */
 }
 
-#presentUser h1{
+#presentUser h1 {
   color: #fff;
 }
-#presentUser span{
+
+#presentUser span {
   color: #fff;
 }
-#presentUser{
+
+#presentUser {
   text-align: center;
   margin-top: 50px;
 }
 
-.button{
+.button {
   color: #fff;
   background-color: #44A685;
   border-radius: 15px;
   border-color: #ffffff;
   box-shadow: none;
-
 }
 
-
-#img_princi{
-  width: 20vh;
-  right: 20vh;
-}
-#string_pjb{
+#img_princi {
   width: 20vh;
   right: 20vh;
 }
 
+#string_pjb {
+  width: 20vh;
+  right: 20vh;
+}
 
-
-aside{
+aside {
   display: flex;
   justify-content: center;
   text-align: center;
   background-color: #EFF5F4;
   width: 100vw;
   height: 100vh;
-
+  overflow-y: auto; /* Permite rolagem em caso de conteúdo exceder a altura */
 }
 
-#buttons{
+#buttons {
   margin-top: 20%;
   align-items: center;
   display: flex;
   flex-direction: column;
-
 }
 
-  .button{
-      margin-bottom: 10px;
-      width: 200px;
-      height: 60px;
-      font-size:medium;
-      font-weight: bold;
-  }
-
-  section{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
-
-  #btnVolt{
-
-    align-items: center;
-      position: fixed;
-      left: 25%;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      color: #fff;
-      background-color: #44A685;
-      border-radius: 15px;
-      border-color: #ffffff;
-      bottom: 90%;
-  }
-  .calendario {
-    display:block;
-    position: absolute;
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 700px;
-    height: 440px;
-    bottom: 0;
+.button {
+  margin-bottom: 10px;
+  width: 200px;
+  height: 60px;
+  font-size: medium;
+  font-weight: bold;
 }
 
-#perAside{
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#btnVolt {
+  align-items: center;
+  position: fixed;
+  left: 25%;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  color: #fff;
+  background-color: #44A685;
+  border-radius: 15px;
+  border-color: #ffffff;
+  bottom: 90%;
+}
+
+.calendario {
+  display: block;
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  height: 440px;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+#perAside {
   position: absolute;
   text-align: left;
   flex-direction: column;
   padding: 20px;
   top: 5%;
-  left:7%;
+  left: 7%;
   padding-top: 20px;
   border-radius: 20px;
   background-color: #EFF5F4;
@@ -140,65 +144,58 @@ aside{
   border: 1px solid #ccc;
   padding: 10px;
   background-color: #f9f9f9;
-
 }
 
-.perguntasAside{
-
+.perguntasAside {
   height: 90px;
   width: 500px;
 }
 
-
-
 .header {
-    background-color: #01526F;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 8px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-
+  background-color: #01526F;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-
-.dias, .semanas {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+.dias,
+.semanas {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .dia {
-    padding: 15px;
-    text-align: center;
+  padding: 15px;
+  text-align: center;
 }
 
 .dia.vazio {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 .dia:hover {
-    background-color: #e0e0e0;
+  background-color: #e0e0e0;
 }
 
-
-#aproAtiv{
+#aproAtiv {
   display: flex;
   position: absolute;
   margin-top: 70px;
   font-size: 250%;
-  font-family:'Lucida Sans', 'Lucida Sans Regular',
-  'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #43665A;
   justify-content: center;
   justify-items: center;
   font-weight: bold;
 }
 
-#nomeAtiv{
+#nomeAtiv {
   font-size: large;
   border-color: #007BFF;
   border-width: 0cap;
@@ -207,7 +204,7 @@ aside{
   border-bottom: 2px solid #43665A;
 }
 
-#topoAtiv{
+#topoAtiv {
   font-size: large;
   border-color: #007BFF;
   border-width: 0cap;
@@ -216,7 +213,7 @@ aside{
   border-bottom: 2px solid #43665A;
 }
 
-#descAtiv{
+#descAtiv {
   font-size: large;
   border-color: #007BFF;
   border-width: 0cap;
@@ -225,7 +222,7 @@ aside{
   border-bottom: 2px solid #43665A;
 }
 
-#dataCalen{
+#dataCalen {
   font-size: large;
   border-color: #007BFF;
   border-width: 0cap;
@@ -234,7 +231,7 @@ aside{
   border-bottom: 2px solid #43665A;
 }
 
-#caixaAside{
+#caixaAside {
   padding-bottom: 500px;
   height: 600px;
   justify-content: center;
@@ -243,10 +240,10 @@ aside{
   width: 800px;
   position: absolute;
   top: 130px;
+  overflow-y: auto;
 }
 
-
-#mudar{
+#mudar {
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -254,51 +251,36 @@ aside{
   left: 83%;
   flex-direction: column;
   gap: 10px;
-
 }
 
-#btnClose{
+#btnClose {
   background-color: #f39c12;
   padding: 0px;
-
   width: 70px;
   height: 60px;
   cursor: pointer;
   border-radius: 20px;
-
-
-
 }
 
-#btnCheck{
+#btnCheck {
   background-color: #44A685;
   padding: 0px;
   width: 70px;
   height: 60px;
   cursor: pointer;
   border-radius: 20px;
-
 }
 
-#menuInic{
+#menuInic {
   display: none;
 }
 
-
-
-
-#als{
+#als {
   padding: 20px;
 }
 
-#menuInic{
-  display: none;
-}
-
-
-@media (max-width:1280px){
-
-  .button{
+@media (max-width: 1280px) {
+  .button {
     width: 200px;
     height: 60px;
     z-index: 1;
@@ -306,67 +288,62 @@ aside{
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 
-  #buttons{
+  #buttons {
     width: 350px;
   }
 
-  #presentUser{
+  #presentUser {
     visibility: hidden;
   }
 
-  #aproAtiv{
+  #aproAtiv {
     white-space: nowrap;
   }
 
-  aside{
+  aside {
     padding-top: 25;
-    border-top : 60px solid #01526F;
-
-
+    border-top: 60px solid #01526F;
   }
-  .BotPrincipal{
+
+  .BotPrincipal {
     flex-direction: column;
     margin: 12px;
   }
 
-
-  section{
+  section {
     width: 0%;
     background-color: #01526F;
     z-index: 1;
-
   }
-  section:hover #buttons{
+
+  section:hover #buttons {
     opacity: 1;
     visibility: visible;
   }
 
-  section:hover{
+  section:hover {
     width: 350px;
-
   }
 
-  #menuInic{
+  #menuInic {
     visibility: visible;
     display: block;
     width: 50px;
   }
 
-  #divisor-line{
+  #divisor-line {
     visibility: hidden;
   }
 
-  #caixaAside{
+  #caixaAside {
     position: fixed;
     width: 400px;
     height: 250px;
-
   }
 
-  #perAside{
+  #perAside {
     width: 300px;
     height: 350px;
     display: grid;
@@ -375,54 +352,40 @@ aside{
     justify-content: center;
     align-items: center;
     left: 13%;
-
   }
 
-  .perguntasAside{
+  .perguntasAside {
     height: 40px;
     width: 100%;
-
   }
 
-  #nomeAtiv{
-    width: 270px;
-
-  }
-  #topoAtiv{
-    width: 270px;
-  }
-  #descAtiv{
-    width: 270px;
-  }
-  #dataCalen{
+  #nomeAtiv {
     width: 270px;
   }
 
-  #buttons{
+  #topoAtiv {
+    width: 270px;
+  }
+
+  #descAtiv {
+    width: 270px;
+  }
+
+  #dataCalen {
+    width: 270px;
+  }
+
+  #buttons {
     opacity: 0;
   }
 
-
-  #btnVolt{
+  #btnVolt {
     opacity: 0;
   }
 
-  #mudar{
+  #mudar {
     position: relative;
     text-align: center;
-    display: inline;
-    left: 0%;
-    margin: 10px;
 
+  }
 }
-}
-
-
-
-
-
-
-
-
-
-

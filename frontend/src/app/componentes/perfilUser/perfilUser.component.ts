@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-perfilUser',
   templateUrl: './perfilUser.component.html',
@@ -21,6 +21,9 @@ export class PerfilUserComponent implements OnInit {
     cidade: ''
   };
 
+
+  private apiUrl = 'http://44.201.147.191/beneficiados';
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -30,31 +33,21 @@ export class PerfilUserComponent implements OnInit {
 
   obterDadosUsuario(): void {
 
-    this.http.get<any>('').subscribe({
+    this.http.get<any>(`${this.apiUrl}/:d`).subscribe({
       next: (data) => {
-
-        this.usuario.nome = data.nome;
-        this.usuario.email = data.email;
-        this.usuario.cpf = data.cpf;
-        this.usuario.dataNascimento = data.dataNascimento;
-        this.usuario.telefone = data.telefone;
-        this.usuario.cep = data.cep;
-        this.usuario.logradouro = data.logradouro;
-        this.usuario.numero = data.numero;
-        this.usuario.bairro = data.bairro;
-        this.usuario.cidade = data.cidade;
+        this.usuario = data;
       },
       error: (error) => {
         console.error('Erro ao obter dados do usuário:', error);
+        alert('Erro ao carregar os dados do usuário.');
       }
     });
   }
 
 
-  alterarDados(form: any): void {
+  alterarDados(form: NgForm): void {
     if (form.valid) {
-
-      this.http.put('', this.usuario).subscribe({
+      this.http.put(`${this.apiUrl}/atualizar`, this.usuario).subscribe({
         next: (response) => {
           alert('Dados alterados com sucesso!');
         },
@@ -63,14 +56,17 @@ export class PerfilUserComponent implements OnInit {
           alert('Erro ao alterar os dados.');
         }
       });
+    } else {
+      alert('Por favor, preencha todos os campos corretamente.');
     }
   }
 
-  inativarParticipante(): void {
 
-    this.http.delete('').subscribe({
+  inativarParticipante(): void {
+    this.http.delete(`${this.apiUrl}/inativar/${this.usuario.cpf}`).subscribe({
       next: (response) => {
         alert('Participante inativado!');
+
       },
       error: (error) => {
         console.error('Erro ao inativar participante:', error);

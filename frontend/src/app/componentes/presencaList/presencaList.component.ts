@@ -10,7 +10,7 @@ export class PresencaListComponent implements OnInit {
   dataPresenca: string = '';
   nomeCompleto: string = '';
   matricula: string = '';
-  apiUrl = 'http://44.203.161.167'; 
+  apiUrl = 'http://44.201.147.191';
 
   constructor(private http: HttpClient) {}
 

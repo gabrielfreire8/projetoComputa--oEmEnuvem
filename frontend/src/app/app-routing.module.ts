@@ -10,7 +10,7 @@ import { CadastroUserComponent } from './componentes/cadastroUser/cadastroUser.c
 import { AprovaAtivComponent } from './componentes/aprovaAtiv/aprovaAtiv.component';
 
 
-import { ForgetPassComponent } from './componentes/forget-pass/forget-pass.component';
+import { ForgetPasswordComponent } from './componentes/forget-password/forget-password.component';
 
 import { PresencaListComponent } from './componentes/presencaList/presencaList.component';
 import { PerfilUserComponent } from './componentes/perfilUser/perfilUser.component';
@@ -61,7 +61,7 @@ export const routes: Routes = [
   },
   {
     path: "ForgetPass",
-    component: ForgetPassComponent
+    component: ForgetPasswordComponent
   }
 
 

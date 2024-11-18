@@ -1,38 +1,35 @@
 <main>
-  <section>
+  <section id="menuSection">
     <div id="presentUser">
       <h1>Bem-vindo</h1>
     </div>
     <hr id="divisor-line">
     <img id="menuInic" src="../../../assets/imagens/menu.png" alt="Menu">
     <div id="buttons">
-      <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
+      <button routerLink="/" class="button" id="bt_ini">Página Inicial</button>
       <button routerLink="/calendarioAtiv" class="button" id="bt_calen">Calendário</button>
       <button routerLink="/aprovaAtiv" class="button" id="bt_ativ">Aprovar Atividades</button>
-      <button routerLink="" class="button" id="bt_sair">Sair</button>
+      <button routerLink="/" class="button" id="bt_sair">Sair</button>
     </div>
   </section>
 
-  <aside>
+  <aside id="atividadeAside">
     <div id="btnTela3">
       <button routerLink="/menuInicial" class="botVolta" id="btnVolt">Voltar</button>
     </div>
-    <p id="aproAtiv">Aprovar Atividade</p>
+    <p id="aproAtiv">Aprovar Atividades</p>
 
     <div id="caixaAside">
-
-      <div *ngIf="atividades.length === 0">
-        <p>Não há atividades para aprovar no momento.</p>
+      <div *ngIf="atividades.length === 0" class="no-activity">
+        <p>Carregando atividades ou nenhuma disponível no momento.</p>
       </div>
 
-
-      <div id="perAside" *ngFor="let atividade of atividades" class="atividade-container">
-        <p class="perguntasAside"><strong>Nome da Atividade:</strong> {{ atividade.nome }}</p>
-        <p class="perguntasAside"><strong>Tipo de Atividade:</strong> {{ atividade.tipo }}</p>
-        <p class="perguntasAside"><strong>Descrição:</strong> {{ atividade.descricao }}</p>
-        <p class="perguntasAside"><strong>Data:</strong> {{ atividade.data }}</p>
-
-        <div id="mudar">
+      <div *ngFor="let atividade of atividades" class="atividade-container">
+        <p><strong>Nome da Atividade:</strong> {{ atividade.nome }}</p>
+        <p><strong>Tipo de Atividade:</strong> {{ atividade.tipo }}</p>
+        <p><strong>Descrição:</strong> {{ atividade.descricao }}</p>
+        <p><strong>Data:</strong> {{ atividade.data | date: 'dd/MM/yyyy' }}</p>
+        <div class="buttons-container">
           <button id="btnCheck" (click)="aprovarAtividade(atividade)">
             <img src="../../../assets/imagens/check.png" alt="Aprovar">
           </button>

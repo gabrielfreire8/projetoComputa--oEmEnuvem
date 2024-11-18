@@ -18,9 +18,10 @@ import { LoginComponent } from './componentes/login/login.component';
 import { MenuInicialComponent } from './componentes/menuInicial/menuInicial.component';
 
 import { PresencaListComponent } from './componentes/presencaList/presencaList.component';
-import { ForgetPassComponent } from './componentes/forget-pass/forget-pass.component';
+import { ForgetPasswordComponent } from './componentes/forget-password/forget-password.component';
 import { PerfilUserComponent } from './componentes/perfilUser/perfilUser.component';
 import { CriaAtivComponent } from './componentes/criaAtiv/criaAtiv.component';
+
 
 
 
@@ -35,7 +36,7 @@ import { CriaAtivComponent } from './componentes/criaAtiv/criaAtiv.component';
     MenuInicialComponent,
     PerfilUserComponent,
     PresencaListComponent,
-    ForgetPassComponent
+    ForgetPasswordComponent
 
 
   ],
