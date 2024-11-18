@@ -124,8 +124,8 @@ class UserController{
 
     async login(req:any, res:any){
         try{
-            let {usuario, password} = req.body;
-            let user: any = await User.getByUser(usuario);
+            let {email, password} = req.body;
+            let user: any = await User.getByUser(email);
             if(user.status === true){
             await bcrypt.compare(password, user.values.senha, async (error: string, result:boolean) => {
                 if(error){ 
@@ -150,7 +150,7 @@ class UserController{
                     funcao: user.values.funcao
                 }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
                 return res.status(200).json({auth: true, 
-                    token: {token}});
+                    barrel: {token}});
             });
             }else{
                 return res.status(404).send({
