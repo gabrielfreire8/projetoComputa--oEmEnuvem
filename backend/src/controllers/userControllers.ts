@@ -137,20 +137,20 @@ class UserController{
                     });
                 };
                 if(user.values.funcao === "administrador"){
-                    let token = await jwt.sign({id: user.values.idusuario,
+                    let barrel = await jwt.sign({id: user.values.idusuario,
                         nome: user.values.nome,
                         administrator: true
                     }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
                     return res.status(200).json({auth: true, 
-                        token: {token}});
+                        barrel});
                 }
                 
-                let token = await jwt.sign({id: user.values.idusuario,
+                let barrel = await jwt.sign({id: user.values.idusuario,
                     nome: user.values.nome,
                     funcao: user.values.funcao
                 }, process.env.JWT_SIGN_KEY, {expiresIn: "4h"});
                 return res.status(200).json({auth: true, 
-                    barrel: {token}});
+                    barrel});
             });
             }else{
                 return res.status(404).send({
