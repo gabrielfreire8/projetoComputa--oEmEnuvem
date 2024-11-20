@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  private readonly apiUrl = 'http://44.201.147.191';
+  private readonly apiUrl = environment.apiUrl;
   errorMessage: string = '';
 
   constructor(private http: HttpClient, private router: Router) {

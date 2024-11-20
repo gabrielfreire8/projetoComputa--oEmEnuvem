@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Atividade } from './atividade.model';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
   selector: 'app-aprovaAtiv',
@@ -11,7 +13,7 @@ export class AprovaAtivComponent implements OnInit {
   atividades: Atividade[] = [];
 
 
-  private apiUrl = 'http://44.201.147.191';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

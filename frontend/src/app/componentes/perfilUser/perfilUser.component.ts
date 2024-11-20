@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-perfilUser',
   templateUrl: './perfilUser.component.html',
@@ -22,7 +23,7 @@ export class PerfilUserComponent implements OnInit {
   };
 
 
-  private apiUrl = 'http://44.201.147.191/beneficiados';
+  private apiUrl = `${environment.apiUrl}/beneficiados`;
 
   constructor(private http: HttpClient) {}
 
@@ -33,7 +34,7 @@ export class PerfilUserComponent implements OnInit {
 
   obterDadosUsuario(): void {
 
-    this.http.get<any>(`${this.apiUrl}/:d`).subscribe({
+    this.http.get<any>(`${this.apiUrl}/:id`).subscribe({
       next: (data) => {
         this.usuario = data;
       },

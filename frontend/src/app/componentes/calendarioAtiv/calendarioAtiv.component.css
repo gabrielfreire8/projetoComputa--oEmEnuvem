@@ -16,6 +16,20 @@
 
   }
 
+.com-atividade {
+  background-color: #90ee90;
+  border: 1px solid #008000;
+  color: #000;
+}
+
+
+.selecionado {
+  background-color: #add8e6; 
+  border: 2px solid #0000ff;
+  color: #000;
+}
+
+
   #divisor-line{
     width: 80%;
     border: 1.5px solid #fff;
@@ -313,7 +327,7 @@
 }
 
 .com-atividade {
-  background-color: #ffeb3b; 
+  background-color: #ffeb3b;
   font-weight: bold;
 }
 

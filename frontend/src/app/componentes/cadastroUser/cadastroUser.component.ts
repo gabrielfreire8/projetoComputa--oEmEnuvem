@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 interface CepResponse {
   logradouro: string;
@@ -30,7 +31,7 @@ export class CadastroUserComponent {
     numero: undefined,
   };
 
-  private apiUrl = 'http://44.201.147.191/beneficiados/cadastro';
+  private apiUrl = `${environment.apiUrl}/beneficiados/cadastro`;
 
   constructor(private http: HttpClient, private router: Router, private datePipe: DatePipe) {}
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-presencaList',
@@ -10,7 +11,7 @@ export class PresencaListComponent implements OnInit {
   dataPresenca: string = '';
   nomeCompleto: string = '';
   matricula: string = '';
-  apiUrl = 'http://44.201.147.191';
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

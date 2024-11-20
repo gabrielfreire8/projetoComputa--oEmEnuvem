@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-calendarioAtiv',
@@ -17,7 +18,7 @@ export class CalendarioAtivComponent implements OnInit {
 
   notasSalvas: { [data: string]: string } = {};
 
-  private apiUrl = "http://44.201.147.191/atividades";
+  private apiUrl = `${environment.apiUrl}/atividades`;
 
   private meses: string[] = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
@@ -83,14 +84,14 @@ export class CalendarioAtivComponent implements OnInit {
     this.diaSelecionado = dia;
     const dataSelecionada = this.formatarData(dia);
 
+
     this.atividadeSelecionada = this.atividades.find(atividade => {
       const dataAtividade = new Date(atividade.data);
       const dataFormatadaAtividade = this.formatarData(dataAtividade.getDate());
-
-
       return dataFormatadaAtividade === dataSelecionada;
     });
   }
+
 
   mudarMes(direcao: number) {
     const indexAtual = this.meses.indexOf(this.mes);
@@ -106,5 +107,9 @@ export class CalendarioAtivComponent implements OnInit {
 
     this.mes = this.meses[novoIndex];
     this.carregarCalendario();
+
+
+    this.obterAtividades();
   }
+
 }

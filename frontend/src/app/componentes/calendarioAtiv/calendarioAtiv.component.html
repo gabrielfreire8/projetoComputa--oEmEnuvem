@@ -32,16 +32,26 @@
         <div class="dia"><strong>Sáb</strong></div>
       </div>
       <div class="semanas">
-        <div *ngFor="let dia of dias; let i = index" class="dia"
-              [ngClass]="{'selecionado': dia === diaSelecionado, 'com-atividade': notasSalvas[formatarData(dia)]}"
+        <div *ngFor="let dia of dias; let i = index"
+              class="dia"
+              [ngClass]="{
+                'selecionado': dia === diaSelecionado,
+                'com-atividade': notasSalvas[formatarData(dia)]
+              }"
               (click)="selecionarDia(dia)">
-          {{ dia }}
+            {{ dia }}
         </div>
       </div>
+
     </div>
     <div *ngIf="atividadeSelecionada" class="atividade-info">
       <h3>Atividade do dia {{ diaSelecionado }} de {{ mes }}:</h3>
-      <pre>{{ atividadeSelecionada | json }}</pre>
+      <ul>
+        <li><strong>Nome:</strong> {{ atividadeSelecionada.nome }}</li>
+        <li><strong>Tipo:</strong> {{ atividadeSelecionada.tipo }}</li>
+        <li><strong>Descrição:</strong> {{ atividadeSelecionada.descricao }}</li>
+      </ul>
     </div>
+
   </aside>
 </main>

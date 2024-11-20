@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: 'app-criaAtiv',
@@ -16,7 +17,7 @@ export class CriaAtivComponent implements OnInit {
   tipoAtividade: string = '';
   descricaoAtividade: string = '';
 
-  private apiUrl = 'http://44.201.147.191';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {
     const dataAtual = new Date();
@@ -26,18 +27,7 @@ export class CriaAtivComponent implements OnInit {
 
   ngOnInit() {
     this.calcularDiasDoMes();
-
-
-    this.http.get<any[]>("http://44.201.147.191/atividades").subscribe({
-
-      next: (atividades: any[]) => {
-        this.atividades = atividades;
-        console.log(this.atividades)
-      },
-      error: (error: any) => {
-        console.error('Erro ao obter atividades:', error);
-      }
-    });
+    this.obterAtividades();
   }
 
   calcularDiasDoMes() {
@@ -52,7 +42,6 @@ export class CriaAtivComponent implements OnInit {
 
   formatarData() {
     if (this.diaSelecionado !== null) {
-
       const anoFormatado = this.ano.toString();
       const mesFormatado = (this.getNumeroMes(this.mes) + 1).toString().padStart(2, '0');
       const diaFormatado = this.diaSelecionado.toString().padStart(2, '0');
@@ -63,7 +52,6 @@ export class CriaAtivComponent implements OnInit {
 
   enviarAtividade() {
     if (this.nomeAtividade && this.tipoAtividade && this.descricaoAtividade && this.diaSelecionado !== null) {
-
       const dataAtividade = this.formatarData();
       const body = {
         data: dataAtividade,
@@ -72,18 +60,20 @@ export class CriaAtivComponent implements OnInit {
         tipo: this.tipoAtividade,
       };
 
-
-      this.http.post<any>( "http://44.201.147.191/atividade/criar",body).subscribe({
+      this.http.post<any>(`${this.apiUrl}/atividade/criar`, body).subscribe({
         next: () => {
           alert('Atividade enviada para análise!');
+
 
           this.nomeAtividade = '';
           this.tipoAtividade = '';
           this.descricaoAtividade = '';
           this.diaSelecionado = null;
+
+
+          this.obterAtividades();
         },
         error: (error) => {
-          console.log(body)
           console.error('Erro ao salvar atividade:', error);
           alert('Erro ao enviar a atividade. Tente novamente mais tarde.');
         }
@@ -91,6 +81,18 @@ export class CriaAtivComponent implements OnInit {
     } else {
       alert('Por favor, preencha todos os campos e selecione um dia.');
     }
+  }
+
+  obterAtividades() {
+    this.http.get<any[]>(`${this.apiUrl}/atividades`).subscribe({
+      next: (atividades) => {
+        this.atividades = atividades;
+        console.log('Atividades carregadas:', this.atividades);
+      },
+      error: (error) => {
+        console.error('Erro ao carregar atividades:', error);
+      }
+    });
   }
 
   mudarMes(delta: number) {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-forget-password',
@@ -12,7 +13,7 @@ export class ForgetPasswordComponent {
   mensagem: string = '';
   tokenRecebido: boolean = false;
 
-  private readonly apiUrl = 'https://44.201.147.191';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
