@@ -64,7 +64,7 @@ export class PerfilUserComponent implements OnInit {
 
 
   inativarParticipante(): void {
-    this.http.delete(`${this.apiUrl}/inativar/${this.usuario.cpf}`).subscribe({
+    this.http.delete(`${this.apiUrl}/deletar${this.usuario.cpf}`).subscribe({
       next: (response) => {
         alert('Participante inativado!');
 
