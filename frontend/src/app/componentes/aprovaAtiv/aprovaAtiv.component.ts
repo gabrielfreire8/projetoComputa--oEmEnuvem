@@ -48,7 +48,7 @@ export class AprovaAtivComponent implements OnInit {
     console.log('Enviando payload para aprovação direta:', JSON.stringify(payload, null, 2));
 
 
-    this.http.put(`${this.apiUrl}/atividades/aprovar`, payload).subscribe({
+    this.http.post(`${this.apiUrl}/atividades/aprovar`, payload).subscribe({
       next: (response: any) => {
         console.log('Resposta da API (aprovação direta):', response);
 

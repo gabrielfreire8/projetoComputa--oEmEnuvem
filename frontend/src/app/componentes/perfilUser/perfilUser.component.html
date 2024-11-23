@@ -16,7 +16,6 @@
     <section class="container">
       <h1 id="title" class="tituloRegistro">Perfil</h1>
 
-
       <form *ngIf="usuario" id="formCadastro" #formCadastro="ngForm" (ngSubmit)="alterarDados(formCadastro)">
         <div id="dadosLogin">
           <h1>Dados de Login</h1>
@@ -33,7 +32,7 @@
           <div class="cpfDateContainer">
             <div class="cpfContainer">
               <label id="ColCpf" for="cpf">CPF</label>
-              <input type="number" placeholder="Somente Números" id="cpf" [(ngModel)]="usuario.cpf" name="cpf" required>
+              <input type="text" placeholder="Somente Números" id="cpf" [(ngModel)]="usuario.cpf" name="cpf" required>
             </div>
             <div class="dateContainer">
               <label id="date" for="date">Data de Nascimento:</label>
@@ -43,7 +42,7 @@
 
           <div class="celularForm">
             <label id="NumCelu" for="numberPhone">Celular</label>
-            <input type="number" placeholder="Somente Números" id="numberPhone" [(ngModel)]="usuario.telefone" name="telefone" required>
+            <input type="text" placeholder="Somente Números" id="numberPhone" [(ngModel)]="usuario.telefone" name="telefone" required>
           </div>
         </div>
 
@@ -51,7 +50,7 @@
           <h1>Dados Complementares</h1>
           <div class="cepForm" id="cep2">
             <label id="mCep" for="cep">CEP</label>
-            <input type="number" placeholder="Somente Números" id="cep" [(ngModel)]="usuario.cep" name="cep" required>
+            <input type="text" placeholder="Somente Números" id="cep" [(ngModel)]="usuario.cep" name="cep" required>
           </div>
           <div class="numeroLogradouro">
             <div class="logradouro">

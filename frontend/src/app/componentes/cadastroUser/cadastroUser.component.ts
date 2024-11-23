@@ -32,56 +32,57 @@ export class CadastroUserComponent {
   };
 
   private apiUrl = `${environment.apiUrl}/beneficiados/cadastro`;
-  private verificarCpfUrl = `${environment.apiUrl}/beneficiados/verificarCpf`;
 
   constructor(private http: HttpClient, private router: Router, private datePipe: DatePipe) {}
 
   cadastrar(form: NgForm) {
+    console.log(this.usuario);
     if (form.valid) {
-      // Remover caracteres não numéricos do CPF
-      this.usuario.cpf = String(this.usuario.cpf).replace(/\D/g, '');
+      // Verificação e formatação da data de nascimento
+      if (this.usuario.dataNascimento) {
+        const formattedDate = this.datePipe.transform(this.usuario.dataNascimento, 'yyyy-MM-dd');
+        if (!formattedDate) {
+          alert('Data de nascimento inválida. Por favor, insira uma data válida.');
+          return;
+        }
+        this.usuario.dataNascimento = formattedDate!;
+      }
 
-      // Verificar se o CPF já está cadastrado
-      this.http.get<any>(`${this.verificarCpfUrl}/${this.usuario.cpf}`).subscribe(
-        (response) => {
-          if (response.exists) {
-            alert('Este CPF já está cadastrado. Por favor, verifique os dados.');
-            return;
-          }
+      console.log('Dados enviados para cadastro:', this.usuario);
 
-          // Validar a data de nascimento
-          if (this.usuario.dataNascimento) {
-            const formattedDate = this.datePipe.transform(this.usuario.dataNascimento, 'yyyy-MM-dd');
-            if (!formattedDate) {
-              alert('Data de nascimento inválida. Por favor, insira uma data válida.');
-              return;
+
+      if (!this.usuario.cpf) {
+        alert('CPF não pode ser vazio.');
+        return;
+      }
+
+      this.http.post(this.apiUrl, this.usuario).subscribe(
+        (response: any) => {
+          if (response.status === 200) {
+            console.log('Usuário cadastrado com sucesso:', response);
+            alert('Usuário cadastrado com sucesso!');
+
+
+            if (!localStorage.getItem('cpf')) {
+              localStorage.setItem('cpf', this.usuario.cpf);
             }
-            this.usuario.dataNascimento = formattedDate;
+
+
+            this.router.navigate(['/perfilUser']);
+          } else {
+            console.error('Erro ao cadastrar usuário:', response.message);
+            alert(response.message || 'Erro ao cadastrar usuário. Tente novamente.');
           }
-
-          console.log('Dados enviados para cadastro:', this.usuario);
-
-          // Enviar os dados para o backend
-          this.http.post(this.apiUrl, this.usuario).subscribe(
-            (response: any) => {
-              if (response.status === 200) {
-                console.log('Usuário cadastrado com sucesso:', response);
-                alert('Usuário cadastrado com sucesso!');
-                this.router.navigate(['/cadastroUser']);
-              } else {
-                console.error('Erro ao cadastrar usuário:', response.message);
-                alert(response.message || 'Erro ao cadastrar usuário. Tente novamente.');
-              }
-            },
-            (error: any) => {
-              console.error('Erro ao cadastrar usuário:', error);
-              this.handleCadastroError(error);
-            }
-          );
         },
-        (error) => {
-          console.error('Erro ao verificar CPF:', error);
-          alert('Erro ao verificar o CPF. Tente novamente.');
+        (error: any) => {
+          console.error('Erro ao cadastrar usuário:', error);
+          if (error.status === 422) {
+            alert(`Erro 422 - Dados inválidos: ${error.error.message || 'Verifique os dados enviados.'}`);
+          } else if (error.status === 404) {
+            alert('Erro: CPF não encontrado. Verifique os dados e tente novamente.');
+          } else {
+            alert('Erro ao cadastrar usuário. Verifique os dados e tente novamente.');
+          }
         }
       );
     } else {
@@ -93,6 +94,13 @@ export class CadastroUserComponent {
   buscarCEP() {
     if (this.usuario.cep) {
       const cepFormatado = this.usuario.cep.toString().padStart(8, '0');
+
+
+      if (cepFormatado.length !== 8) {
+        alert('Por favor, insira um CEP válido.');
+        return;
+      }
+
       this.http.get<CepResponse>(`https://viacep.com.br/ws/${cepFormatado}/json/`).subscribe(
         (dados: CepResponse) => {
           if (dados) {
@@ -111,17 +119,6 @@ export class CadastroUserComponent {
       );
     } else {
       alert('Por favor, insira um CEP válido.');
-    }
-  }
-
- 
-  private handleCadastroError(error: any) {
-    if (error.status === 422) {
-      alert(`Erro 422 - Dados inválidos: ${error.error.message || 'Verifique os dados enviados.'}`);
-    } else if (error.status === 404) {
-      alert('Erro: CPF não encontrado. Verifique os dados e tente novamente.');
-    } else {
-      alert('Erro ao cadastrar usuário. Verifique os dados e tente novamente.');
     }
   }
 }
