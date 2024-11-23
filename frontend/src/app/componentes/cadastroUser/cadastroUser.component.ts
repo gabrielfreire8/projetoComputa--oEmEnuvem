@@ -114,7 +114,7 @@ export class CadastroUserComponent {
     }
   }
 
-  // Método de tratamento de erro para o cadastro
+ 
   private handleCadastroError(error: any) {
     if (error.status === 422) {
       alert(`Erro 422 - Dados inválidos: ${error.error.message || 'Verifique os dados enviados.'}`);
