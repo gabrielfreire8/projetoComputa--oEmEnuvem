@@ -31,7 +31,7 @@ router.put('/atividade/:id', atividadesControllers.updateAtividade);
 router.delete("/atividade/apagar/:id", atividadesControllers.deleteAtividade);
 
 // Aprovacao Atividade
-router.post("/atividades/aprovar/", userMiddlewares.authAdmin, aprovacaoMiddlewares.checkAtividade, aprovacaoAtividadesControllers.new);
+router.post("/atividades/aprovar/", aprovacaoMiddlewares.checkAtividade, aprovacaoAtividadesControllers.new);
 router.delete("/atividades/aprovadas/delete", aprovacaoAtividadesControllers.delete);
 router.get("/atividades/aprovacoes/", aprovacaoAtividadesControllers.getAll);
 
