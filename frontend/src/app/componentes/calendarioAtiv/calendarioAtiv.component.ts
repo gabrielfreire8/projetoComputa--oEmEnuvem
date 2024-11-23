@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -9,89 +8,103 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./calendarioAtiv.component.css']
 })
 export class CalendarioAtivComponent implements OnInit {
-  atividades: any[] = [];
+  atividadesAprovadas: any[] = [];
   mes!: string;
   ano!: number;
-  dias: number[] = [];
+  dias: { dia: number; comAtividade: boolean }[] = [];
   diaSelecionado: number | null = null;
-  atividadeSelecionada: any = null;
+  atividadesDoDia: any[] = [];
 
-  notasSalvas: { [data: string]: string } = {};
-
-  private apiUrl = `${environment.apiUrl}/atividades`;
-
+  private apiUrl = environment.apiUrl;
   private meses: string[] = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
   ];
 
-  constructor(private http: HttpClient, private router: Router) {}
+  private mesAnterior!: string;
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.mes = 'Janeiro';
+    this.mes = 'Novembro';
     this.ano = 2024;
     this.carregarCalendario();
-    this.obterAtividades();
+    this.buscarAtividadesAprovadas();
+
+
+
+
+
   }
 
   carregarCalendario() {
     const numeroMes = this.getNumeroMes(this.mes);
     const diasNoMes = new Date(this.ano, numeroMes + 1, 0).getDate();
-    this.dias = Array.from({ length: diasNoMes }, (_, i) => i + 1);
-  }
-
-  obterAtividades() {
-    this.http.get<any[]>(this.apiUrl).subscribe({
-      next: (data) => {
-        console.log('Dados recebidos da API:', data);
-        this.atividades = data || [];
-        this.marcarAtividadesNoCalendario();
-      },
-      error: (error) => {
-        console.error('Erro ao obter atividades:', error);
-      }
+    this.dias = Array.from({ length: diasNoMes }, (_, i) => {
+      const dia = i + 1;
+      return { dia, comAtividade: false };
     });
   }
 
-  marcarAtividadesNoCalendario() {
-    if (Array.isArray(this.atividades)) {
-      this.atividades.forEach((atividade) => {
-        const dataAtividade = new Date(atividade.data);
-        const diaAtividade = dataAtividade.getDate();
-        const dataFormatada = this.formatarData(diaAtividade);
 
-        this.notasSalvas[dataFormatada] = atividade.descricao;
-      });
-    }
+  buscarAtividadesAprovadas(): void {
+    this.http.get(`${this.apiUrl}/atividades/aprovadas`).subscribe({
+      next: (data: any) => {
+        console.log('Resposta da API (atividades aprovadas):', data);
+
+        this.atividadesAprovadas = Array.isArray(data.atividades) ? data.atividades : [];
+        this.marcarDiasComAtividades();
+      },
+      error: (error) => {
+        console.error('Erro ao buscar atividades aprovadas:', error);
+      },
+    });
+  }
+
+  marcarDiasComAtividades() {
+
+    this.dias.forEach((diaObj) => {
+
+      const atividadesNoDia = this.atividadesAprovadas.filter(atividade =>
+        this.compararDiaAtividade(new Date(atividade.data), diaObj.dia)
+      );
+
+      diaObj.comAtividade = atividadesNoDia.length > 0;
+    });
+  }
+
+
+  compararDiaAtividade(dataAtividade: Date, diaCalendario: number): boolean {
+    return dataAtividade.getFullYear() === this.ano &&
+            dataAtividade.getMonth() === this.getNumeroMes(this.mes) &&
+            dataAtividade.getDate() === diaCalendario;
   }
 
   getNumeroMes(mes: string): number {
     return this.meses.indexOf(mes);
   }
 
-  formatarData(dia?: number): string {
-    const diaSelecionadoLocal = dia !== undefined ? dia : this.diaSelecionado;
-    if (diaSelecionadoLocal !== null) {
-      const anoFormatado = this.ano.toString();
-      const mesFormatado = (this.getNumeroMes(this.mes) + 1).toString().padStart(2, '0');
-      const diaFormatado = diaSelecionadoLocal.toString().padStart(2, '0');
-      return `${anoFormatado}-${mesFormatado}-${diaFormatado}`;
-    }
-    return '';
-  }
-
   selecionarDia(dia: number) {
-    this.diaSelecionado = dia;
-    const dataSelecionada = this.formatarData(dia);
+    if (this.diaSelecionado === dia) {
 
+      this.diaSelecionado = null;
+      this.atividadesDoDia = [];
+    } else {
 
-    this.atividadeSelecionada = this.atividades.find(atividade => {
-      const dataAtividade = new Date(atividade.data);
-      const dataFormatadaAtividade = this.formatarData(dataAtividade.getDate());
-      return dataFormatadaAtividade === dataSelecionada;
-    });
+      this.diaSelecionado = dia;
+      this.atividadesDoDia = this.atividadesAprovadas.filter(atividade => {
+        return new Date(atividade.data).getDate() === dia;
+      });
+    }
   }
 
+  isDiaSelecionado(dia: number): boolean {
+    return dia === this.diaSelecionado;
+  }
+
+  temAtividade(dia: number): boolean {
+    return this.dias.find(d => d.dia === dia)?.comAtividade || false;
+  }
 
   mudarMes(direcao: number) {
     const indexAtual = this.meses.indexOf(this.mes);
@@ -106,12 +119,12 @@ export class CalendarioAtivComponent implements OnInit {
     }
 
     this.mes = this.meses[novoIndex];
-    this.carregarCalendario();
 
 
-    this.obterAtividades();
+    if (this.mes !== this.mesAnterior) {
+      this.mesAnterior = this.mes;
+      this.carregarCalendario();
+      this.buscarAtividadesAprovadas();
+    }
   }
-
-  
-
 }

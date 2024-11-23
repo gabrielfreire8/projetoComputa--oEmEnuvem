@@ -12,10 +12,13 @@
       <button routerLink="" class="button" id="bt_sair">Sair</button>
     </div>
   </section>
+
   <aside>
     <div id="btnTela3">
       <button routerLink="/menuInicial" class="botVolta" id="btnVolt">Voltar</button>
     </div>
+
+    <!-- Calendário -->
     <div class="calendario">
       <div class="header">
         <button id="anterior" (click)="mudarMes(-1)"><</button>
@@ -35,23 +38,31 @@
         <div *ngFor="let dia of dias; let i = index"
               class="dia"
               [ngClass]="{
-                'selecionado': dia === diaSelecionado,
-                'com-atividade': notasSalvas[formatarData(dia)]
+                'selecionado': dia.dia === diaSelecionado,
+                'com-atividade': temAtividade(dia.dia)
               }"
-              (click)="selecionarDia(dia)">
-            {{ dia }}
+              (click)="selecionarDia(dia.dia)">
+          {{ dia.dia }}
         </div>
       </div>
-
     </div>
-    <div *ngIf="atividadeSelecionada" class="atividade-info">
-      <h3>Atividade do dia {{ diaSelecionado }} de {{ mes }}:</h3>
+
+    <!-- Exibição das atividades selecionadas -->
+    <div *ngIf="atividadesDoDia.length > 0" class="atividades-lista">
+      <h3>Atividades do dia {{ diaSelecionado }} de {{ mes }}:</h3>
       <ul>
-        <li><strong>Nome:</strong> {{ atividadeSelecionada.nome }}</li>
-        <li><strong>Tipo:</strong> {{ atividadeSelecionada.tipo }}</li>
-        <li><strong>Descrição:</strong> {{ atividadeSelecionada.descricao }}</li>
+        <li *ngFor="let atividade of atividadesDoDia">
+          <strong>Nome da Atividade:</strong> {{ atividade.nome }} <br>
+          <strong>Tipo de Atividade:</strong> {{ atividade.tipo }} <br>
+          <strong>Descrição:</strong> {{ atividade.descricao }} <br>
+          <strong>Data:</strong> {{ atividade.data | date: 'dd/MM/yyyy' }} <br>
+        </li>
       </ul>
     </div>
 
+    <!-- Caso não haja atividades para o dia -->
+    <div *ngIf="atividadesDoDia.length === 0 && diaSelecionado" class="sem-atividades">
+      <p>Não há atividades para o dia {{ diaSelecionado }} de {{ mes }}.</p>
+    </div>
   </aside>
 </main>
