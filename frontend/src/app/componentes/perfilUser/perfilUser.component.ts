@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-perfilUser',
   templateUrl: './perfilUser.component.html',
@@ -22,21 +23,19 @@ export class PerfilUserComponent implements OnInit {
     cidade: ''
   };
 
-
   private apiUrl = `${environment.apiUrl}/beneficiados`;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.obterDadosUsuario();
+    this.obterDadosUsuario(); // Carregar dados do usuário ao inicializar o componente
   }
 
-
   obterDadosUsuario(): void {
-
-    this.http.get<any>(`${this.apiUrl}/:id`).subscribe({
+    // Aqui vamos buscar o usuário usando o CPF ou ID. Suponho que você tenha o CPF do usuário para realizar a requisição.
+    this.http.get<any>(`${this.apiUrl}/cpf/${this.usuario.cpf}`).subscribe({
       next: (data) => {
-        this.usuario = data;
+        this.usuario = data; // Preenche o objeto usuario com os dados da API
       },
       error: (error) => {
         console.error('Erro ao obter dados do usuário:', error);
@@ -44,7 +43,6 @@ export class PerfilUserComponent implements OnInit {
       }
     });
   }
-
 
   alterarDados(form: NgForm): void {
     if (form.valid) {
@@ -62,12 +60,10 @@ export class PerfilUserComponent implements OnInit {
     }
   }
 
-
   inativarParticipante(): void {
-    this.http.delete(`${this.apiUrl}/deletar${this.usuario.cpf}`).subscribe({
+    this.http.delete(`${this.apiUrl}/deletar/${this.usuario.cpf}`).subscribe({
       next: (response) => {
         alert('Participante inativado!');
-
       },
       error: (error) => {
         console.error('Erro ao inativar participante:', error);

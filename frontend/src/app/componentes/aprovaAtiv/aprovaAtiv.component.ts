@@ -24,8 +24,10 @@ export class AprovaAtivComponent implements OnInit {
 
   buscarAtividades(): void {
     this.http.get(`${this.apiUrl}/atividades`).subscribe({
+
       next: (data: any) => {
         console.log('Resposta da API:', data);
+
         this.atividades = Array.isArray(data.atividades) ? data.atividades : [];
       },
       error: (error) => {
@@ -37,31 +39,71 @@ export class AprovaAtivComponent implements OnInit {
 
 
   aprovarAtividade(atividade: Atividade): void {
-    this.http.post(`${this.apiUrl}/atividades/aprovar`, { id: atividade.id }).subscribe({
-      next: () => {
-        console.log('Atividade aprovada:', atividade.nome);
+
+    const payload = {
+      idAtividade: atividade.idatividades,
+      idAprovador: 1,
+    };
+
+    console.log('Enviando payload para aprovação direta:', JSON.stringify(payload, null, 2));
+
+
+    this.http.put(`${this.apiUrl}/atividades/aprovar`, payload).subscribe({
+      next: (response: any) => {
+        console.log('Resposta da API (aprovação direta):', response);
+
+
         alert(`Atividade "${atividade.nome}" aprovada com sucesso!`);
-        this.buscarAtividades();
+
+
+        this.atividades = this.atividades.filter(a => a.idatividades !== atividade.idatividades);
       },
       error: (error) => {
-        console.error('Erro ao aprovar atividade:', error);
-        alert('Erro ao aprovar atividade. Tente novamente.');
+        console.error('Erro ao aprovar atividade diretamente:', error);
+
+        if (error.status === 403) {
+          alert('Permissão negada ou erro ao aprovar a atividade.');
+        } else {
+          alert('Erro ao aprovar atividade. Tente novamente mais tarde.');
+        }
       },
     });
   }
 
 
-  rejeitarAtividade(atividade: Atividade): void {
-    this.http.post(`${this.apiUrl}/atividades/delete`, { id: atividade.id }).subscribe({
-      next: () => {
-        console.log('Atividade rejeitada:', atividade.nome);
-        alert(`Atividade "${atividade.nome}" rejeitada com sucesso!`);
-        this.buscarAtividades();
-      },
-      error: (error) => {
-        console.error('Erro ao rejeitar atividade:', error);
-        alert('Erro ao rejeitar atividade. Tente novamente.');
-      },
-    });
-  }
+
+
+
+
+
+
+
+rejeitarAtividade(atividade: Atividade): void {
+  const atividadeId = atividade.idatividades;
+  const url = `${this.apiUrl}/atividade/apagar/${atividadeId}`;
+
+  console.log('Rejeitando a atividade com ID:', atividadeId);
+
+  this.http.delete(url).subscribe({
+    next: () => {
+      console.log('Atividade rejeitada:', atividade.nome);
+      alert(`Atividade "${atividade.nome}" rejeitada com sucesso!`);
+      this.atividades = this.atividades.filter(a => a.idatividades !== atividadeId);
+    },
+    error: (error) => {
+      console.error('Erro ao rejeitar atividade:', error);
+      alert('Erro ao rejeitar atividade. Tente novamente.');
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
 }

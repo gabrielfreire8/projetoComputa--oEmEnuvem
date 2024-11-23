@@ -4,7 +4,7 @@ import {knex} from '../data/connection';
 class Beneficiados{
     async new(beneficiado: {
         nome: string,
-        cpf: string,
+        cpf: string, 
         dataNascimento: string,
         telefone: string,
         email: string,

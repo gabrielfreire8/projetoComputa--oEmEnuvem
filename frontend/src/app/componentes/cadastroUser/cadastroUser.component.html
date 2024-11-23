@@ -41,9 +41,8 @@
               <label id="date" for="date">Data de Nascimento:</label>
               <input type="date" id="date" [(ngModel)]="usuario.dataNascimento" name="dataNascimento" required>
             </div>
-
-
           </div>
+
           <div class="celularForm">
             <label id="NumCelu" for="numberPhone">Celular</label>
             <input type="number" placeholder="Somente Números" id="numberPhone" [(ngModel)]="usuario.telefone" name="telefone" required>
@@ -72,7 +71,7 @@
                 type="text"
                 placeholder="Digite Sua rua"
                 id="logradouro"
-                [(ngModel)]="usuario.logradouro"
+                [(ngModel)]="usuario.rua"
                 name="logradouro"
                 readonly
               >

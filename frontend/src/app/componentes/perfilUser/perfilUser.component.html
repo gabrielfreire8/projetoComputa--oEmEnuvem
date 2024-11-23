@@ -11,22 +11,20 @@
       <button routerLink="" class="button" id="bt_sair">Sair</button>
     </div>
   </section>
+
   <aside>
-    <div id="btnTela3">
-      <button routerLink="/menuInicial" class="botVolta" id="btnVolt">Voltar</button>
-    </div>
     <section class="container">
       <h1 id="title" class="tituloRegistro">Perfil</h1>
-      <form id="formCadastro" #formCadastro="ngForm" (ngSubmit)="alterarDados(formCadastro)">
+
+
+      <form *ngIf="usuario" id="formCadastro" #formCadastro="ngForm" (ngSubmit)="alterarDados(formCadastro)">
         <div id="dadosLogin">
           <h1>Dados de Login</h1>
           <div class="nomeCompleto">
             <label id="firstNome" for="firstName">Nome Completo</label>
-            <div class="nomeCompletoInput">
-              <input type="text" placeholder="Nome" id="firstName" [(ngModel)]="usuario.nome" name="primeiroNome" required>
-
-            </div>
+            <input type="text" placeholder="Nome" id="firstName" [(ngModel)]="usuario.nome" name="primeiroNome" required>
           </div>
+
           <div class="emailForm">
             <label id="emailTitle" for="email">Email</label>
             <input type="email" placeholder="Digite seu email" id="email" [(ngModel)]="usuario.email" name="email" required>
@@ -42,6 +40,7 @@
               <input type="date" id="date" [(ngModel)]="usuario.dataNascimento" name="dataNascimento">
             </div>
           </div>
+
           <div class="celularForm">
             <label id="NumCelu" for="numberPhone">Celular</label>
             <input type="number" placeholder="Somente Números" id="numberPhone" [(ngModel)]="usuario.telefone" name="telefone" required>
@@ -52,7 +51,7 @@
           <h1>Dados Complementares</h1>
           <div class="cepForm" id="cep2">
             <label id="mCep" for="cep">CEP</label>
-            <input type="number" placeholder="Somente Números" id="cep" [(ngModel)]="usuario.cep"   name="cep" required>
+            <input type="number" placeholder="Somente Números" id="cep" [(ngModel)]="usuario.cep" name="cep" required>
           </div>
           <div class="numeroLogradouro">
             <div class="logradouro">
@@ -76,8 +75,10 @@
             </div>
           </div>
         </div>
+
         <button type="submit" class="enviarFormulario">Alterar Dados</button>
       </form>
+
       <button (click)="inativarParticipante()" id="inatPartic" class="enviarFormulario">Inativar Participante</button>
     </section>
   </aside>
