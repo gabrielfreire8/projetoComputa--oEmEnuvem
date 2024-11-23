@@ -3,9 +3,8 @@ import presencaModels from "../models/presencaModels";
 class PresencaControllers{
     async cadastro(req: any, res: any){
         try{
-            let idAtividade: number = req.params.idAtividade
-            let info = req.body;
-            let presenca = await presencaModels.cadastrar(info, idAtividade);
+            let {atividade, usuario} = req.body;
+            let presenca = await presencaModels.cadastrar(atividade, usuario);
             if(presenca.status === false){
                 return res.status(400).json(presenca)
             }

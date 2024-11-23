@@ -2,16 +2,11 @@ import { knex } from "../data/connection";
 
 let today = new Date().toISOString().slice(0,10);
 class PresencaModel{
-    async cadastrar(presenca: {
-        idBeneficiado: number,
-        data: string,
-        status: string
-    }, idAtividade: number){
+    async cadastrar(atividade: number, usuario: number){
         try{
-            let cadastro = await knex.insert({beneficiados_idUsuarios: Number(presenca.idBeneficiado),
-                atividades_idatividades: Number(idAtividade),
-                data: today,
-                status: "Presente"
+            let cadastro = await knex.insert({
+                atividades_idatividades: atividade,
+                usuario_idusuario: usuario
             }).table('presenca')
 
             if(cadastro.length > 0){
