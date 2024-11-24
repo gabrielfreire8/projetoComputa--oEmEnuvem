@@ -2,6 +2,8 @@
 import User  from '../models/userModel';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer'); 
+const crypto = require('crypto');
 
 class UserController{
     async create(req: any, res: any ){
@@ -164,7 +166,13 @@ class UserController{
                 error: error});
         };
     };
+
+    async forgotPass(req: any, res: any){
+        
+    }
+
 };
 
+   
 
 export default new UserController

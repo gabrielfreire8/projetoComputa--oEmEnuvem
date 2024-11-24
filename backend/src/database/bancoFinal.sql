@@ -74,18 +74,11 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bancopjb`.`presenca` (
   `idpresenca` INT NOT NULL AUTO_INCREMENT,
-  `atividades_idatividades` INT NOT NULL,
-  `usuario_idusuario` INT NOT NULL,
-  PRIMARY KEY (`idpresenca`, `atividades_idatividades`, `usuario_idusuario`),
-  INDEX `fk_presenca_atividades1_idx` (`atividades_idatividades` ASC) VISIBLE,
-  INDEX `fk_presenca_usuario1_idx` (`usuario_idusuario` ASC) VISIBLE,
-  CONSTRAINT `fk_presenca_atividades1`
-    FOREIGN KEY (`atividades_idatividades`)
-    REFERENCES `bancopjb`.`atividades` (`idatividades`),
-  CONSTRAINT `fk_presenca_usuario1`
-    FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `bancopjb`.`participantes` (`idparticipantes`))
+  `usuario_idusuario` INT NULL DEFAULT NULL,
+  `atividades_data` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`idpresenca`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb3;
 
 
