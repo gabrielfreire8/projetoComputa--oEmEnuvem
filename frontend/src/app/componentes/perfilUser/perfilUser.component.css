@@ -262,7 +262,7 @@ label{
   display: flex;
   flex-direction: column;
   }
- .celularForm {
+  .celularForm {
   grid-column: 1 / 3;
   display: flex;
   flex-direction: column;

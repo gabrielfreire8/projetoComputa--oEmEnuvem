@@ -69,11 +69,11 @@ aside{
   display: flex;
   justify-content: center;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #EFF5F4;
   width: 100vw;
   height: 100vh;
 
-  }
+}
 
 #buttons{
   margin-top: 20%;
@@ -257,11 +257,11 @@ label{
   display: flex;
   flex-direction: column;
   }
- .celularForm {
-  grid-column: 1 / 3;
-  display: flex;
-  flex-direction: column;
-  }
+  .celularForm {
+    grid-column: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    }
   .celularForm input {
   width: 49%;
   }
@@ -432,14 +432,13 @@ input:focus {
 #NumCelu{
   padding: 7px;
 }
-
 #numberPhone{
   display: flex;
   font-weight: bold;
   padding: 2px;
   height: 40px;
-  width: 200px;
   border-radius: 20px;
+
 }
 #dadosComplementares{
   width: 45%;
