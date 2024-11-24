@@ -1,6 +1,6 @@
+import beneficiadoModel from '../models/beneficiadoModel';
 import Beneficiado from '../models/beneficiadoModel'
 const userModel = require('../models/userModel.ts');
-const bcrypt = require('bcrypt');
 class BeneficiadoControllers {
     async create(req: any, res:any) {
         try {
@@ -26,9 +26,20 @@ class BeneficiadoControllers {
         }
     }
 
+    async getBeneficiados(req: any, res: any){
+        try{
+            let participantes = await beneficiadoModel.getBeneficados();
+            if(participantes === 404){
+                return res.status(404).json({error: "nao foram encontrados participantes"})
+            }return res.status(200).json(participantes)
+        }catch(error){
+            return res.status(400).json(error)
+        }
+    };
+
     async getBeneficiado(req: any, res: any) {
         try {
-            let user = await Beneficiado.getBeneficiadoByCpf(req.body.cpf);
+            let user = await Beneficiado.getBeneficiadoByCpf(req.params.cpf);
             if(user === 404){
                 return res.status(404).send({
                     message: "User not found"

@@ -35,7 +35,23 @@ class Beneficiados{
         
     };
 
-
+    async getBeneficados(){
+        try{
+            let participantes = await knex.select(['nome', 'cpf']).table('participantes');
+            if(participantes.length < 1){
+                return 404
+            }else return participantes
+        }catch(error){
+            return 404
+        }
+    };
+    async getByID(id: number){
+        try{
+            let beneficiado = await knex.select(['nome', 'cpf']).where({idparticipantes: id}).table({})
+        }catch(error){
+            return error
+        }
+    }
     async getCpf(cpf: string){
         try{
             let user = await knex.select(['email']).where({cpf: cpf}).table('participantes');

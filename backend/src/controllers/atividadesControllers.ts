@@ -1,4 +1,3 @@
-import { error } from "console";
 import atividadesModel from "../models/atividadesModel";
 
 class AtividadesController{
@@ -13,7 +12,6 @@ class AtividadesController{
                 atividade: criarAtividade
             })
         }catch(error){
-            console.log(error)
             return res.status(409).json({
                 error: error
             })
@@ -23,7 +21,6 @@ class AtividadesController{
     async getAll(req: any, res: any){
         try{
             let atividades = await atividadesModel.getAtividades();
-            console.log(atividades);
             if(atividades.status === false){
                 return res.status(409).json({
                     message: "Erro ao requisitar as atividades"

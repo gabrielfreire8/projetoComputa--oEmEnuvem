@@ -18,9 +18,10 @@ router.post('/login/', UserController.login);
 
 // Beneficiado
 router.post("/beneficiados/cadastro", benefMiddlewares.checkCpf, beneficiadoController.create);
-router.get("/beneficiados/", beneficiadoController.getBeneficiado);
+router.get("/beneficiados/:cpf", beneficiadoController.getBeneficiado);
+router.get("/beneficiados/all", beneficiadoController.getBeneficiados);
 router.put("/beneficiados/", beneficiadoController.updateBeneficiado);
-router.delete("/beneficiados/delete/", benefMiddlewares.checkDeletedBenef ,beneficiadoController.deleteBeneficiado);
+router.delete("/beneficiados/delete/", benefMiddlewares.checkDeletedBenef, beneficiadoController.deleteBeneficiado);
 
 // Atividade
 router.post("/atividade/criar", atividadesControllers.new);
@@ -36,9 +37,9 @@ router.delete("/atividades/aprovadas/delete", aprovacaoAtividadesControllers.del
 router.get("/atividades/aprovacoes/", aprovacaoAtividadesControllers.getAll);
 
 // Presenca 
-router.get("/presenca/atividade/:idAtividade", presencaControllers.getPresencaByAtividade);
-router.post("/presenca/atividade/:idAtividade", presencaControllers.cadastro);
-router.delete("/presenca/atividade/:idAtividade", presencaControllers.deletePresenca);
-router.put("/presenca/editar/:idPresenca", presencaControllers.updatePresenca);
+router.get("/presenca/atividade/", presencaControllers.getPresencaByAtividade);
+router.post("/presenca/atividade/", presencaControllers.cadastro);
+router.delete("/presenca/", presencaControllers.deletePresenca);
+router.put("/presenca/editar/", presencaControllers.updatePresenca);
 
 export = router;
