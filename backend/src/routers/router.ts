@@ -21,7 +21,7 @@ router.post("/beneficiados/cadastro", benefMiddlewares.checkCpf, beneficiadoCont
 router.get("/beneficiados/:cpf", beneficiadoController.getBeneficiado);
 router.get("/beneficiados/all", beneficiadoController.getBeneficiados);
 router.put("/beneficiados/", beneficiadoController.updateBeneficiado);
-router.delete("/beneficiados/delete/", benefMiddlewares.checkDeletedBenef, beneficiadoController.deleteBeneficiado);
+router.delete("/beneficiados/delete/:cpf", benefMiddlewares.checkDeletedBenef, beneficiadoController.deleteBeneficiado);
 
 // Atividade
 router.post("/atividade/criar", atividadesControllers.new);

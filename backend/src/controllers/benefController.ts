@@ -71,8 +71,7 @@ class BeneficiadoControllers {
 
     async deleteBeneficiado(req: any, res:any){
         try{
-            let {cpf} = req.body;
-            let [user] = await beneficiadoModel.getBeneficiadoByCpf(cpf);
+            let [user] = await beneficiadoModel.getBeneficiadoByCpf(req.params.cpf);
             let deleted = await Beneficiado.deleteBeneficiado(user.idparticipantes);
             if(deleted === 1){
                 return res.status(200).json({
