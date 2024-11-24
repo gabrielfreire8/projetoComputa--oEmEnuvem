@@ -58,7 +58,7 @@ class Beneficiados{
             return 404}
     }
 
-    async updateBeneficado(id: number, beneficiado: any){
+    async updateBeneficado(beneficiado: any){
         try{
             let user = await knex.update({
                 nome: beneficiado.nome,
@@ -71,7 +71,7 @@ class Beneficiados{
                 enderecoNumero: beneficiado.numero,
                 enderecoBairro: beneficiado.bairro,
                 cidade: beneficiado.cidade
-            }).where({idparticipantes: id}).table('participantes');
+            }).where({cpf: beneficiado.cpf}).table('participantes');
             return user;
         }catch(error){
             return 404;

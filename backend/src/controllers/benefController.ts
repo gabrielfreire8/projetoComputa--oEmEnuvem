@@ -44,8 +44,8 @@ class BeneficiadoControllers {
 
     async updateBeneficiado(req: any, res: any) {
         try {
-            await Beneficiado.updateBeneficado(req.params.id, req.body);
-            let newUser = await Beneficiado.getBeneficiadoByCpf(req.params.cpf);
+            await Beneficiado.updateBeneficado(req.body);
+            let newUser = await Beneficiado.getBeneficiadoByCpf(req.body.cpf);
             return res.status(200).json({
                 message: "usuário atualizado com sucesso",
                 user: newUser[0]
