@@ -12,6 +12,7 @@
       <button routerLink="" class="button" id="bt_sair">Sair</button>
     </div>
   </section>
+
   <aside>
     <div id="btnTela3">
       <button routerLink="/menuInicial" class="botVolta" id="btnVolt">Voltar</button>
@@ -30,8 +31,9 @@
           [(ngModel)]="nomeCompleto"
           placeholder="Nome"
           id="nomeComple"
-          (ngModelChange)="buscarMatricula(nomeCompleto)"
+          (ngModelChange)="buscarIdPorNome(nomeCompleto)"
         >
+
         <input
           type="text"
           [(ngModel)]="matricula"
@@ -45,10 +47,14 @@
             (click)="salvarPresenca()"
             [disabled]="!dataPresenca || !matricula"
           >
-            <img src="../../../assets/imagens/check.png" alt="">
+            <img src="../../../assets/imagens/check.png" alt="Salvar">
           </button>
-          <button id="btnClose">
-            <img src="../../../assets/imagens/close.png" alt="">
+          <button
+            id="btnClose"
+            (click)="aprovarPresenca()"
+            [disabled]="!matricula"
+          >
+            <img src="../../../assets/imagens/close.png" alt="Aprovar">
           </button>
         </div>
       </div>
