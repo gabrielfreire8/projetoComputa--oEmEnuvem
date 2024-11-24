@@ -28,8 +28,7 @@ class BeneficiadoControllers {
 
     async getBeneficiado(req: any, res: any) {
         try {
-            console.log("GET");
-            let user = await Beneficiado.getBeneficiadoById(req.params.id);
+            let user = await Beneficiado.getBeneficiadoByCpf(req.body.cpf);
             if(user === 404){
                 return res.status(404).send({
                     message: "User not found"
@@ -46,7 +45,7 @@ class BeneficiadoControllers {
     async updateBeneficiado(req: any, res: any) {
         try {
             await Beneficiado.updateBeneficado(req.params.id, req.body);
-            let newUser = await Beneficiado.getBeneficiadoById(req.params.id);
+            let newUser = await Beneficiado.getBeneficiadoByCpf(req.params.cpf);
             return res.status(200).json({
                 message: "usuário atualizado com sucesso",
                 user: newUser[0]
