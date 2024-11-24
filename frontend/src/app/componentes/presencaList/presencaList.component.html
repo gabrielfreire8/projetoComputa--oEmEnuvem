@@ -31,7 +31,7 @@
           [(ngModel)]="nomeCompleto"
           placeholder="Nome"
           id="nomeComple"
-          (ngModelChange)="buscarIdPorNome(nomeCompleto)"
+          (ngModelChange)="atualizarCpfPeloNome(nomeCompleto)"
         >
 
         <input
@@ -41,17 +41,27 @@
           id="matricula"
           [disabled]="true"
         >
+
+        <!-- Aqui você pode adicionar um campo para exibir o CPF -->
+        <input
+          type="text"
+          [(ngModel)]="cpf"
+          placeholder="CPF"
+          id="cpf"
+          [disabled]="true"
+        >
+
         <div id="mudar">
           <button
             id="btnCheck"
             (click)="salvarPresenca()"
-            [disabled]="!dataPresenca || !matricula"
+            [disabled]="!dataPresenca || !matricula || !cpf"
           >
             <img src="../../../assets/imagens/check.png" alt="Salvar">
           </button>
           <button
             id="btnClose"
-            (click)="aprovarPresenca()"
+            (click)="salvarPresenca()"
             [disabled]="!matricula"
           >
             <img src="../../../assets/imagens/close.png" alt="Aprovar">

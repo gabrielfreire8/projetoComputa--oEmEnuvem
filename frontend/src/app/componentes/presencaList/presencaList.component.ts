@@ -10,44 +10,55 @@ import { environment } from '../../../environments/environment';
 export class PresencaListComponent implements OnInit {
   dataPresenca: string = '';
   nomeCompleto: string = '';
-  matricula: string = '';
-
+  cpf: string = '';
+  beneficiados: { nome: string; cpf: string }[] = [];
+  
   apiUrl = environment.apiUrl;
+matricula: any;
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.carregarBeneficiados();
+  }
 
-  buscarIdPorNome(nome: string): void {
-    if (nome.trim()) {
 
-      this.http
-        .get<{ id: number; nome: string }>(`${this.apiUrl}/user/:id${encodeURIComponent(nome)}`)
-        .subscribe({
-          next: (usuario) => {
-            console.log(usuario)
-            if (usuario && usuario.id) {
-              this.matricula = usuario.id.toString();
-              alert('Usuário não encontrado!');
-              this.matricula = '';
-            }
-          },
-          error: (error) => {
-            console.error('Erro ao buscar ID:', error);
+  carregarBeneficiados(): void {
+    this.http
+      .get<{ nome: string; cpf: string }[]>(`${this.apiUrl}/beneficiados`)
+      .subscribe({
+        next: (data) => {
+          this.beneficiados = data;
+          console.log('Beneficiados carregados:', this.beneficiados);
+        },
+        error: (error) => {
+          console.error('Erro ao carregar beneficiados:', error);
+          alert('Erro ao carregar beneficiados. Verifique o console para mais detalhes.');
+        },
+      });
+  }
 
-          },
-        });
+
+  atualizarCpfPeloNome(nome: string): void {
+    const beneficiado = this.beneficiados.find(
+      (b) => b.nome.toLowerCase() === nome.toLowerCase()
+    );
+    if (beneficiado) {
+      this.cpf = beneficiado.cpf;
+      console.log('CPF encontrado:', this.cpf);
     } else {
-      alert('Por favor, insira um nome válido.');
+      this.cpf = '';
+      alert('Nome não encontrado na lista de beneficiados.');
     }
   }
 
+
   salvarPresenca(): void {
-    if (this.dataPresenca && this.matricula) {
+    if (this.dataPresenca && this.cpf) {
       const dataFormatada = this.formatarData(this.dataPresenca);
 
       const presenca = {
-        matricula: this.matricula,
+        cpf: this.cpf,
         data: dataFormatada,
       };
 
@@ -56,7 +67,7 @@ export class PresencaListComponent implements OnInit {
           alert('Presença registrada com sucesso!');
           this.dataPresenca = '';
           this.nomeCompleto = '';
-          this.matricula = '';
+          this.cpf = '';
         },
         error: (error) => {
           console.error('Erro ao salvar presença:', error);
@@ -65,24 +76,6 @@ export class PresencaListComponent implements OnInit {
       });
     } else {
       alert('Preencha todos os campos antes de salvar a presença.');
-    }
-  }
-
-  aprovarPresenca(): void {
-    if (this.matricula) {
-      this.http
-        .put(`${this.apiUrl}/presenca/aprovar/${this.matricula}`, {})
-        .subscribe({
-          next: () => {
-            alert('Presença aprovada com sucesso!');
-          },
-          error: (error) => {
-            console.error('Erro ao aprovar presença:', error);
-            alert('Erro ao aprovar presença. Verifique o console para mais detalhes.');
-          },
-        });
-    } else {
-      alert('Matrícula inválida. Por favor, verifique os dados antes de aprovar.');
     }
   }
 

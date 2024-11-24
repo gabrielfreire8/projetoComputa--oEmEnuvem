@@ -38,7 +38,7 @@ export class CadastroUserComponent {
   cadastrar(form: NgForm) {
     console.log(this.usuario);
     if (form.valid) {
-      // Verificação e formatação da data de nascimento
+
       if (this.usuario.dataNascimento) {
         const formattedDate = this.datePipe.transform(this.usuario.dataNascimento, 'yyyy-MM-dd');
         if (!formattedDate) {

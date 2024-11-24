@@ -67,18 +67,17 @@
             <label for="bairro">Bairro</label>
             <input type="text" placeholder="Digite seu Bairro" id="bairro" [(ngModel)]="usuario.bairro" name="bairro" required>
           </div>
-          <div class="cidadeEstado">
-            <div class="cidade">
-              <label id="ruaa" for="cidade">Cidade</label>
-              <input type="text" placeholder="Digite sua Cidade" id="cidade" [(ngModel)]="usuario.cidade" name="cidade" required>
-            </div>
+
+          <div class="cidade">
+            <label id="ruaa" for="cidade">Cidade</label>
+            <input type="text" placeholder="Digite sua Cidade" id="cidade" [(ngModel)]="usuario.cidade" name="cidade" required>
           </div>
         </div>
 
         <button type="submit" class="enviarFormulario">Alterar Dados</button>
       </form>
 
-      <button (click)="inativarParticipante()" id="inatPartic" class="enviarFormulario">Inativar Participante</button>
+      <button (click)="inativarParticipante()" id="inativar">Inativar Participante</button>
     </section>
   </aside>
 </main>

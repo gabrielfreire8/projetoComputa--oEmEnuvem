@@ -23,7 +23,7 @@ export class AprovaAtivComponent implements OnInit {
 
 
   buscarAtividades(): void {
-    this.http.get(`${this.apiUrl}/atividades`).subscribe({
+    this.http.get(`${this.apiUrl}/atividades/pendentes`).subscribe({
 
       next: (data: any) => {
         console.log('Resposta da API:', data);
