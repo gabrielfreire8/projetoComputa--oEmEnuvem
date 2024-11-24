@@ -13,7 +13,7 @@ class beneficiadosMidd{
     };
 
     async checkDeletedBenef(req:any, res:any, next:any){
-        let user = await beneficiadoModel.getBeneficiadoById(req.body.id);
+        let user = await beneficiadoModel.getBeneficiadoByCpf(req.body.cpf);
         if(user === 404){
             return res.status(404).json({
                 message: "Usuário foi apagado/não criado"
