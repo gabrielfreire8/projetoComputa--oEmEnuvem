@@ -28,7 +28,7 @@ class PresencaControllers{
         try{
             let data = req.body.data;
             let presencas = await presencaModels.getByAtividade(data);
-            
+            console.log(presencas)
             return res.status(200).json(presencas)
         }catch(error){
             return res.status(400).json({status: false,

@@ -28,7 +28,6 @@ class PresencaModel{
     async deletePresenca(idPresenca: number){
         try{
             let deletePresenca = await knex.delete().where({idpresenca: idPresenca}).table("presenca");
-            console.log(deletePresenca)
             if(deletePresenca === 0){
                 return{status: false,
                     message: "Nao foi possivel deletar essa presenca"
@@ -48,10 +47,9 @@ class PresencaModel{
         try{
             let presentes = []
             let atividades = await knex.select(["*"]).where({atividades_data: data}).table('presenca');
-            console.log(atividades.length   )
             for(let i = 0; i < atividades.length; i++){
-                let alunoPresente = await beneficiadoModel.getByID
-                console.log(alunoPresente);
+                let alunoPresente = await beneficiadoModel.getByID(atividades[i].usuario_idusuario);
+                presentes.push(alunoPresente[0]);
             }
             if(atividades.length < 0){
                 return {status: false,
@@ -59,7 +57,7 @@ class PresencaModel{
                 }
             };
             return {status: true,
-                atividades: atividades[0]
+                presentes: presentes
             }
         }catch(error){
 
