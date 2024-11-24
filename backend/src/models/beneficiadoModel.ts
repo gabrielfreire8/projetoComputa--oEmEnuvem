@@ -35,13 +35,12 @@ class Beneficiados{
         
     };
 
-    async getBeneficados(){
+    async getBeneficiados(){
         try{
             let participantes = await knex.select(['nome', 'cpf']).table('participantes');
-            if(participantes.length < 1){
-                return 404
-            }else return participantes
+            return participantes
         }catch(error){
+            console.log(error)
             return 404
         }
     };

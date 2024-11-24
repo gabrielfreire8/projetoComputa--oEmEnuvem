@@ -1,3 +1,4 @@
+import atividadesModel from "../models/atividadesModel";
 import beneficiadoModel from "../models/beneficiadoModel";
 import presencaModels from "../models/presencaModels";
 
@@ -24,11 +25,17 @@ class PresencaControllers{
         };
     };
 
+
     async getPresencaByAtividade(req: any, res: any){
         try{
-            let data = req.body.data;
-            let presencas = await presencaModels.getByAtividade(data);
-            console.log(presencas)
+            let datas = [];
+            let presencas: any = await presencaModels.presencasAtividades();
+            console.log(presencas.length);
+            for(let i = 0; i < presencas.length; i++){
+                let atividade = await atividadesModel.getByID
+                datas.push(presencas[i].data);  
+            };
+            console.log(datas)
             return res.status(200).json(presencas)
         }catch(error){
             return res.status(400).json({status: false,

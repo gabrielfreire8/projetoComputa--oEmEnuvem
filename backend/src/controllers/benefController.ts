@@ -28,10 +28,12 @@ class BeneficiadoControllers {
 
     async getBeneficiados(req: any, res: any){
         try{
-            let participantes = await beneficiadoModel.getBeneficados();
+            let participantes = await beneficiadoModel.getBeneficiados();
             if(participantes === 404){
                 return res.status(404).json({error: "nao foram encontrados participantes"})
-            }return res.status(200).json(participantes)
+            }
+            return res.status(200).json(participantes)
+
         }catch(error){
             return res.status(400).json(error)
         }

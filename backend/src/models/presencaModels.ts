@@ -1,4 +1,5 @@
 import { knex } from "../data/connection";
+import atividadesModel from "./atividadesModel";
 import beneficiadoModel from "./beneficiadoModel";
 
 let today = new Date().toISOString().slice(0,10);
@@ -87,6 +88,12 @@ class PresencaModel{
             }
         }
     };
+
+    async presencasAtividades(){
+        let datas = await atividadesModel.getDatas();
+        console.log(datas)
+    };
+
 };
 
 export default new PresencaModel;

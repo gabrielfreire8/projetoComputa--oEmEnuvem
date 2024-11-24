@@ -19,7 +19,7 @@ router.post('/login/', UserController.login);
 // Beneficiado
 router.post("/beneficiados/cadastro", benefMiddlewares.checkCpf, beneficiadoController.create);
 router.get("/beneficiados/:cpf", beneficiadoController.getBeneficiado);
-router.get("/beneficiados/all", beneficiadoController.getBeneficiados);
+router.get("/todosbeneficiados/", beneficiadoController.getBeneficiados);
 router.put("/beneficiados/", beneficiadoController.updateBeneficiado);
 router.delete("/beneficiados/delete/:cpf", benefMiddlewares.checkDeletedBenef, beneficiadoController.deleteBeneficiado);
 
