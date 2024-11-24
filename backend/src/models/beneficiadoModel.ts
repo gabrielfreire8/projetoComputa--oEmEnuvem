@@ -47,7 +47,8 @@ class Beneficiados{
     };
     async getByID(id: number){
         try{
-            let beneficiado = await knex.select(['nome', 'cpf']).where({idparticipantes: id}).table({})
+            let beneficiado = await knex.select(['nome', 'cpf']).where({idparticipantes: id}).table('participantes');
+            return beneficiado
         }catch(error){
             return error
         }

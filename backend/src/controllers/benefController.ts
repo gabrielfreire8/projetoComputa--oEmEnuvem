@@ -71,8 +71,9 @@ class BeneficiadoControllers {
 
     async deleteBeneficiado(req: any, res:any){
         try{
-            let user = req.body;
-            let deleted = await Beneficiado.deleteBeneficiado(user.id);
+            let {cpf} = req.body;
+            let [user] = await beneficiadoModel.getBeneficiadoByCpf(cpf);
+            let deleted = await Beneficiado.deleteBeneficiado(user.idparticipantes);
             if(deleted === 1){
                 return res.status(200).json({
                     message: "Dados apagados com sucesso"

@@ -48,9 +48,10 @@ class PresencaModel{
         try{
             let presentes = []
             let atividades = await knex.select(["*"]).where({atividades_data: data}).table('presenca');
-            for(let i = 0; i < presentes.length; i++){
-                // let alunoPresente = await beneficiadoModel.
-                console.log(i)
+            console.log(atividades.length   )
+            for(let i = 0; i < atividades.length; i++){
+                let alunoPresente = await beneficiadoModel.getByID
+                console.log(alunoPresente);
             }
             if(atividades.length < 0){
                 return {status: false,
