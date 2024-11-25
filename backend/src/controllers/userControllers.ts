@@ -1,9 +1,11 @@
 
+import { env } from 'process';
 import User  from '../models/userModel';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer'); 
 const crypto = require('crypto');
+
 
 class UserController{
     async create(req: any, res: any ){
@@ -168,10 +170,80 @@ class UserController{
     };
 
     async forgotPass(req: any, res: any){
-        
+        try{
+            let users = await User.getEmail();
+            let email = req.body.email;
+            const user = users.find((u: any) => u.usuario === email);
+            if (!user) { return res.status(400).send('Email não encontrado'); }
+            const token = crypto.randomBytes(20).toString('hex'); 
+            user.resetPasswordToken = token; 
+            let resetToken = await User.alterarSenha(token, user.usuario);
+            console.log(resetToken)
+            user.resetPasswordExpires = Date.now() + 3600000;
+            const transporter = nodemailer.createTransport({
+                 host: 'smtp.gmail.com', 
+                 port:465,
+                 secure: true,
+                 auth: 
+                 { user: process.env.EMAIL, 
+                pass: process.env.NODEPASS } });
+
+                const mailOptions = {
+                    to: user.usuario,
+                    from: process.env.EMAIL,
+                    subject: 'Recuperação de senha',
+                    text: 
+`Aqui está o token para a recuperação da sua senha, não compartilhe com ninguem este link!:\n\n
+${token}\n\n
+Se voce não pediu essa recuperação ignore este email ou faça a alteração para uma senha segura.\n`
+                };
+                transporter.sendMail(mailOptions, (err: any) => {
+                    if (err) {
+                        return res.status(500).json({message: 'Erro ao enviar email', err});
+                    }
+                    
+                    res.status(200).send('Email de recuperação enviado');
+                });
+                
+         
+        }catch(error){
+            return res.status(502).json({error})
+        }
     }
 
+    async reset(req: any, res: any){
+        try{
+            let users: any = await User.getAll();
+            console.log(users)
+            console.log(`${req.params.token}, token`)
+            const user = users.find((u: any) => u.senha === req.params.token);
+            console.log(`${user}, esse`)
+
+            if (!user) {
+                return res.status(400).send('Password reset token is invalid or has expired.');
+            }
+            const salts = 10;
+            const { password } = req.body;
+            await bcrypt.genSalt(salts, (error:string, salt:string) => {
+                if(error){
+                    return res.status(403).json({})
+                }
+                bcrypt.hash(password, salt, async (error:string, hash:string) => {
+                    if(error){
+                        return res.status(400).json({
+                            message: "Error"
+                        })
+                    }
+                    await User.reset(req.params.token, hash);
+                    res.status(200).send('Password has been reset.');
+            })
+        })}catch(error){
+            return res.status(400).json({error})
+        }
+    }
 };
+
+    
 
    
 

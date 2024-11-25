@@ -51,7 +51,7 @@ class PresencaControllers{
                     let obj = []
                     while(i < presentes[j].length){
                         let lista = presentes[j];
-                        let participante = await beneficiadoModel.getByID(lista[i].usuario_idusuario);
+                        let participante = await beneficiadoModel.getByID(lista[i].usuario_idusuario); // Uma hora vai parar de funcionar
                         obj.push(participante[0])
                         i++;
                     }
