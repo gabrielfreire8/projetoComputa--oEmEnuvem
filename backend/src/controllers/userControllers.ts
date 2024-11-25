@@ -202,7 +202,7 @@ Se voce não pediu essa recuperação ignore este email ou faça a alteração p
                         return res.status(500).json({message: 'Erro ao enviar email', err});
                     }
                     
-                    res.status(200).send('Email de recuperação enviado');
+                    res.status(200).json({message: 'Email de recuperação enviado', tokenRecebido: true});
                 });
                 
          
