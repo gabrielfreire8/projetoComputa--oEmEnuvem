@@ -235,7 +235,7 @@ Se voce não pediu essa recuperação ignore este email ou faça a alteração p
                         })
                     }
                     await User.reset(req.params.token, hash);
-                    res.status(200).send('Password has been reset.');
+                    res.status(200).json({Status: true, message: 'Password has been reset.'});
             })
         })}catch(error){
             return res.status(400).json({error})
