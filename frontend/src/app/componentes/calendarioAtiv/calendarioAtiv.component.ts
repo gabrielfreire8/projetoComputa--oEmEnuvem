@@ -8,6 +8,8 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./calendarioAtiv.component.css']
 })
 export class CalendarioAtivComponent implements OnInit {
+
+
   atividadesAprovadas: any[] = [];
   mes!: string;
   ano!: number;
@@ -16,6 +18,7 @@ export class CalendarioAtivComponent implements OnInit {
   atividadesDoDia: any[] = [];
 
   private apiUrl = environment.apiUrl;
+
   private meses: string[] = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
@@ -30,11 +33,6 @@ export class CalendarioAtivComponent implements OnInit {
     this.ano = 2024;
     this.carregarCalendario();
     this.buscarAtividadesAprovadas();
-
-
-
-
-
   }
 
   carregarCalendario() {

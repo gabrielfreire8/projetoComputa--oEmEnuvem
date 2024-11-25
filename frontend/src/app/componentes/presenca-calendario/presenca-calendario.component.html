@@ -4,7 +4,7 @@
       <h1>Bem-vindo</h1>
     </div>
     <hr id="divisor-line">
-    <img id="menuInic" src="../../../assets/imagens/menu.png" alt="">
+    <img id="menuInic" src="../../../assets/imagens/menu.png" alt="Menu">
     <div id="buttons">
       <button routerLink="" class="button" id="bt_ini">Página Inicial</button>
       <button routerLink="/calendarioAtiv" class="button" id="bt_calen">Calendário</button>
@@ -18,13 +18,15 @@
       <button routerLink="/menuInicial" class="botVolta" id="btnVolt">Voltar</button>
     </div>
 
+    <h1 id="teste">Presenças do dia:</h1>
 
-    <div class="calendario">
+    <div id="calendariu" class="calendario">
       <div class="header">
         <button id="anterior" (click)="mudarMes(-1)"><</button>
         <h2 id="mesesCalen">{{ mes }} {{ ano }}</h2>
         <button id="sucessor" (click)="mudarMes(1)">></button>
       </div>
+
       <div class="dias">
         <div class="dia"><strong>Dom</strong></div>
         <div class="dia"><strong>Seg</strong></div>
@@ -34,8 +36,9 @@
         <div class="dia"><strong>Sex</strong></div>
         <div class="dia"><strong>Sáb</strong></div>
       </div>
+
       <div class="semanas">
-        <div *ngFor="let dia of dias; let i = index"
+        <div *ngFor="let dia of dias"
               class="dia"
               [ngClass]="{
                 'selecionado': dia.dia === diaSelecionado,
@@ -47,19 +50,19 @@
       </div>
     </div>
 
-
+    <!-- Exibição das atividades do dia -->
     <div *ngIf="atividadesDoDia.length > 0" class="atividades-lista">
       <h3>Atividades do dia {{ diaSelecionado }} de {{ mes }}:</h3>
       <ul>
         <li *ngFor="let atividade of atividadesDoDia">
-          <strong>Nome da Atividade:</strong> {{ atividade.nome }} <br>
-          <strong>Tipo de Atividade:</strong> {{ atividade.tipo }} <br>
-          <strong>Descrição:</strong> {{ atividade.descricao }} <br>
+          <strong>Nome:</strong> {{ atividade.nome }} <br>
+          <strong>CPF:</strong> {{ atividade.cpf }} <br>
           <strong>Data:</strong> {{ atividade.data | date: 'dd/MM/yyyy' }} <br>
         </li>
       </ul>
     </div>
 
+    <!-- Caso não haja atividades -->
     <div *ngIf="atividadesDoDia.length === 0 && diaSelecionado" class="sem-atividades">
       <p>Não há atividades para o dia {{ diaSelecionado }} de {{ mes }}.</p>
     </div>

@@ -338,6 +338,19 @@
     display: none;
   }
 
+  #mudarPresenca{
+    display: fixed;
+    margin-top: 60%;
+    width: 200px;
+    height: 30px;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    background-color: #44A685;
+    border-radius: 15px;
+    border-color: #ffffff;
+  }
+
 
   @media (max-width:1280px){
 
@@ -473,7 +486,7 @@
     justify-items: center;
     width: 30px;
     height: 30px;
-    
+
   }
   #aproAtiv{
     display: flex;

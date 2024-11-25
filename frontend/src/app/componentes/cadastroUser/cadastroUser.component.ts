@@ -97,7 +97,7 @@ export class CadastroUserComponent {
 
 
       if (cepFormatado.length !== 8) {
-        alert('Por favor, insira um CEP válido.');
+
         return;
       }
 

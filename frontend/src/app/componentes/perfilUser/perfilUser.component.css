@@ -538,9 +538,20 @@ input:focus {
 }
 
 
-#inatPartic{
-  position: fixed;
-  bottom: 10px;
+#inativar{
+  width: 20%;
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 3.125rem;
+  flex-wrap: wrap;
+  background-color: #FFFFFF;
+  color: #44A685;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
 

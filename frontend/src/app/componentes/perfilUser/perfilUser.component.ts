@@ -31,7 +31,6 @@ export class PerfilUserComponent implements OnInit {
   }
 
   solicitarCpfECarregarDados(): void {
-
     const cpf = window.prompt('Por favor, insira seu CPF para acessar os dados do perfil:');
 
     if (!cpf) {
@@ -41,28 +40,26 @@ export class PerfilUserComponent implements OnInit {
 
     window.alert('Buscando os dados do usuário na API. Aguarde um momento.');
 
-
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    this.http.get<any>(`${this.apiUrl}?cpf=${cpf}`, { headers }).subscribe({
+    this.http.get<any>(`${this.apiUrl}${cpf}`, { headers }).subscribe({
       next: (data) => {
         console.log('Dados recebidos da API:', data);
 
+        if (data) {
 
-        if (data && data.length > 0) {
-          const usuario = data[0];
-
+          const usuario = data;
 
           this.usuario = {
             nome: usuario.nome || '',
             email: usuario.email || '',
             cpf: usuario.cpf || '',
-            dataNascimento: usuario.dataNascimento || '',
+            dataNascimento: this.formatDate(usuario.dataNascimento) || '',
             telefone: usuario.telefone || '',
             cep: usuario.cep || '',
-            logradouro: usuario.rua || '',
-            numero: usuario.numero || '',
-            bairro: usuario.bairro || '',
+            logradouro: usuario.enderecoRua || '',
+            numero: usuario.enderecoNumero || '',
+            bairro: usuario.enderecoBairro || '',
             cidade: usuario.cidade || ''
           };
 
@@ -78,18 +75,25 @@ export class PerfilUserComponent implements OnInit {
     });
   }
 
+
+  private formatDate(date: string): string {
+    if (date) {
+      const formattedDate = new Date(date);
+      return formattedDate.toISOString().split('T')[0];
+    }
+    return '';
+  }
+
   alterarDados(form: NgForm): void {
     if (form.valid) {
-      const cpf = this.usuario.cpf;
-
       let dataNascimento = this.usuario.dataNascimento;
       if (dataNascimento && dataNascimento.includes('-')) {
         const partes = dataNascimento.split('-');
-        dataNascimento = `${partes[2]}-${partes[1]}-${partes[0]}`;
+        dataNascimento = `${partes[0]}-${partes[1]}-${partes[2]}`;
       }
       this.usuario.dataNascimento = dataNascimento;
 
-      this.http.put(`${this.apiUrl}atualizar`, this.usuario).subscribe({
+      this.http.put(`${this.apiUrl}`, this.usuario).subscribe({
         next: () => {
           window.alert('Dados alterados com sucesso!');
         },
@@ -103,10 +107,11 @@ export class PerfilUserComponent implements OnInit {
     }
   }
 
+
   inativarParticipante(): void {
     const cpf = this.usuario.cpf;
 
-    this.http.delete(`${this.apiUrl}delete`, { body: { cpf } }).subscribe({
+    this.http.delete(`${this.apiUrl}delete/${cpf}`).subscribe({
       next: () => {
         window.alert('Participante inativado!');
       },
@@ -116,4 +121,5 @@ export class PerfilUserComponent implements OnInit {
       }
     });
   }
+
 }

@@ -21,6 +21,8 @@ import { PresencaListComponent } from './componentes/presencaList/presencaList.c
 import { ForgetPasswordComponent } from './componentes/forget-password/forget-password.component';
 import { PerfilUserComponent } from './componentes/perfilUser/perfilUser.component';
 import { CriaAtivComponent } from './componentes/criaAtiv/criaAtiv.component';
+import { PresencaCalendarioComponent } from './componentes/presenca-calendario/presenca-calendario.component';
+
 
 
 
@@ -36,7 +38,8 @@ import { CriaAtivComponent } from './componentes/criaAtiv/criaAtiv.component';
     MenuInicialComponent,
     PerfilUserComponent,
     PresencaListComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    PresencaCalendarioComponent
 
 
   ],

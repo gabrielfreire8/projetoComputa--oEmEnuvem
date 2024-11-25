@@ -31,43 +31,29 @@
           [(ngModel)]="nomeCompleto"
           placeholder="Nome"
           id="nomeComple"
-          (ngModelChange)="atualizarCpfPeloNome(nomeCompleto)"
-        >
-
-        <input
-          type="text"
-          [(ngModel)]="matricula"
-          placeholder="Matrícula"
-          id="matricula"
           [disabled]="true"
         >
 
-        <!-- Aqui você pode adicionar um campo para exibir o CPF -->
         <input
           type="text"
           [(ngModel)]="cpf"
           placeholder="CPF"
           id="cpf"
-          [disabled]="true"
+          (ngModelChange)="atualizarNomePeloCpf()"
         >
 
         <div id="mudar">
           <button
             id="btnCheck"
             (click)="salvarPresenca()"
-            [disabled]="!dataPresenca || !matricula || !cpf"
+            [disabled]="!dataPresenca || !cpf || !nomeCompleto"
           >
             <img src="../../../assets/imagens/check.png" alt="Salvar">
           </button>
-          <button
-            id="btnClose"
-            (click)="salvarPresenca()"
-            [disabled]="!matricula"
-          >
-            <img src="../../../assets/imagens/close.png" alt="Aprovar">
-          </button>
+
         </div>
       </div>
+      <button routerLink="/presencaCalen" id="mudarPresenca">Controle de Presença</button>
     </div>
   </aside>
 </main>

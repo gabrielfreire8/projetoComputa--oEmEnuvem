@@ -14,6 +14,8 @@ import { ForgetPasswordComponent } from './componentes/forget-password/forget-pa
 
 import { PresencaListComponent } from './componentes/presencaList/presencaList.component';
 import { PerfilUserComponent } from './componentes/perfilUser/perfilUser.component';
+import { PresencaCalendarioComponent } from './componentes/presenca-calendario/presenca-calendario.component';
+
 
 
 
@@ -62,6 +64,10 @@ export const routes: Routes = [
   {
     path: "ForgetPass",
     component: ForgetPasswordComponent
+  },
+  {
+    path: "presencaCalen",
+    component: PresencaCalendarioComponent
   }
 
 

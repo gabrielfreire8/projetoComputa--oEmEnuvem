@@ -12,9 +12,9 @@ export class PresencaListComponent implements OnInit {
   nomeCompleto: string = '';
   cpf: string = '';
   beneficiados: { nome: string; cpf: string }[] = [];
-  
+
+
   apiUrl = environment.apiUrl;
-matricula: any;
 
   constructor(private http: HttpClient) {}
 
@@ -22,10 +22,9 @@ matricula: any;
     this.carregarBeneficiados();
   }
 
-
   carregarBeneficiados(): void {
     this.http
-      .get<{ nome: string; cpf: string }[]>(`${this.apiUrl}/beneficiados`)
+      .get<{ nome: string; cpf: string }[]>(`${this.apiUrl}/todosbeneficiados`)
       .subscribe({
         next: (data) => {
           this.beneficiados = data;
@@ -33,34 +32,38 @@ matricula: any;
         },
         error: (error) => {
           console.error('Erro ao carregar beneficiados:', error);
-          alert('Erro ao carregar beneficiados. Verifique o console para mais detalhes.');
+
         },
       });
   }
 
 
-  atualizarCpfPeloNome(nome: string): void {
+
+  atualizarNomePeloCpf(): void {
     const beneficiado = this.beneficiados.find(
-      (b) => b.nome.toLowerCase() === nome.toLowerCase()
+      (b) => b.cpf === this.cpf
     );
     if (beneficiado) {
-      this.cpf = beneficiado.cpf;
-      console.log('CPF encontrado:', this.cpf);
+      this.nomeCompleto = beneficiado.nome;
+      console.log('Nome encontrado:', this.nomeCompleto);
     } else {
-      this.cpf = '';
-      alert('Nome não encontrado na lista de beneficiados.');
+      this.nomeCompleto = '';
+
     }
   }
 
 
   salvarPresenca(): void {
-    if (this.dataPresenca && this.cpf) {
+    if (this.dataPresenca && this.cpf && this.nomeCompleto) {
       const dataFormatada = this.formatarData(this.dataPresenca);
+
 
       const presenca = {
         cpf: this.cpf,
+        nome: this.nomeCompleto,
         data: dataFormatada,
       };
+
 
       this.http.post(`${this.apiUrl}/presenca/atividade`, presenca).subscribe({
         next: () => {
@@ -78,6 +81,7 @@ matricula: any;
       alert('Preencha todos os campos antes de salvar a presença.');
     }
   }
+
 
   formatarData(data: string): string {
     const dataObj = new Date(data);
