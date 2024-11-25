@@ -39,7 +39,13 @@ class User{
         }
     };
 
-    
+    async getAll(){
+        try{
+            // let emails = 
+        }catch(error){
+            return error
+        };
+    }
 
     async updateUser(id:number, nome:string, usuario:string, hash:string, funcao:string){
         try{

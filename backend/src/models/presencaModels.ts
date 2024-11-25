@@ -1,11 +1,13 @@
 import { knex } from "../data/connection";
+import atividadesModel from "./atividadesModel";
+import beneficiadoModel from "./beneficiadoModel";
 
-let today = new Date().toISOString().slice(0,10);
 class PresencaModel{
-    async cadastrar(atividade: number, usuario: number){
+
+    async cadastrar(data: string, usuario: number){
         try{
             let cadastro = await knex.insert({
-                atividades_idatividades: atividade,
+                atividades_data: data,
                 usuario_idusuario: usuario
             }).table('presenca')
 
@@ -26,7 +28,7 @@ class PresencaModel{
     }
     async deletePresenca(idPresenca: number){
         try{
-            let deletePresenca = knex.delete().where({idpresenca: idPresenca}).table("presenca");
+            let deletePresenca = await knex.delete().where({idpresenca: idPresenca}).table("presenca");
             if(deletePresenca === 0){
                 return{status: false,
                     message: "Nao foi possivel deletar essa presenca"
@@ -42,39 +44,23 @@ class PresencaModel{
         }
     };
 
-    async getByAtividade(idAtividade: number){
+    async getByAtividade(data: String){
         try{
-            let atividades = await knex.select(["*"]).where({atividades_idatividades: idAtividade}).table('presenca');
-            console.log(atividades)
-            if(atividades.length < 0){
-                return {status: false,
-                    message: "Nao foi encontrado presencas para essa atividade"
-                }
-            };
-            return {status: true,
-                atividades
-            }
+            let presentes = await knex.select(["*"]).where({atividades_data: data}).table('presenca');
+            return presentes
         }catch(error){
-
+            console.log(error)
             return {status: false,
                 error: error
             }
         };
     };
 
-    async updatePresenca(idPresenca: number, presenca: {
-        idBeneficiado: number,
-        idAtividade: number,
-        data: string,
-        status: string
-    }){
+    async updatePresenca(data: string, usuario: number, idpresenca: number
+    ){
         try{
-            let update = await knex.update({
-                beneficiados_idBeneficiados: presenca.idBeneficiado,
-                atividades_idatividades: presenca.idAtividade,
-                data: presenca.data,
-                status: presenca.status
-            }).where({idpresenca: idPresenca}).table('presenca');
+            let update = await knex.update({atividades_data: data, usuario_idusuario: usuario
+            }).where({idpresenca: idpresenca}).table('presenca');
             
             if(update === 1){
                 return {status: true,

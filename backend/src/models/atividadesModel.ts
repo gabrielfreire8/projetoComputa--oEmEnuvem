@@ -67,6 +67,14 @@ class Atividades{
             }
         }
     };
+    async getDatas(){
+        try{
+            let datas = await knex.select(['data']).table('atividades');
+            return datas
+        }catch(error){
+            return error
+        }
+    };
 
     async updateAtividade(atividadeObj:{
         id: number,
