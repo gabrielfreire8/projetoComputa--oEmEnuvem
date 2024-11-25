@@ -20,15 +20,14 @@
 
     <h1 id="teste">Presenças do dia:</h1>
 
+    <!-- Calendário -->
     <div id="calendariu" class="calendario">
-      <!-- Cabeçalho do Calendário -->
       <div class="header">
         <button id="anterior" (click)="mudarMes(-1)"><</button>
         <h2 id="mesesCalen">{{ mes }} {{ ano }}</h2>
         <button id="sucessor" (click)="mudarMes(1)">></button>
       </div>
 
-      <!-- Dias da Semana -->
       <div class="dias">
         <div class="dia"><strong>Dom</strong></div>
         <div class="dia"><strong>Seg</strong></div>
@@ -39,7 +38,6 @@
         <div class="dia"><strong>Sáb</strong></div>
       </div>
 
-      <!-- Dias do Mês -->
       <div class="semanas">
         <div *ngFor="let dia of dias"
               class="dia"
@@ -53,21 +51,23 @@
       </div>
     </div>
 
-    <!-- Exibição das atividades do dia -->
+    <!-- Atividades -->
     <div *ngIf="atividadesDoDia.length > 0" class="atividades-lista">
       <h3>Atividades do dia {{ diaSelecionado }} de {{ mes }}:</h3>
       <ul>
         <li *ngFor="let atividade of atividadesDoDia">
           <strong>Nome:</strong> {{ atividade.nome }} <br>
-          <strong>CPF:</strong> {{ atividade.cpf }} <br>
+          <strong>CPF:</strong> {{ atividade.cpf }}
         </li>
       </ul>
     </div>
 
-    <!-- Caso não haja atividades -->
-    <div *ngIf="atividadesDoDia.length === 0 && diaSelecionado" class="sem-atividades">
+    <!-- Mensagem de erro ou ausência de atividades -->
+    <div *ngIf="erroCarregamento" class="erro-mensagem">
+      <p>Erro ao carregar os dados do servidor. Tente novamente mais tarde.</p>
+    </div>
+    <div *ngIf="atividadesDoDia.length === 0 && diaSelecionado && !erroCarregamento" class="sem-atividades">
       <p>Não há atividades para o dia {{ diaSelecionado }} de {{ mes }}.</p>
     </div>
-
   </aside>
 </main>

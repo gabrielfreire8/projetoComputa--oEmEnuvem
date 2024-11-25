@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-presenca-calendario',
@@ -7,13 +8,17 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./presenca-calendario.component.css']
 })
 export class PresencaCalendarioComponent implements OnInit {
+
+
+  private apiUrl = environment.apiUrl;
+
   mes: string;
   ano: number;
   dias: { dia: number; comAtividade: boolean }[] = [];
   diaSelecionado: number | null = null;
-  atividadesDoDia: { nome: string; cpf: string }[] = []; // Declarando atividadesDoDia como array de objetos
+  atividadesDoDia: { nome: string; cpf: string }[] = [];
   diasComAtividade: string[] = [];
-
+  erroCarregamento: boolean = false;
   meses: string[] = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
@@ -54,18 +59,16 @@ export class PresencaCalendarioComponent implements OnInit {
 
     this.mes = this.meses[novoIndex];
     this.carregarCalendario();
-    this.buscarDiasComAtividades();
   }
 
   temAtividade(dia: number): boolean {
     const dataSelecionada = `${this.ano}-${(this.getNumeroMes(this.mes) + 1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
-    if (!Array.isArray(this.diasComAtividade)) {
-      console.error('diasComAtividade não é um array válido');
-      return false;  // Retorna false caso diasComAtividade não seja um array
+    if (Array.isArray(this.diasComAtividade)) {
+      return this.diasComAtividade.includes(dataSelecionada);
     }
-    return this.diasComAtividade.includes(dataSelecionada);
+    console.error('diasComAtividade não é um array válido:', this.diasComAtividade);
+    return false;
   }
-
 
   selecionarDia(dia: number): void {
     this.diaSelecionado = dia;
@@ -73,37 +76,36 @@ export class PresencaCalendarioComponent implements OnInit {
   }
 
   buscarDiasComAtividades(): void {
-    this.http.get<{ presencas: any[] }>(`http://3.90.61.243/presenca/atividade/`)
+    this.http.get<{ presencas: any[] }>(`${this.apiUrl}/presenca/atividade/`)
       .subscribe({
         next: (res) => {
-          // Garantir que é um array de strings
-          if (Array.isArray(res.presencas)) {
-            this.diasComAtividade = res.presencas.map(presenca => presenca.data);
-          } else {
-            this.diasComAtividade = [];  // Se não for um array, assegure-se de que seja um array vazio
-          }
-          console.log('Dias com atividades:', this.diasComAtividade);  // Verifique se isso é um array de strings
+          this.diasComAtividade = Array.isArray(res.presencas)
+            ? res.presencas.map(presenca => presenca.data)
+            : [];
+          this.erroCarregamento = false;
         },
         error: (err) => {
           console.error('Erro ao buscar dias com atividades:', err);
+          this.erroCarregamento = true;
+          this.diasComAtividade = [];
         }
       });
   }
 
-
   buscarAtividadesDoDia(dia: number): void {
     const dataSelecionada = `${this.ano}-${(this.getNumeroMes(this.mes) + 1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
-    this.http.get<{ presencas: any[] }>(`http://3.90.61.243/presenca/atividade/${dataSelecionada}`)
-      .subscribe(
-        (response) => {
-          console.log('Atividades do dia:', response);
-          this.atividadesDoDia = response.presencas.length > 0 ? response.presencas[0].participantes : [];
+    this.http.get<{ presencas: any[] }>(`${this.apiUrl}/presenca/atividade`)
+      .subscribe({
+        next: (response) => {
+          this.atividadesDoDia = Array.isArray(response.presencas) && response.presencas.length > 0
+            ? response.presencas[0].participantes
+            : [];
         },
-        (error) => {
-          console.error('Erro ao buscar atividades:', error);
-          this.atividadesDoDia = [];  // Caso ocorra erro, inicie atividadesDoDia com um array vazio
+        error: (err) => {
+          console.error('Erro ao buscar atividades:', err);
+          this.atividadesDoDia = [];
         }
-      );
+      });
   }
 
   getNumeroMes(mes: string): number {

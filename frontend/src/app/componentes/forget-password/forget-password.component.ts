@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -10,53 +11,45 @@ import { environment } from '../../../environments/environment';
 export class ForgetPasswordComponent {
   email: string = '';
   novaSenha: string = '';
+  token: string = '';
   mensagem: string = '';
   tokenRecebido: boolean = false;
+  private apiUrl = `${environment.apiUrl}`;
 
-  private apiUrl = environment.apiUrl;
-
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private router: Router) {}
 
   solicitarRecuperacao() {
-    if (!this.email) {
-      this.mensagem = 'Por favor, insira um e-mail válido.';
-      return;
-    }
-
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const body = { email: this.email };
-
-    this.http.post<any>(`${this.apiUrl}/forgot-password`, body, { headers }).subscribe({
-      next: () => {
-        this.mensagem = 'E-mail de recuperação enviado com sucesso!';
+    const payload = { email: this.email };
+    this.http.post(`${this.apiUrl}/forgotPassword`, payload).subscribe(
+      (response: any) => {
+        this.mensagem = 'Um e-mail foi enviado com o token.';
         this.tokenRecebido = true;
       },
-      error: (err) => {
-        this.mensagem = 'Erro ao enviar o e-mail de recuperação. Tente novamente.';
-        console.error(err);
-      },
-    });
+      (error) => {
+        this.mensagem = 'Erro ao solicitar recuperação de senha.';
+      }
+    );
   }
 
   resetarSenha() {
-    if (!this.novaSenha) {
-      this.mensagem = 'Por favor, insira uma nova senha.';
-      return;
-    }
+    const payload = {
+      token: this.token,
+      password: this.novaSenha,
+    };
 
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const body = { email: this.email, novaSenha: this.novaSenha };
-
-    this.http.post<any>(`${this.apiUrl}/reset-password`, body, { headers }).subscribe({
-      next: () => {
-        this.mensagem = 'Senha redefinida com sucesso!';
+    this.http.post(`${this.apiUrl}/reset/${payload.token}`, { password: payload.password }).subscribe(
+      (response: any) => {
+        this.mensagem = 'Senha redefinida com sucesso.';
         this.tokenRecebido = false;
+        this.email = '';
+        this.novaSenha = '';
+        this.token = '';
+        this.router.navigate(['/menuInicial']);
       },
-      error: (err) => {
-        this.mensagem = 'Erro ao redefinir senha. Verifique suas informações.';
-        console.error(err);
-      },
-    });
+      (error) => {
+        console.log(error)
+        this.mensagem = 'Erro ao redefinir a senha.';
+      }
+    );
   }
 }
