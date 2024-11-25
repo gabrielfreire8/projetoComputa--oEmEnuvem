@@ -11,8 +11,8 @@ export class PresencaCalendarioComponent implements OnInit {
   ano: number;
   dias: { dia: number; comAtividade: boolean }[] = [];
   diaSelecionado: number | null = null;
-  atividadesDoDia: { nome: string; cpf: string; data: string }[] = [];
-  diasComAtividade: number[] = [];
+  atividadesDoDia: { nome: string; cpf: string }[] = []; // Declarando atividadesDoDia como array de objetos
+  diasComAtividade: string[] = [];
 
   meses: string[] = [
     'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
@@ -58,8 +58,14 @@ export class PresencaCalendarioComponent implements OnInit {
   }
 
   temAtividade(dia: number): boolean {
-    return this.diasComAtividade.includes(dia);
+    const dataSelecionada = `${this.ano}-${(this.getNumeroMes(this.mes) + 1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+    if (!Array.isArray(this.diasComAtividade)) {
+      console.error('diasComAtividade não é um array válido');
+      return false;  // Retorna false caso diasComAtividade não seja um array
+    }
+    return this.diasComAtividade.includes(dataSelecionada);
   }
+
 
   selecionarDia(dia: number): void {
     this.diaSelecionado = dia;
@@ -67,15 +73,16 @@ export class PresencaCalendarioComponent implements OnInit {
   }
 
   buscarDiasComAtividades(): void {
-    const mesAtual = this.getNumeroMes(this.mes) + 1;
-    const anoAtual = this.ano;
-
-    this.http.get<number[]>(`http://3.90.61.243/presenca/atividade/`)
+    this.http.get<{ presencas: any[] }>(`http://3.90.61.243/presenca/atividade/`)
       .subscribe({
         next: (res) => {
-          this.diasComAtividade = res;
-          console.log('Dias com atividades:', this.diasComAtividade);
-          this.buscarDiasComAtividades();
+          // Garantir que é um array de strings
+          if (Array.isArray(res.presencas)) {
+            this.diasComAtividade = res.presencas.map(presenca => presenca.data);
+          } else {
+            this.diasComAtividade = [];  // Se não for um array, assegure-se de que seja um array vazio
+          }
+          console.log('Dias com atividades:', this.diasComAtividade);  // Verifique se isso é um array de strings
         },
         error: (err) => {
           console.error('Erro ao buscar dias com atividades:', err);
@@ -83,19 +90,18 @@ export class PresencaCalendarioComponent implements OnInit {
       });
   }
 
-  buscarAtividadesDoDia(dia: number): void {
-    const mesAtual = this.getNumeroMes(this.mes) + 1;
-    const anoAtual = this.ano;
-    const dataSelecionada = `${anoAtual}-${mesAtual.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
 
-    this.http.get<{ nome: string; cpf: string; data: string }[]>(`http://3.90.61.243/presenca/atividades/`)
+  buscarAtividadesDoDia(dia: number): void {
+    const dataSelecionada = `${this.ano}-${(this.getNumeroMes(this.mes) + 1).toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+    this.http.get<{ presencas: any[] }>(`http://3.90.61.243/presenca/atividade/${dataSelecionada}`)
       .subscribe(
         (response) => {
           console.log('Atividades do dia:', response);
-          this.atividadesDoDia = response;
+          this.atividadesDoDia = response.presencas.length > 0 ? response.presencas[0].participantes : [];
         },
         (error) => {
           console.error('Erro ao buscar atividades:', error);
+          this.atividadesDoDia = [];  // Caso ocorra erro, inicie atividadesDoDia com um array vazio
         }
       );
   }
