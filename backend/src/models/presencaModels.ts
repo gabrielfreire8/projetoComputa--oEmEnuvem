@@ -2,8 +2,8 @@ import { knex } from "../data/connection";
 import atividadesModel from "./atividadesModel";
 import beneficiadoModel from "./beneficiadoModel";
 
-let today = new Date().toISOString().slice(0,10);
 class PresencaModel{
+
     async cadastrar(data: string, usuario: number){
         try{
             let cadastro = await knex.insert({
@@ -46,22 +46,10 @@ class PresencaModel{
 
     async getByAtividade(data: String){
         try{
-            let presentes = []
-            let atividades = await knex.select(["*"]).where({atividades_data: data}).table('presenca');
-            for(let i = 0; i < atividades.length; i++){
-                let alunoPresente = await beneficiadoModel.getByID(atividades[i].usuario_idusuario);
-                presentes.push(alunoPresente[0]);
-            }
-            if(atividades.length < 0){
-                return {status: false,
-                    message: "Nao foi encontrado presencas para essa atividade"
-                }
-            };
-            return {status: true,
-                presentes: presentes
-            }
+            let presentes = await knex.select(["*"]).where({atividades_data: data}).table('presenca');
+            return presentes
         }catch(error){
-
+            console.log(error)
             return {status: false,
                 error: error
             }
@@ -88,12 +76,6 @@ class PresencaModel{
             }
         }
     };
-
-    async presencasAtividades(){
-        let datas = await atividadesModel.getDatas();
-        console.log(datas)
-    };
-
 };
 
 export default new PresencaModel;

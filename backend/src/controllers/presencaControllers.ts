@@ -27,20 +27,38 @@ class PresencaControllers{
 
 
     async getPresencaByAtividade(req: any, res: any){
-        try{
-            let datas = [];
-            let presencas: any = await presencaModels.presencasAtividades();
-            console.log(presencas.length);
-            for(let i = 0; i < presencas.length; i++){
-                let atividade = await atividadesModel.getByID
-                datas.push(presencas[i].data);  
+            let presentes = [];
+            let presencas = [];
+            let datas = await atividadesModel.getDatas();
+            let formatar = (dateString: any) => {
+                const date = new Date(dateString);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+            
+                return `${year}-${month}-${day}`;
+            }
+
+            for(let i = 0; i < datas.length; i++){
+                let data = formatar(datas[i].data)
+                let atividade = await presencaModels.getByAtividade(data);
+                if(atividade.length > 0){presentes.push(atividade)};
             };
-            console.log(datas)
-            return res.status(200).json(presencas)
-        }catch(error){
-            return res.status(400).json({status: false,
-                error
-            })}
+            console.log(presentes)
+            for(let j = 0; j < presentes.length; j++){
+                    let i = 0
+                    let dataAtividade = formatar((presentes[j])[0].atividades_data);
+                    let obj = []
+                    while(i < presentes[j].length){
+                        let lista = presentes[j];
+                        let participante = await beneficiadoModel.getByID(lista[i].usuario_idusuario);
+                        obj.push(participante[0])
+                        i++;
+                    }
+                    presencas.push({data: dataAtividade, participantes: obj})
+            };
+            return res.status(200).json({presencas})
+
     };
 
     async deletePresenca(req: any, res: any){
