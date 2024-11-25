@@ -15,6 +15,8 @@ router.get('/user/:id', UserController.getById);
 router.put('/user/', UserController.updateUser);
 router.delete('/user/', userMiddlewares.checkDeletedUser, UserController.deleteUser);
 router.post('/login/', UserController.login);
+router.post('/forgotPassword/', UserController.forgotPass);
+router.post('/reset/:token', UserController.reset);
 
 // Beneficiado
 router.post("/beneficiados/cadastro", benefMiddlewares.checkCpf, beneficiadoController.create);

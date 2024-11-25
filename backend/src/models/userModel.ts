@@ -19,6 +19,15 @@ class User{
             return 404}
     };
 
+    async getEmail(){
+        try{
+            let emails = await knex.select(['usuario']).table('usuario');
+            return emails
+        }catch(error){
+            return error
+        }
+    }
+
     async getByID(id: number){
         try{
             let user = await knex.select(['nome','usuario', 'senha', 'funcao']).where({idusuario: id}).table('usuario');
@@ -26,6 +35,22 @@ class User{
         }catch(error){
             return 404;
         };
+    };
+
+    async alterarSenha(pass: string, user: string){
+        try{
+            let alterar = await knex.update({senha: pass}).where({usuario: user}).table('usuario');
+            return alterar
+        }catch(error){
+            return error
+        };
+    };
+
+    async reset(token: any, novaSenha: string){
+        try{
+            let alteração = await knex.update({senha: novaSenha}).where({senha: token}).table('usuario');
+            return alteração
+        }catch(error){return error}
     };
 
     async getByUser(userPar: string){
@@ -38,15 +63,14 @@ class User{
             return error;
         }
     };
-
     async getAll(){
         try{
-            // let emails = 
+            let users = await knex.select(["senha"]).table('usuario');
+            return users
         }catch(error){
             return error
-        };
+        }
     }
-
     async updateUser(id:number, nome:string, usuario:string, hash:string, funcao:string){
         try{
             let user = await knex.update({nome: nome, usuario: usuario, senha: hash, funcao: funcao}).where({idusuario: id}).table('usuario');
